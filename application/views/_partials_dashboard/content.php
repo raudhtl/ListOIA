@@ -108,7 +108,7 @@
 	<!-- Content -->
 	<div class="content">
 		<!-- Animated -->
-		<div class="animated fadeIn">
+		<div id="content-container" class="animated fadeIn">
 			<!-- Widgets  -->
 			<div class="row">
 				<div class="col-lg-3 col-md-6">
