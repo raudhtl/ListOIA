@@ -1,6 +1,6 @@
 <div class="main-content">
     <!-- Navbar -->
-    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark bg-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
@@ -60,13 +60,11 @@
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-      <div class="container-fluid">
-        
-      </div>
+    <div class="header pt-9">
+
     </div>
     <div class="container-fluid mt--7">
-		<div id="container" >
+		<div id="container-content" >
 
 		</div>
       <footer class="footer">

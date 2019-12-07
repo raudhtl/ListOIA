@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
+// TODO
+// 1 : ubah semua style menu ke ajax style 
+
 class Short_term extends CI_Controller {
 
 	/**
@@ -20,17 +23,25 @@ class Short_term extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-    $this->load->model('M_Upload');
+
+	// TODO 1
+	public function index(){
+    	$this->load->model('M_Upload');
 		$data['mhs'] = $this->M_Upload->get_all_mhs("short_term", $this->session->userdata('ses_fakultas'))->result();
-		$this->load->view('v_list', $data);
+		$content=$this->load->view('v_list', $data,true);
+
+		echo json_encode(array('content',$content));
 	}
+	
+	// TODO 1
 	public function upload(){
 		$this->load->model('M_Upload');
 		$upload['program'] = $this->M_Upload->get_all_short_term($this->session->userdata('ses_fakultas'));
-		$this->load->view('v_upload', $upload);
+		$content=$this->load->view('v_upload', $upload,true);
+		$this->output->set_output($content); 
+
 	}
+
 	public function download_doc(){
 		$nama=$this->input->post('name');
 		$doc=$this->input->post('doc_name');

@@ -89,20 +89,24 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item  class=" active" ">
-          <a class=" nav-link active"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+          <a class=" nav-link active menu-app" data-val="dashboard"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">
-              <i class="ni ni-planet text-blue"></i> Icons
+            <a class="nav-link menu-app" data-val="Short_term/upload">
+              <i class="ni ni-planet text-blue"></i> Add Program
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">
-              <i class="ni ni-pin-3 text-orange"></i> Maps
+            <a class="nav-link menu-app" data-val="Short_term">
+              <i class="ni ni-pin-3 text-orange"></i> List Program
             </a>
           </li>
-          
+		  <li class="nav-item">
+            <a class="nav-link menu-app" data-val="dashboard">
+              <i class="ni ni-pin-3 text-orange"></i> Edit Program
+            </a>
+          </li> 
         </ul>
       </div>
     </div>

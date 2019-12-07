@@ -7,8 +7,12 @@ class Dashboard extends CI_Controller {
 		$this->load->model('Dashboard_Model');
 	}
 	public function index(){
-		// $content=array('content',$this->load->view('dashboard','',true));
-		$this->load->view('main_dashboard');
+		$content=array('content'=>$this->load->view('dashboard','',true));
+		$this->load->view('main_dashboard',$content);
+	}
+
+	public function addProgram(){
+		$this->output->set_output($this->load->view('temp','',true)); 
 	}
 }
 ?>
