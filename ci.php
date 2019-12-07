@@ -1,7 +1,7 @@
 <?php
 if(sizeof($argv)==1){
 	echo "params can't be empty\n";
-	echo "php create.php <function>\n";
+	echo "php ci.php <function>\n";
 	new Help("help");
 	return;
 }
@@ -12,6 +12,7 @@ switch ($argv[1]){
 	default:
 		new Help("help");
 }
+
 class ModulesCreate{
 	private $module;
 	private $folders;
@@ -156,13 +157,14 @@ class Help{
 		if(strcmp($var,"modules")==0) {
 			$this->show_modules();
 			return;
-		}
+    }
+    $this->show_modules();
 	}
 	public function show_modules(){
 		echo " | Modules \n";
-		echo " \tphp create.php modules module_name  >>>  php module home\n";
-		echo " \tphp create.php modules module_name folder_name folder_n  >>>  php module home controller ajax\n";
-		echo " \tphp create.php modules module_name style_module  >>>  php module home 1\n";
+		echo " \tphp ci.php modules module_name  >>>  php module home\n";
+		echo " \tphp ci.php modules module_name folder_name folder_n  >>>  php module home controller ajax\n";
+		echo " \tphp ci.php modules module_name style_module  >>>  php module home 1\n";
 		echo " \t\t style module 1 : controllers ajax views\n";
 		echo " \t\t style module 2 : controllers ajax views models\n";
 		echo " \t\t style module 3 : controllers\n";
