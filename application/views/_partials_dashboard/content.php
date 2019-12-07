@@ -1,586 +1,458 @@
-<!-- Right Panel -->
-<div id="right-panel" class="right-panel">
-	<!-- Header-->
-	<header id="header" class="header">
-		<div class="top-left">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="./"><img src="<?php echo base_url()?>assets/themes/ElaAdmin/images/logo.png" alt="Logo"></a>
-				<a class="navbar-brand hidden" href="./"><img src="<?php echo base_url()?>assets/themes/ElaAdmin/images/logo2.png" alt="Logo"></a>
-				<a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
-			</div>
-		</div>
-		<div class="top-right">
-			<div class="header-menu">
-				<div class="header-left">
-					<button class="search-trigger"><i class="fa fa-search"></i></button>
-					<div class="form-inline">
-						<form class="search-form">
-							<input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-							<button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-						</form>
-					</div>
-
-					<div class="dropdown for-notification">
-						<button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fa fa-bell"></i>
-							<span class="count bg-danger">3</span>
-						</button>
-						<div class="dropdown-menu" aria-labelledby="notification">
-							<p class="red">You have 3 Notification</p>
-							<a class="dropdown-item media" href="#">
-								<i class="fa fa-check"></i>
-								<p>Server #1 overloaded.</p>
-							</a>
-							<a class="dropdown-item media" href="#">
-								<i class="fa fa-info"></i>
-								<p>Server #2 overloaded.</p>
-							</a>
-							<a class="dropdown-item media" href="#">
-								<i class="fa fa-warning"></i>
-								<p>Server #3 overloaded.</p>
-							</a>
-						</div>
-					</div>
-
-					<div class="dropdown for-message">
-						<button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fa fa-envelope"></i>
-							<span class="count bg-primary">4</span>
-						</button>
-						<div class="dropdown-menu" aria-labelledby="message">
-							<p class="red">You have 4 Mails</p>
-							<a class="dropdown-item media" href="#">
-								<span class="photo media-left"><img alt="avatar" src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/1.jpg"></span>
-								<div class="message media-body">
-									<span class="name float-left">Jonathan Smith</span>
-									<span class="time float-right">Just now</span>
-									<p>Hello, this is an example msg</p>
-								</div>
-							</a>
-							<a class="dropdown-item media" href="#">
-								<span class="photo media-left"><img alt="avatar" src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/2.jpg"></span>
-								<div class="message media-body">
-									<span class="name float-left">Jack Sanders</span>
-									<span class="time float-right">5 minutes ago</span>
-									<p>Lorem ipsum dolor sit amet, consectetur</p>
-								</div>
-							</a>
-							<a class="dropdown-item media" href="#">
-								<span class="photo media-left"><img alt="avatar" src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/3.jpg"></span>
-								<div class="message media-body">
-									<span class="name float-left">Cheryl Wheeler</span>
-									<span class="time float-right">10 minutes ago</span>
-									<p>Hello, this is an example msg</p>
-								</div>
-							</a>
-							<a class="dropdown-item media" href="#">
-								<span class="photo media-left"><img alt="avatar" src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/4.jpg"></span>
-								<div class="message media-body">
-									<span class="name float-left">Rachel Santos</span>
-									<span class="time float-right">15 minutes ago</span>
-									<p>Lorem ipsum dolor sit amet, consectetur</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="user-area dropdown float-right">
-					<a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img class="user-avatar rounded-circle" src="<?php echo base_url()?>assets/themes/ElaAdmin/images/admin.jpg" alt="User Avatar">
-					</a>
-
-					<div class="user-menu dropdown-menu">
-						<a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
-
-						<a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
-
-						<a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-
-						<a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</header>
-	<!-- /#header -->
-	<!-- Content -->
-	<div class="content">
-		<!-- Animated -->
-		<div id="content-container" class="animated fadeIn">
-			<!-- Widgets  -->
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="card">
-						<div class="card-body">
-							<div class="stat-widget-five">
-								<div class="stat-icon dib flat-color-1">
-									<i class="pe-7s-cash"></i>
-								</div>
-								<div class="stat-content">
-									<div class="text-left dib">
-										<div class="stat-text">$<span class="count">23569</span></div>
-										<div class="stat-heading">Revenue</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-6">
-					<div class="card">
-						<div class="card-body">
-							<div class="stat-widget-five">
-								<div class="stat-icon dib flat-color-2">
-									<i class="pe-7s-cart"></i>
-								</div>
-								<div class="stat-content">
-									<div class="text-left dib">
-										<div class="stat-text"><span class="count">3435</span></div>
-										<div class="stat-heading">Sales</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-6">
-					<div class="card">
-						<div class="card-body">
-							<div class="stat-widget-five">
-								<div class="stat-icon dib flat-color-3">
-									<i class="pe-7s-browser"></i>
-								</div>
-								<div class="stat-content">
-									<div class="text-left dib">
-										<div class="stat-text"><span class="count">349</span></div>
-										<div class="stat-heading">Templates</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-6">
-					<div class="card">
-						<div class="card-body">
-							<div class="stat-widget-five">
-								<div class="stat-icon dib flat-color-4">
-									<i class="pe-7s-users"></i>
-								</div>
-								<div class="stat-content">
-									<div class="text-left dib">
-										<div class="stat-text"><span class="count">2986</span></div>
-										<div class="stat-heading">Clients</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /Widgets -->
-			<!--  Traffic  -->
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="card">
-						<div class="card-body">
-							<h4 class="box-title">Traffic </h4>
-						</div>
-						<div class="row">
-							<div class="col-lg-8">
-								<div class="card-body">
-									<!-- <canvas id="TrafficChart"></canvas>   -->
-									<div id="traffic-chart" class="traffic-chart"></div>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div class="card-body">
-									<div class="progress-box progress-1">
-										<h4 class="por-title">Visits</h4>
-										<div class="por-txt">96,930 Users (40%)</div>
-										<div class="progress mb-2" style="height: 5px;">
-											<div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-									<div class="progress-box progress-2">
-										<h4 class="por-title">Bounce Rate</h4>
-										<div class="por-txt">3,220 Users (24%)</div>
-										<div class="progress mb-2" style="height: 5px;">
-											<div class="progress-bar bg-flat-color-2" role="progressbar" style="width: 24%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-									<div class="progress-box progress-2">
-										<h4 class="por-title">Unique Visitors</h4>
-										<div class="por-txt">29,658 Users (60%)</div>
-										<div class="progress mb-2" style="height: 5px;">
-											<div class="progress-bar bg-flat-color-3" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-									<div class="progress-box progress-2">
-										<h4 class="por-title">Targeted  Visitors</h4>
-										<div class="por-txt">99,658 Users (90%)</div>
-										<div class="progress mb-2" style="height: 5px;">
-											<div class="progress-bar bg-flat-color-4" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-								</div> <!-- /.card-body -->
-							</div>
-						</div> <!-- /.row -->
-						<div class="card-body"></div>
-					</div>
-				</div><!-- /# column -->
-			</div>
-			<!--  /Traffic -->
-			<div class="clearfix"></div>
-			<!-- Orders -->
-			<div class="orders">
-				<div class="row">
-					<div class="col-xl-8">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="box-title">Orders </h4>
-							</div>
-							<div class="card-body--">
-								<div class="table-stats order-table ov-h">
-									<table class="table ">
-										<thead>
-											<tr>
-												<th class="serial">#</th>
-												<th class="avatar">Avatar</th>
-												<th>ID</th>
-												<th>Name</th>
-												<th>Product</th>
-												<th>Quantity</th>
-												<th>Status</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td class="serial">1.</td>
-												<td class="avatar">
-													<div class="round-img">
-														<a href="#"><img class="rounded-circle" src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/1.jpg" alt=""></a>
-													</div>
-												</td>
-												<td> #5469 </td>
-												<td>  <span class="name">Louis Stanley</span> </td>
-												<td> <span class="product">iMax</span> </td>
-												<td><span class="count">231</span></td>
-												<td>
-													<span class="badge badge-complete">Complete</span>
-												</td>
-											</tr>
-											<tr>
-												<td class="serial">2.</td>
-												<td class="avatar">
-													<div class="round-img">
-														<a href="#"><img class="rounded-circle" src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/2.jpg" alt=""></a>
-													</div>
-												</td>
-												<td> #5468 </td>
-												<td>  <span class="name">Gregory Dixon</span> </td>
-												<td> <span class="product">iPad</span> </td>
-												<td><span class="count">250</span></td>
-												<td>
-													<span class="badge badge-complete">Complete</span>
-												</td>
-											</tr>
-											<tr>
-												<td class="serial">3.</td>
-												<td class="avatar">
-													<div class="round-img">
-														<a href="#"><img class="rounded-circle" src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/3.jpg" alt=""></a>
-													</div>
-												</td>
-												<td> #5467 </td>
-												<td>  <span class="name">Catherine Dixon</span> </td>
-												<td> <span class="product">SSD</span> </td>
-												<td><span class="count">250</span></td>
-												<td>
-													<span class="badge badge-complete">Complete</span>
-												</td>
-											</tr>
-											<tr>
-												<td class="serial">4.</td>
-												<td class="avatar">
-													<div class="round-img">
-														<a href="#"><img class="rounded-circle" src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/4.jpg" alt=""></a>
-													</div>
-												</td>
-												<td> #5466 </td>
-												<td>  <span class="name">Mary Silva</span> </td>
-												<td> <span class="product">Magic Mouse</span> </td>
-												<td><span class="count">250</span></td>
-												<td>
-													<span class="badge badge-pending">Pending</span>
-												</td>
-											</tr>
-											<tr class=" pb-0">
-												<td class="serial">5.</td>
-												<td class="avatar pb-0">
-													<div class="round-img">
-														<a href="#"><img class="rounded-circle" src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/6.jpg" alt=""></a>
-													</div>
-												</td>
-												<td> #5465 </td>
-												<td>  <span class="name">Johnny Stephens</span> </td>
-												<td> <span class="product">Monitor</span> </td>
-												<td><span class="count">250</span></td>
-												<td>
-													<span class="badge badge-complete">Complete</span>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div> <!-- /.table-stats -->
-							</div>
-						</div> <!-- /.card -->
-					</div>  <!-- /.col-lg-8 -->
-
-					<div class="col-xl-4">
-						<div class="row">
-							<div class="col-lg-6 col-xl-12">
-								<div class="card br-0">
-									<div class="card-body">
-										<div class="chart-container ov-h">
-											<div id="flotPie1" class="float-chart"></div>
-										</div>
-									</div>
-								</div><!-- /.card -->
-							</div>
-
-							<div class="col-lg-6 col-xl-12">
-								<div class="card bg-flat-color-3  ">
-									<div class="card-body">
-										<h4 class="card-title m-0  white-color ">August 2018</h4>
-									</div>
-										<div class="card-body">
-											<div id="flotLine5" class="flot-line"></div>
-										</div>
-								</div>
-							</div>
-						</div>
-					</div> <!-- /.col-md-4 -->
-				</div>
-			</div>
-			<!-- /.orders -->
-			<!-- To Do and Live Chat -->
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="card">
-						<div class="card-body">
-							<h4 class="card-title box-title">To Do List</h4>
-							<div class="card-content">
-								<div class="todo-list">
-									<div class="tdl-holder">
-										<div class="tdl-content">
-											<ul>
-												<li>
-													<label>
-														<input type="checkbox"><i class="check-box"></i><span>Conveniently fabricate interactive technology for ....</span>
-														<a href='#' class="fa fa-times"></a>
-														<a href='#' class="fa fa-pencil"></a>
-														<a href='#' class="fa fa-check"></a>
-													</label>
-												</li>
-												<li>
-													<label>
-														<input type="checkbox"><i class="check-box"></i><span>Creating component page</span>
-														<a href='#' class="fa fa-times"></a>
-														<a href='#' class="fa fa-pencil"></a>
-														<a href='#' class="fa fa-check"></a>
-													</label>
-												</li>
-												<li>
-													<label>
-														<input type="checkbox" checked><i class="check-box"></i><span>Follow back those who follow you</span>
-														<a href='#' class="fa fa-times"></a>
-														<a href='#' class="fa fa-pencil"></a>
-														<a href='#' class="fa fa-check"></a>
-													</label>
-												</li>
-												<li>
-													<label>
-														<input type="checkbox" checked><i class="check-box"></i><span>Design One page theme</span>
-														<a href='#' class="fa fa-times"></a>
-														<a href='#' class="fa fa-pencil"></a>
-														<a href='#' class="fa fa-check"></a>
-													</label>
-												</li>
-
-												<li>
-													<label>
-														<input type="checkbox" checked><i class="check-box"></i><span>Creating component page</span>
-														<a href='#' class="fa fa-times"></a>
-														<a href='#' class="fa fa-pencil"></a>
-														<a href='#' class="fa fa-check"></a>
-													</label>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div> <!-- /.todo-list -->
-							</div>
-						</div> <!-- /.card-body -->
-					</div><!-- /.card -->
-				</div>
-
-				<div class="col-lg-6">
-					<div class="card">
-						<div class="card-body">
-							<h4 class="card-title box-title">Live Chat</h4>
-							<div class="card-content">
-								<div class="messenger-box">
-									<ul>
-										<li>
-											<div class="msg-received msg-container">
-												<div class="avatar">
-													<img src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/64-1.jpg" alt="">
-													<div class="send-time">11.11 am</div>
-												</div>
-												<div class="msg-box">
-													<div class="inner-box">
-														<div class="name">
-															John Doe
-														</div>
-														<div class="meg">
-															Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis sunt placeat velit ad reiciendis ipsam
-														</div>
-													</div>
-												</div>
-											</div><!-- /.msg-received -->
-										</li>
-										<li>
-											<div class="msg-sent msg-container">
-												<div class="avatar">
-													<img src="<?php echo base_url()?>assets/themes/ElaAdmin/images/avatar/64-2.jpg" alt="">
-													<div class="send-time">11.11 am</div>
-												</div>
-												<div class="msg-box">
-													<div class="inner-box">
-														<div class="name">
-															John Doe
-														</div>
-														<div class="meg">
-															Hay how are you doing?
-														</div>
-													</div>
-												</div>
-											</div><!-- /.msg-sent -->
-										</li>
-									</ul>
-									<div class="send-mgs">
-										<div class="yourmsg">
-											<input class="form-control" type="text">
-										</div>
-										<button class="btn msg-send-btn">
-											<i class="pe-7s-paper-plane"></i>
-										</button>
-									</div>
-								</div><!-- /.messenger-box -->
-							</div>
-						</div> <!-- /.card-body -->
-					</div><!-- /.card -->
-				</div>
-			</div>
-			<!-- /To Do and Live Chat -->
-			<!-- Calender Chart Weather  -->
-			<div class="row">
-				<div class="col-md-12 col-lg-4">
-					<div class="card">
-						<div class="card-body">
-							<!-- <h4 class="box-title">Chandler</h4> -->
-							<div class="calender-cont widget-calender">
-								<div id="calendar"></div>
-							</div>
-						</div>
-					</div><!-- /.card -->
-				</div>
-
-				<div class="col-lg-4 col-md-6">
-					<div class="card ov-h">
-						<div class="card-body bg-flat-color-2">
-							<div id="flotBarChart" class="float-chart ml-4 mr-4"></div>
-						</div>
-						<div id="cellPaiChart" class="float-chart"></div>
-					</div><!-- /.card -->
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card weather-box">
-						<h4 class="weather-title box-title">Weather</h4>
-						<div class="card-body">
-							<div class="weather-widget">
-								<div id="weather-one" class="weather-one"></div>
-							</div>
-						</div>
-					</div><!-- /.card -->
-				</div>
-			</div>
-			<!-- /Calender Chart Weather -->
-			<!-- Modal - Calendar - Add New Event -->
-			<div class="modal fade none-border" id="event-modal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title"><strong>Add New Event</strong></h4>
-						</div>
-						<div class="modal-body"></div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>
-							<button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /#event-modal -->
-			<!-- Modal - Calendar - Add Category -->
-			<div class="modal fade none-border" id="add-category">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title"><strong>Add a category </strong></h4>
-						</div>
-						<div class="modal-body">
-							<form>
-								<div class="row">
-									<div class="col-md-6">
-										<label class="control-label">Category Name</label>
-										<input class="form-control form-white" placeholder="Enter name" type="text" name="category-name"/>
-									</div>
-									<div class="col-md-6">
-										<label class="control-label">Choose Category Color</label>
-										<select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
-											<option value="success">Success</option>
-											<option value="danger">Danger</option>
-											<option value="info">Info</option>
-											<option value="pink">Pink</option>
-											<option value="primary">Primary</option>
-											<option value="warning">Warning</option>
-										</select>
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">Save</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		<!-- /#add-category -->
-		</div>
-		<!-- .animated -->
-	</div>
-	<!-- /.content -->
-	<div class="clearfix"></div>
-       
-</div>
+<div class="main-content">
+    <!-- Navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
+        <!-- Form -->
+        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+          <div class="form-group mb-0">
+            <div class="input-group input-group-alternative">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input class="form-control" placeholder="Search" type="text">
+            </div>
+          </div>
+        </form>
+        <!-- User -->
+        <ul class="navbar-nav align-items-center d-none d-md-flex">
+          <li class="nav-item dropdown">
+            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                  <img alt="Image placeholder" src="./assets/img/theme/team-4-800x800.jpg">
+                </span>
+                <div class="media-body ml-2 d-none d-lg-block">
+                  <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+                </div>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+              <div class=" dropdown-header noti-title">
+                <h6 class="text-overflow m-0">Welcome!</h6>
+              </div>
+              <a href="./examples/profile.html" class="dropdown-item">
+                <i class="ni ni-single-02"></i>
+                <span>My profile</span>
+              </a>
+              <a href="./examples/profile.html" class="dropdown-item">
+                <i class="ni ni-settings-gear-65"></i>
+                <span>Settings</span>
+              </a>
+              <a href="./examples/profile.html" class="dropdown-item">
+                <i class="ni ni-calendar-grid-58"></i>
+                <span>Activity</span>
+              </a>
+              <a href="./examples/profile.html" class="dropdown-item">
+                <i class="ni ni-support-16"></i>
+                <span>Support</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#!" class="dropdown-item">
+                <i class="ni ni-user-run"></i>
+                <span>Logout</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+      <div class="container-fluid">
+        <div class="header-body">
+          <!-- Card stats -->
+          <div class="row">
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
+                      <span class="h2 font-weight-bold mb-0">350,897</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                        <i class="fas fa-chart-bar"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                      <span class="h2 font-weight-bold mb-0">2,356</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                        <i class="fas fa-chart-pie"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last week</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                      <span class="h2 font-weight-bold mb-0">924</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                        <i class="fas fa-users"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                    <span class="text-nowrap">Since yesterday</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                      <span class="h2 font-weight-bold mb-0">49,65%</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                        <i class="fas fa-percent"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                    <span class="text-nowrap">Since last month</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col-xl-8 mb-5 mb-xl-0">
+          <div class="card bg-gradient-default shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
+                  <h2 class="text-white mb-0">Sales value</h2>
+                </div>
+                <div class="col">
+                  <ul class="nav nav-pills justify-content-end">
+                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
+                      <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                        <span class="d-none d-md-block">Month</span>
+                        <span class="d-md-none">M</span>
+                      </a>
+                    </li>
+                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
+                      <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                        <span class="d-none d-md-block">Week</span>
+                        <span class="d-md-none">W</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <!-- Chart -->
+              <div class="chart">
+                <!-- Chart wrapper -->
+                <canvas id="chart-sales" class="chart-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
+                  <h2 class="mb-0">Total orders</h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <!-- Chart -->
+              <div class="chart">
+                <canvas id="chart-orders" class="chart-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-xl-8 mb-5 mb-xl-0">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Page visits</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Page name</th>
+                    <th scope="col">Visitors</th>
+                    <th scope="col">Unique users</th>
+                    <th scope="col">Bounce rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      /argon/
+                    </th>
+                    <td>
+                      4,569
+                    </td>
+                    <td>
+                      340
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      /argon/index.html
+                    </th>
+                    <td>
+                      3,985
+                    </td>
+                    <td>
+                      319
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      /argon/charts.html
+                    </th>
+                    <td>
+                      3,513
+                    </td>
+                    <td>
+                      294
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      /argon/tables.html
+                    </th>
+                    <td>
+                      2,050
+                    </td>
+                    <td>
+                      147
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      /argon/profile.html
+                    </th>
+                    <td>
+                      1,795
+                    </td>
+                    <td>
+                      190
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Social traffic</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Referral</th>
+                    <th scope="col">Visitors</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      Facebook
+                    </th>
+                    <td>
+                      1,480
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">60%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Facebook
+                    </th>
+                    <td>
+                      5,480
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">70%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Google
+                    </th>
+                    <td>
+                      4,807
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">80%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Instagram
+                    </th>
+                    <td>
+                      3,678
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">75%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      twitter
+                    </th>
+                    <td>
+                      2,645
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">30%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="row align-items-center justify-content-xl-between">
+          <div class="col-xl-6">
+            <div class="copyright text-center text-xl-left text-muted">
+              &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>

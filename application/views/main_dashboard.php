@@ -1,39 +1,60 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--
+
+=========================================================
+* Argon Dashboard - v1.1.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>List OIA</title>
-    <meta name="description" content="List OIA">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/themes/ElaAdmin/assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/themes/ElaAdmin/assets/css/style.css">
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>
+    List OIA
+  </title>
+  <!-- Favicon -->
+  <link href="<?php echo base_url()?>assets/themes/argon/assets/img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
+  <link href="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="<?php echo base_url()?>assets/themes/argon/assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
 </head>
 
-
-
-<body>
+<body class="">
 	<?php 
 		$this->load->view("_partials_dashboard/left_nav");
 		$this->load->view("_partials_dashboard/content");
-		$this->load->view("_partials_dashboard/footer");
 	?>
-		
-	<!-- TODO load jq here -->
-	<script src="<?php echo base_url()?>assets/js/jquery-3.2.1.min.js"></script>
-	<script src="<?php echo base_url()?>assets/js/jquery.js"></script>
-	<script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url()?>assets/themes/ElaAdmin/assets/js/main.js"></script>
-    <script src="<?php echo base_url()?>assets/themes/ElaAdmin/assets/js/init/fullcalendar-init.js"></script>
+  
+  <!--   Core   -->
+  <script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/jquery/dist/jquery.min.js"></script>
+  <script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!--   Optional JS   -->
+  <script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/chart.js/dist/Chart.min.js"></script>
+  <script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
+  <!--   Argon JS   -->
+  <script src="<?php echo base_url()?>assets/themes/argon/assets/js/argon-dashboard.min.js?v=1.1.0"></script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "argon-dashboard-free"
+      });
+  </script>
 </body>
+
 </html>
