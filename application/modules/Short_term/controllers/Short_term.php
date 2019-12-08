@@ -32,6 +32,15 @@ class Short_term extends CI_Controller {
 
 		echo json_encode(array('content',$content));
 	}
+
+	public function list()
+	{
+		$this->load->model('M_Upload');
+		$data['mhs'] = $this->M_Upload->get_all_mhs("short_term", $this->session->userdata('ses_fakultas'))->result();
+		$content=$this->load->view('v_list', $data,true);
+		$this->output->set_output($content); 
+
+	}
 	
 	// TODO 1
 	public function upload(){

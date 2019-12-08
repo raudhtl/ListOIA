@@ -1,6 +1,5 @@
-  <div class="login" style="margin:50px; margin-left:100px; margin-right:100px">
-
-  	<div class="col-12">
+<div class="col-12 align-items-center">
+	<div class="col-11">
   		<ul class="nav nav-pills float-right" id="" role="tablist">
   			<li class="nav-item">
   				<a class="nav-link active" id="step-mahasiswa" data-toggle="tab" href="#add" role="tab"
@@ -14,7 +13,7 @@
   			</li>
   		</ul>
   	</div>
-  	<div class="tab-content">
+  	<div class="tab-content col-10 vertical-center">
   		<div id="add" class="col-12 card mt-5 tab-pane fade show active">
   			<div class="card-header">
   				<ul class="nav nav-pills" id="" role="tablist">
@@ -758,4 +757,4 @@
 
   		</div>
   	</div>
-  </div>
+</div>

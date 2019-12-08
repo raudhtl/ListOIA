@@ -98,7 +98,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link menu-app" data-val="Short_term">
+            <a class="nav-link menu-app" data-val="Short_term/list">
               <i class="ni ni-pin-3 text-orange"></i> List Program
             </a>
           </li>

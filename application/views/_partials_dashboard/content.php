@@ -60,10 +60,8 @@
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
-    <div class="header pt-9">
-
-    </div>
-    <div class="container-fluid mt--7">
+  
+    <div class="container-fluid pt-7">
 		<div id="container-content" >
 			<?php echo $content?>
 		</div>
