@@ -144,9 +144,11 @@ class Short_term extends CI_Controller {
 					if ( !($this->upload->do_upload("userfile")))
 					{
 						$error = array('error' => $this->upload->display_errors());
-						//echo "halo"
-						$this->session->set_flashdata('error',$error['error']);
-						redirect('Login');
+						echo "halo";
+						print_r($error);
+
+						// $this->session->set_flashdata('error',$error['error']);
+						// redirect('Login');
 
 					}
 					else

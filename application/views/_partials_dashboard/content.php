@@ -65,7 +65,7 @@
     </div>
     <div class="container-fluid mt--7">
 		<div id="container-content" >
-
+			<?php echo $content?>
 		</div>
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
