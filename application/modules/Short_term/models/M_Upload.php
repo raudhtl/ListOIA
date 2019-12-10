@@ -1,11 +1,17 @@
 <?php
+
+// TODO
+// 1.  ubah semua style query ke satu model
+// 2.  ubah semua inline string ke string format << for query handling at unix style
 class M_Upload extends CI_Model {
 	function get_all_short_term($fakultas){
-		$query = $this ->db->query ("select * from short_term where short_term.id_program in (select id_program from program where id_fakultas = $fakultas)");
+		$cmd=sprintf("select * from short_term where short_term.id_program in (select id_program from program where id_fakultas ='%s')",$fakultas);
+		$query = $this ->db->query ($cmd);
 		return $query->result();
 	}
 	function get_all_mhs($table, $fakultas){
-		$query = $this ->db->query("select * from mahasiswa, program, short_term where mahasiswa.id_program in (select id_program from program where id_fakultas = $fakultas and class ='st') and mahasiswa.id_program = program.id_program and program.id_program = short_term.id_program");
+		$cmd=sprintf("select * from mahasiswa, program, short_term where mahasiswa.id_program in (select id_program from program where id_fakultas ='%s' and class ='st') and mahasiswa.id_program = program.id_program and program.id_program = short_term.id_program",$fakultas);
+		$query = $this ->db->query($cmd);
 		return $query;
 
 	}
@@ -13,7 +19,8 @@ class M_Upload extends CI_Model {
 		$this->db->insert($table, $data);
 	}
 	function get_id_program($nama_program, $id_fakultas){
-			$query = $this ->db->query ("select program.id_program as id from short_term, program where short_term.nama_program = '$nama_program' and program.id_fakultas = $id_fakultas and short_term.id_program = program.id_program");
+			$cmd=sprintf("select program.id_program as id from short_term, program where short_term.nama_program = '%s' and program.id_fakultas = '%s' and short_term.id_program = program.id_program",$nama_program,$id_fakultas);
+			$query = $this ->db->query ($cmd);
 			return $query->row()->id;
 	}
 	function get_program($id){
