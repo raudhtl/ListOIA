@@ -130,7 +130,7 @@ class ModulesCreate{
 					break;
 				case "views":
 					$handle = fopen($this->modules_dir.$this->module."/$param/".lcfirst($this->module).".php", 'w') or die('Cannot open file:  ' . $param);
-					fwrite($handle, '<script type="text/javascript">'."\n".'<?'.'php'."\n".' include "'."$this->modules_dir$this->module/ajax/".lcfirst($this->module).".js\";\n"."?>\n</script>");
+					fwrite($handle, '<script type="text/javascript">'."\n".'<?'.'php'."\n".' include "'."APPPATH\./$this->module/ajax/".lcfirst($this->module).".js\";\n"."?>\n</script>");
 					fclose($handle);
 					new IndexForbidden($this->modules_dir.$this->module."/views/");
 					break;
