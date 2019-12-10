@@ -1,12 +1,22 @@
-	<a href="<?php echo base_url("index.php/Short_term/download"); ?>">Download daftar Mahasiswa</a>
-	<a href="<?php echo base_url("index.php/Short_term/download_doc"); ?>">Download dokumen</a>
+
 
 	<div class="row">
 		<div class="col">
 			<div class="card shadow">
 				<div class="card-header border-0">
-					<h3 class="mb-0">Card tables</h3>
+					<div class="row">
+						<div class="col">
+							<h3 class="mb-0">Daftar Mahasiswa</h3>
+						</div>
+						<div class="col-auto">
+							<a href="<?php echo base_url("index.php/Short_term/download"); ?>"> Download daftar Mahasiswa</a>
+						</div>
+						<div class="col-auto">
+							<a href="<?php echo base_url("index.php/Short_term/download_doc"); ?>"> Download dokumen</a>
+						</div>
+					</div>
 				</div>
+
 				<div class="table-responsive">
 					<table class="table align-items-center table-flush">
 						<thead class="thead-light">

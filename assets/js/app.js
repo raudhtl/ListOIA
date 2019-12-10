@@ -1,11 +1,11 @@
 $(document).ready(function ($) {
     //set landing dashboard di menu dashboard
-  
 
-    /* TODO function belum diimplementasi 
+
+    /* TODO function belum diimplementasi
      * function untuk action class menu-app
      * class menu-app memiliki attribute data-val untuk setiap controllers dan fungsididalamnya
-     * update content-page dan nav-text setiap class menu-app diklik 
+     * update content-page dan nav-text setiap class menu-app diklik
      * */
     $(".menu-app").click(function () {
         nav = $(this).data("val");
@@ -26,7 +26,7 @@ $(document).ready(function ($) {
 function update(z) {
 	nav = z;
 	console.log("update",BASE_URL+z);
-	
+
     $.ajax({
         type: "POST",
         url: BASE_URL + z,
