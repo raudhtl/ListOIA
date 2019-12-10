@@ -55,6 +55,10 @@ a {
 .row.m0 {
   margin: 0px; }
 
+.card-body .button-custom {
+    color:red !important;
+}
+
 button:focus {
   outline: none;
   box-shadow: none; }
@@ -1903,6 +1907,8 @@ button:focus {
   line-height: 45px;
   padding-top: 0px;
   padding-bottom: 0px; }
+
+
 
 .medium {
   line-height: 30px;

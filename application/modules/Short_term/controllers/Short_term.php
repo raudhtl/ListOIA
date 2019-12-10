@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
+// TODO
+// 1 : ubah semua style menu ke ajax style
+
 class Short_term extends CI_Controller {
 
 	/**
@@ -20,17 +23,34 @@ class Short_term extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
+
+	// TODO 1
+	public function index(){
     $this->load->model('M_Upload');
 		$data['mhs'] = $this->M_Upload->get_all_mhs("short_term", $this->session->userdata('ses_fakultas'))->result();
-		$this->load->view('v_list', $data);
+		$content=array('content'=>$this->load->view('v_list', $data,true));
+		$this->load->view('v_menu',$content);
 	}
+
+	public function list()
+	{
+		$this->load->model('M_Upload');
+		$data['mhs'] = $this->M_Upload->get_all_mhs("short_term", $this->session->userdata('ses_fakultas'))->result();
+		$content=$this->load->view('v_list', $data,true);
+		$this->output->set_output($content);
+
+	}
+
+
+	// TODO 1
 	public function upload(){
 		$this->load->model('M_Upload');
 		$upload['program'] = $this->M_Upload->get_all_short_term($this->session->userdata('ses_fakultas'));
-		$this->load->view('v_upload', $upload);
+		$content=$this->load->view('v_upload', $upload,true);
+		$this->output->set_output($content);
+
 	}
+
 	public function download_doc(){
 		$nama=$this->input->post('name');
 		$doc=$this->input->post('doc_name');
@@ -133,9 +153,11 @@ class Short_term extends CI_Controller {
 					if ( !($this->upload->do_upload("userfile")))
 					{
 						$error = array('error' => $this->upload->display_errors());
-						//echo "halo"
-						$this->session->set_flashdata('error',$error['error']);
-						redirect('Login');
+						echo "halo";
+						print_r($error);
+
+						// $this->session->set_flashdata('error',$error['error']);
+						// redirect('Login');
 
 					}
 					else
