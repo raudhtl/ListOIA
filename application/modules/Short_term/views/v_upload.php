@@ -3,15 +3,15 @@
 			<div class="col">
 				<ul class="nav d-sm-flex flex-column nav-pills" id="v-pills-tab" role="tablist"
 					aria-orientation="vertical">
-					<li class="nav-item"><a class="nav-link active" href="#add"  style="width:100%;" data-toggle="pill">Upload</a></li>
+					<li class="nav-item"><a class="nav-link active" href="#upload"  style="width:100%;" data-toggle="pill">Upload</a></li>
 					<li class="nav-item"><a class="nav-link" href="#excel" style="width:100%;" data-toggle="pill">Upload excel file</a></li>
 					<li class="nav-item" style="display:none;"><a class="nav-link" data-toggle="pill">Upload excel file</a></li>
 				</ul>
 
   	</div>
 		<div class="col-10">
-  	<div class="tab-content vertical-center">
-  		<div id="add"  role="tabpanel"  class="card tab-pane fade show active">
+  	<div class="tab-content vertical-center" id="v-pills-tabContent">
+  		<div id="upload"  role="tabpanel"  class="card tab-pane fade show active">
   			<div class="card-header">
   				<ul class="nav nav-tabs" id="" role="tablist">
   					<li class="nav-item" id="0">
@@ -699,7 +699,7 @@
   				</form>
   			</div>
   		</div>
-  		<div id="excel" role="tabpanel" class="card tab-pane fade ">
+  		<div id="excel" role="tabpanel" class="card tab-pane fade in active ">
   			<div class="card-body">
   				<a href="<?php echo base_url("excel/format.xlsx"); ?>">Download Format</a>
   				<form id="import_form" method="post"
