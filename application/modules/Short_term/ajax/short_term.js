@@ -1,11 +1,11 @@
 function nextTab(tab){
 	$( "#form1" ).validate();
-	if ($("#form1").valid()) {
+	// if ($("#form1").valid()) {
 		alert("tes");
 		$("#"+tab).removeClass("disabled");
 		$('#'+tab).css('pointer-events', '');
 		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
-	}
+	// }
 }
 
 $( "#form1" ).validate( {
