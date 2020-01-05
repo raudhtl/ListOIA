@@ -33,8 +33,7 @@
   				<form id="form1" method="post" enctype="multipart/form-data"
   					action="<?php echo base_url('index.php/Short_term/input'); ?>">
   					<div class="tab-content" id="myTabContent">
-  						<div class="tab-pane fade show active" id="data-mahasiswa" role="tabpanel"
-  							aria-labelledby="data-mahasiswa">
+  						<div class="tab-pane fade show active" id="data-mahasiswa" role="tabpanel" aria-labelledby="data-mahasiswa">
   							<div class="tab-content" id="v-pills-tabContent">
   								<div class="form-group">
   									<label for="nama">Nama:</label>
@@ -621,10 +620,9 @@
   										<option value="Zimbabwe">Zimbabwe</option>
   									</select>
   								</div>
-  								<a onclick="nextTab('1')" href="#" class="btn btn-primary">next</a>
+  								<a onclick="nextTab('data-program')" href="#" class="btn btn-primary">next</a>
   							</div>
   						</div>
-
   						<div class="tab-pane fade" id="data-program" role="tabpanel" aria-labelledby="data-program">
 
   							<div class="form-group">
@@ -678,8 +676,8 @@
   								<label for="tgl_akhir">Tanggal akhir program:</label>
   								<input type="date" name="tgl_akhir" class="form-control" required>
   							</div>
-  							<a onclick="prevTab('0')" href="#" class="btn btn-primary">prev</a>
-  							<a onclick="nextTab('2')" href="#" class="btn btn-primary">next</a>
+  							<a onclick="prevTab('data-program')" href="#" class="btn btn-primary">prev</a>
+  							<a onclick="nextTab('data-dokumen')" href="#" class="btn btn-primary">next</a>
   						</div>
   						<div class="tab-pane fade" id="data-dokumen" role="tabpanel" aria-labelledby="data-dokumen">
   							<div class="form-group">
@@ -692,7 +690,7 @@
   								<strong>Info! </strong><?php echo $this->session->flashdata('error')?>
   							</div>
   							<?php endif; ?>
-  							<a onclick="prevTab('1')" href="#" class="btn btn-primary">prev</a>
+  							<a onclick="prevTab('data-dokumen')" href="#" class="btn btn-primary">prev</a>
   							<button type="submit" class="btn btn-primary">Submit</button>
   						</div>
   					</div>
