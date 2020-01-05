@@ -1,7 +1,6 @@
 function nextTab(tab) {
 	$("#form1").validate();
 	if ($("#form1").valid()) {
-		alert("tes");
 		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
 	}
 }

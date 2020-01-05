@@ -1,22 +1,19 @@
 <div class="col-12 align-items-center">
-	<div class="col-11">
-  		<ul class="nav nav-pills float-right" id="" role="tablist">
-  			<li class="nav-item">
-  				<a class="nav-link active" id="step-mahasiswa" data-toggle="tab" href="#add" role="tab"
-  					aria-controls="data-mahasiswa" aria-selected="true"><span class="btn-inner--icon"><i
-  							class="fa fa-plus"></i></span>Add</a>
-  			</li>
-  			<li class="nav-item ">
-  				<a class="nav-link " id="step-program" data-toggle="tab" href="#excel" role="tab"
-  					aria-controls="data-program" aria-selected="false"><span class="btn-inner--icon"><i
-  							class="fa fa-upload"></i></span>Upload Excel</a>
-  			</li>
-  		</ul>
+		<div class="row">
+			<div class="col">
+				<ul class=" nav d-sm-flex flex-column nav-pills" id="v-pills-tab" role="tablist"
+					aria-orientation="vertical">
+					<li class="nav-item"><a class="nav-link active" href="#add" data-toggle="pill" style="width:100%;" >Upload</a></li>
+					<li class="nav-item"><a class="nav-link" href="#excel" style="width:100p%;" data-toggle="pill">Upload excel file</a></li>
+					<li class="nav-item" style="display:none;"><a class="nav-link"  href="#excel"  data-toggle="pill">Upload excel file</a></li>
+				</ul>
+
   	</div>
-  	<div class="tab-content col-10 vertical-center">
-  		<div id="add" class="col-12 card mt-5 tab-pane fade show active">
+		<div class="col-10">
+  	<div class="tab-content vertical-center">
+  		<div id="add" class="card tab-pane fade show active">
   			<div class="card-header">
-  				<ul class="nav nav-pills" id="" role="tablist">
+  				<ul class="nav nav-tabs" id="" role="tablist">
   					<li class="nav-item">
   						<a class="nav-link active" id="step-mahasiswa" data-toggle="tab" href="#data-mahasiswa"
   							role="tab" aria-controls="data-mahasiswa" aria-selected="true">Mahasiswa</a>
@@ -702,19 +699,19 @@
   				</form>
   			</div>
   		</div>
-  		<div id="excel" role="tabpanel" class="col-12 card mt-5 tab-pane fade">
+  		<div id="excel" role="tabpanel" class="card tab-pane fade">
   			<div class="card-body">
   				<a href="<?php echo base_url("excel/format.xlsx"); ?>">Download Format</a>
   				<form id="import_form" method="post"
   					action="<?php echo base_url("index.php/Short_term/insert_excel"); ?>"
   					enctype="multipart/form-data">
   					<div class="form-group">
-  						<label for="nama">Masukkan file:</label>
-  						<input type="file" id="file" name="file" required>
+  						<label for="nama">Masukkan daftar mahasiswa (.xls)</label>
+  						<input type="file" id="file" class="form-control" name="file" required>
   					</div>
   					<div class="form-group">
-  						<label for="nama">Masukkan Dokumen:</label>
-  						<input type='file' id="dokumen" name='dokumen[]' multiple> <br />
+  						<label for="nama">Masukkan Dokumen (.zip/.rar)</label>
+  						<input type='file' id="dokumen" class="form-control" name='dokumen[]' multiple> <br />
   					</div>
   					<input id="ton" type="text" value="preview" style="display:none;">
   					<button name="preview" type="submit" class=" btn btn-primary">Preview</button>
@@ -754,7 +751,8 @@
   					</tbody>
   				</table>
   			</div>
-
+			</div>
   		</div>
   	</div>
+	</div>
 </div>

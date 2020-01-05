@@ -1,6 +1,6 @@
 <div class="main-content">
     <!-- Navbar -->
-    <nav class="navbar navbar-top navbar-expand-md navbar-dark bg-dark" id="navbar-main">
+    <nav class="navbar navbar-top navbar-expand-md" id="navbar-main" style="background-color:#a5b5c9">
       <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
@@ -60,12 +60,12 @@
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
-  
+
     <div class="container-fluid pt-7">
 		<div id="container-content" >
 			<?php echo $content?>
 		</div>
-      <footer class="footer">
+      <!-- <footer class="footer" >
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
@@ -83,6 +83,6 @@
             </ul>
           </div>
         </div>
-      </footer>
+      </footer> -->
     </div>
   </div>

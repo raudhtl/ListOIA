@@ -93,20 +93,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link menu-app" data-val="Short_term/upload">
-              <i class="ni ni-planet text-blue"></i> Add Program
+            <a class="nav-link menu-app" data-val="Short_term">
+              <i class="ni ni-planet text-blue"></i> Short Term
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link menu-app" data-val="Short_term/list">
-              <i class="ni ni-pin-3 text-orange"></i> List Program
+              <i class="ni ni-pin-3 text-orange"></i> Student Exchange
             </a>
           </li>
-		  <li class="nav-item">
-            <a class="nav-link menu-app" data-val="dashboard">
-              <i class="ni ni-pin-3 text-orange"></i> Edit Program
-            </a>
-          </li> 
         </ul>
       </div>
     </div>

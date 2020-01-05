@@ -4,7 +4,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 // TODO
-// 1 : ubah semua style menu ke ajax style 
+// 1 : ubah semua style menu ke ajax style
 
 class Short_term extends CI_Controller {
 
@@ -26,11 +26,10 @@ class Short_term extends CI_Controller {
 
 	// TODO 1
 	public function index(){
-    	$this->load->model('M_Upload');
+    $this->load->model('M_Upload');
 		$data['mhs'] = $this->M_Upload->get_all_mhs("short_term", $this->session->userdata('ses_fakultas'))->result();
-		$content=$this->load->view('v_list', $data,true);
-
-		echo json_encode(array('content',$content));
+		$content=array('content'=>$this->load->view('v_list', $data,true));
+		$this->load->view('v_menu',$content);
 	}
 
 	public function list()
@@ -38,16 +37,17 @@ class Short_term extends CI_Controller {
 		$this->load->model('M_Upload');
 		$data['mhs'] = $this->M_Upload->get_all_mhs("short_term", $this->session->userdata('ses_fakultas'))->result();
 		$content=$this->load->view('v_list', $data,true);
-		$this->output->set_output($content); 
+		$this->output->set_output($content);
 
 	}
-	
+
+
 	// TODO 1
 	public function upload(){
 		$this->load->model('M_Upload');
 		$upload['program'] = $this->M_Upload->get_all_short_term($this->session->userdata('ses_fakultas'));
 		$content=$this->load->view('v_upload', $upload,true);
-		$this->output->set_output($content); 
+		$this->output->set_output($content);
 
 	}
 
