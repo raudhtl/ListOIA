@@ -1,8 +1,13 @@
 function nextTab(tab) {
-	$("#form1").validate();
-	if ($("#form1").valid()) {
-		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
+	// $("#form1").validate();
+	console.log("nx", tab);
+	let panes = document.getElementsByClassName('data-pane');
+	for (let pane in panes) {
+		$(pane).removeClass('show')
 	}
+	// if ($("#form1").valid()) {
+	// 	$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
+	// }
 }
 $("#form1").validate({
 	rules: {

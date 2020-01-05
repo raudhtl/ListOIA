@@ -45,7 +45,7 @@ $(document).ready(function ($) {
             type: "POST",
             url: BASE_URL + nav,
             success: function (data) {
-          console.log("success",data);
+            console.log("success",data);
 
                 $("#container-content-2").html(data);
                 //navText(data.nav);
