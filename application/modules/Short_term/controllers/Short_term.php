@@ -143,7 +143,6 @@ class Short_term extends CI_Controller {
 	}
 	public function input()
 	{
-
 					$config['upload_path'] = './uploads/';
 					$config['allowed_types'] = 'zip|rar';
 					$config['encrypt_name'] = TRUE;
