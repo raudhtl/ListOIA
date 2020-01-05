@@ -756,3 +756,9 @@
   	</div>
 	</div>
 </div>
+<script type="text/javascript">
+<?php
+ include(APPPATH."/modules/Short_term/ajax/short_term.js");
+
+?>
+</script>
