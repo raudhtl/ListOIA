@@ -61,6 +61,7 @@ function CheckProgram(val) {
 	if (val == 'others') {
 		$('#edit_program').attr('name', 'program');
 		$('#program').attr('name', 'p');
+		$('#edit_program').prop('required',true);
 		element.style.display = 'block';
 		document.getElementById("program").style.display = 'none';
 		$('[name="tgl_mulai"]').val("");
