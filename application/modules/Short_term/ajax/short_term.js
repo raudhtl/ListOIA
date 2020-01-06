@@ -65,7 +65,7 @@ function CheckProgram(val) {
 		document.getElementById("program").style.display = 'none';
 		$('[name="tgl_mulai"]').val("");
 		$('[name="tgl_akhir"]').val("");
-		$('[name="tujuan"]').val("");
+		$('[name="tujuan_kunjungan"]').val("");
 		$('[name="jenis_program"]').val("");
 		$('[name="tahun"]').val("");
 	} else {
@@ -81,7 +81,7 @@ function CheckProgram(val) {
 				$.each(data, function (id, nama, tujuan, tgl_mulai, tgl_akhir) {
 					$('[name="tgl_mulai"]').val(data.tgl_mulai);
 					$('[name="tgl_akhir"]').val(data.tgl_akhir);
-					$('[name="tujuan"]').val(data.tujuan);
+					$('[name="tujuan_kunjungan"]').val(data.tujuan);
 					$('[name="jenis_program"]').val(data.jenis);
 					$('[name="tahun"]').val(data.tahun);
 				});
@@ -105,6 +105,28 @@ $(document).ready(function () {
 		$('#ton').val("submit");
 	});
 
+	$(".menu-edit").click(function () {
+
+		nav = $(this).data("val");
+		id = $(this).data("id");
+
+		console.log("update",BASE_URL+nav);
+  
+		  $.ajax({
+			  type: "POST",
+			  url: BASE_URL + nav,
+			  success: function (data) {
+			console.log("success",data);
+  
+				  $("#container-content-2").html(data);
+				  //navText(data.nav);
+			  },
+			  error: function (data) {
+			console.log("error",data);
+  
+			  }
+		  });
+		});
 
 	$('#import_form').on('submit', function (event) {
 		event.preventDefault();
