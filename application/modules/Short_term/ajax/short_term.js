@@ -1,26 +1,28 @@
-function nextTab(tab){
-	$( "#form1" ).validate();
+function nextTab(tab) {
+	$("#form1").validate();
 	// if ($("#form1").valid()) {
-		alert("tes");
-		$("#"+tab).removeClass("disabled");
-		$('#'+tab).css('pointer-events', '');
-		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
+	alert("tes");
+	$("#" + tab).removeClass("disabled");
+	$('#' + tab).css('pointer-events', '');
+	$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
 	// }
 }
 
-$( "#form1" ).validate( {
-rules: {
-		nama : "required",
+$("#form1").validate({
+	rules: {
+		nama: "required",
 		tgl_lahir: "required",
 		no_passport: {
-			remote: { url : "<?php echo base_url('index.php/Short_term/check_passport')?>",
-								type : "post"
-							}
+			remote: {
+				url: "<?php echo base_url('index.php/Short_term/check_passport')?>",
+				type: "post"
+			}
 		},
 		email: {
-			remote: { url : "<?php echo base_url('index.php/Short_term/check_email')?>",
-								type : "post"
-							}
+			remote: {
+				url: "<?php echo base_url('index.php/Short_term/check_email')?>",
+				type: "post"
+			}
 		},
 		jurusan_asal: "required",
 		fakultas_asal: "required",
@@ -28,28 +30,28 @@ rules: {
 		univ_asal: "required",
 		univ_tujuan: "required",
 		negara_tujuan: "required"
-},
-messages: {
-	nama: "Please enter your firstname",
-	no_passport: {
-		remote: "Passport id must be a unique value"
 	},
-	email: {
-		email: "Please enter a valid email addres",
-		remote: "This email address is already registered"
-	}
-},
-errorElement: "em",
-errorPlacement: function ( error, element ) {
-	// Add the `help-block` class to the error element
-	error.addClass( "help-block" );
+	messages: {
+		nama: "Please enter your firstname",
+		no_passport: {
+			remote: "Passport id must be a unique value"
+		},
+		email: {
+			email: "Please enter a valid email addres",
+			remote: "This email address is already registered"
+		}
+	},
+	errorElement: "em",
+	errorPlacement: function (error, element) {
+		// Add the `help-block` class to the error element
+		error.addClass("help-block");
 
-	if ( element.prop( "type" ) === "checkbox" ) {
-		error.insertAfter( element.parent( "label" ) );
-	} else {
-		error.insertAfter( element );
+		if (element.prop("type") === "checkbox") {
+			error.insertAfter(element.parent("label"));
+		} else {
+			error.insertAfter(element);
+		}
 	}
-}
 });
 
 function prevTab(tab) {
@@ -61,7 +63,7 @@ function CheckProgram(val) {
 	if (val == 'others') {
 		$('#edit_program').attr('name', 'program');
 		$('#program').attr('name', 'p');
-		$('#edit_program').prop('required',true);
+		$('#edit_program').prop('required', true);
 		element.style.display = 'block';
 		document.getElementById("program").style.display = 'none';
 		$('[name="tgl_mulai"]').val("");
@@ -110,24 +112,26 @@ $(document).ready(function () {
 
 		nav = $(this).data("val");
 		id = $(this).data("id");
+		program = $(this).data("value");
+		console.log("update", BASE_URL + nav);
 
-		console.log("update",BASE_URL+nav);
-  
-		  $.ajax({
-			  type: "POST",
-			  url: BASE_URL + nav,
-			  success: function (data) {
-			console.log("success",data);
-  
-				  $("#container-content-2").html(data);
-				  //navText(data.nav);
-			  },
-			  error: function (data) {
-			console.log("error",data);
-  
-			  }
-		  });
+		$.ajax({
+			type: "POST",
+			url: BASE_URL + nav,
+			data:{program:program},
+			success: function (result) {
+				console.log("success", result);
+
+				$("#container-content-2").html(result);
+				CheckProgram(program);
+				//navText(data.nav);
+			},
+			error: function (result) {
+				console.log("error", result);
+
+			}
 		});
+	});
 
 	$('#import_form').on('submit', function (event) {
 		event.preventDefault();
@@ -135,7 +139,7 @@ $(document).ready(function () {
 		if ($('#ton').val() == "submit") {
 			alert("tes")
 			$.ajax({
-				url: BASE_URL+"Short_term/insert_excel",
+				url: BASE_URL + "Short_term/insert_excel",
 				method: "POST",
 				data: new FormData(this),
 				contentType: false,
@@ -157,7 +161,7 @@ $(document).ready(function () {
 			alert("tes")
 			$("#body").empty();
 			$.ajax({
-				url: BASE_URL+"Short_term/read",
+				url: BASE_URL + "Short_term/read",
 				method: "POST",
 				data: new FormData(this),
 				contentType: false,

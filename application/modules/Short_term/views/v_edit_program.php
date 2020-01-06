@@ -9,18 +9,7 @@
 
                     <div class="form-group">
                         <label for="program">Program :</label>
-                        <select id="program" name="program" class="form-control" onchange="CheckProgram(this.value);" required>
-                            <option value="" disabled selected>Pilih program</option>
-                            <?php
-                            foreach ($program as $p) {
-                            ?>
-                                <option value="<?php echo $p->nama_program ?>">
-                                    <?php echo $p->nama_program ?>
-                                </option>
-                            <?php } ?>
-                            <option value="others">Program lain</option>
-                        </select>
-                        <input type="text" name="p" placeholder="Masukkan nama program :" class="form-control" id="edit_program" style="display:none">
+                        <input type="text" name="program" placeholder="<?php echo $program; ?>" class="form-control" readonly="readonly" value="<?php echo $program; ?>">
                     </div>
                     <div class="form-group">
                         <label for="jenis_program"> Jenis program : </label>

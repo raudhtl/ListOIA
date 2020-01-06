@@ -9,6 +9,7 @@ class M_Upload extends CI_Model {
 		$query = $this ->db->query ($cmd);
 		return $query->result();
 	}
+
 	function get_all_mhs($table, $fakultas){
 		$cmd=sprintf("select * from mahasiswa, program, short_term where mahasiswa.id_program in (select id_program from program where id_fakultas ='%s' and class ='st') and mahasiswa.id_program = program.id_program and program.id_program = short_term.id_program",$fakultas);
 		$query = $this ->db->query($cmd);

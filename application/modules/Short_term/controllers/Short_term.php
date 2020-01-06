@@ -63,7 +63,8 @@ class Short_term extends CI_Controller
 	public function edit_program()
 	{
 		$this->load->model('M_Upload');
-		$edit['program'] = $this->M_Upload->get_all_short_term($this->session->userdata('ses_fakultas'));
+		$val = $this->input->post('program');
+		$edit['program'] = $val;
 		$content = $this->load->view('v_edit_program', $edit, true);
 		$this->output->set_output($content);
 	}
@@ -239,54 +240,34 @@ class Short_term extends CI_Controller
 	{
 		$this->load->Model('M_Upload');
 		$nama_program = $this->input->post('program');
+
 		$id_fakultas = $this->session->userdata('ses_fakultas');
 
-		if ($this->M_Upload->program_exists($nama_program, $id_fakultas) === FALSE) {
-			$jenis_program = $this->input->post('jenis_program');
-			$tujuan_kunjungan = $this->input->post('tujuan_kunjungan');
-			$tgl_mulai = $this->input->post('tgl_mulai');
-			$tgl_akhir = $this->input->post('tgl_akhir');
-			$tahun_program = $this->input->post('tahun');
-			$data_program = array(
-				'jenis_program' => $jenis_program,
-				'tgl_mulai' => $tgl_mulai,
-				'tgl_akhir' => $tgl_akhir,
-				'id_fakultas' => $id_fakultas,
-				'class' => 'st'
-			);
-			$id_program = $this->M_Upload->insert_data_get_key('program', $data_program);
-			$data_short_term = array(
-				'nama_program' => $nama_program,
-				'tujuan' => $tujuan_kunjungan,
-				'id_program' => $id_program,
-				'tahun' => $tahun_program
-			);
-			$this->M_Upload->insert_data('short_term', $data_short_term);
-		} else {
-			$id_program = $this->M_Upload->get_id_program($this->input->post('program'), $this->session->userdata('ses_fakultas'));
-			$jenis_program = $this->input->post('jenis_program');
-			$tujuan_kunjungan = $this->input->post('tujuan_kunjungan');
-			$tgl_mulai = $this->input->post('tgl_mulai');
-			$tgl_akhir = $this->input->post('tgl_akhir');
-			$tahun_program = $this->input->post('tahun');
-			$data_program = array(
-				'jenis_program' => $jenis_program,
-				'tgl_mulai' => $tgl_mulai,
-				'tgl_akhir' => $tgl_akhir,
-				'id_fakultas' => $id_fakultas,
-				'class' => 'st'
-			);
-			$this->M_Upload->update_data_program('program', $id_program, $data_program);
 
-			$data_short_term = array(
-				'nama_program' => $nama_program,
-				'tujuan' => $tujuan_kunjungan,
-				'id_program' => $id_program,
-				'tahun' => $tahun_program
-			);
-			$this->M_Upload->update_data_program('short_term', $id_program, $data_short_term);
+		$id_program = $this->M_Upload->get_id_program($this->input->post('program'), $this->session->userdata('ses_fakultas'));
+		$jenis_program = $this->input->post('jenis_program');
+		$tujuan_kunjungan = $this->input->post('tujuan_kunjungan');
+		$tgl_mulai = $this->input->post('tgl_mulai');
+		$tgl_akhir = $this->input->post('tgl_akhir');
+		$tahun_program = $this->input->post('tahun');
+		$data_program = array(
+			'jenis_program' => $jenis_program,
+			'tgl_mulai' => $tgl_mulai,
+			'tgl_akhir' => $tgl_akhir,
+			'id_fakultas' => $id_fakultas,
+			'class' => 'st'
+		);
+		$this->M_Upload->update_data_program('program', $id_program, $data_program);
 
-		}
+		$data_short_term = array(
+			'nama_program' => $nama_program,
+			'tujuan' => $tujuan_kunjungan,
+			'id_program' => $id_program,
+			'tahun' => $tahun_program
+		);
+		$this->M_Upload->update_data_program('short_term', $id_program, $data_short_term);
+
+
 		redirect('Dashboard');
 	}
 
