@@ -38,9 +38,7 @@ class Short_term extends CI_Controller {
 		$data['mhs'] = $this->M_Upload->get_all_mhs("short_term", $this->session->userdata('ses_fakultas'))->result();
 		$content=$this->load->view('v_list', $data,true);
 		$this->output->set_output($content);
-
 	}
-
 
 	// TODO 1
 	public function upload(){
@@ -143,7 +141,6 @@ class Short_term extends CI_Controller {
 	}
 	public function input()
 	{
-
 					$config['upload_path'] = './uploads/';
 					$config['allowed_types'] = 'zip|rar';
 					$config['encrypt_name'] = TRUE;
