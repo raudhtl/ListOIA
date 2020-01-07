@@ -1,29 +1,29 @@
 <div class="col-12 align-items-center">
 		<div class="row">
 			<div class="col">
-				<ul class=" nav d-sm-flex flex-column nav-pills" id="v-pills-tab" role="tablist"
+				<ul class="nav d-sm-flex flex-column nav-pills" id="v-pills-tab" role="tablist"
 					aria-orientation="vertical">
-					<li class="nav-item"><a class="nav-link active" href="#add" data-toggle="pill" style="width:100%;" >Upload</a></li>
-					<li class="nav-item"><a class="nav-link" href="#excel" style="width:100p%;" data-toggle="pill">Upload excel file</a></li>
-					<li class="nav-item" style="display:none;"><a class="nav-link"  href="#excel"  data-toggle="pill">Upload excel file</a></li>
+					<li class="nav-item"><a class="nav-link active" href="#upload"  style="width:100%;" data-toggle="pill">Upload</a></li>
+					<li class="nav-item"><a class="nav-link" href="#excel" style="width:100%;" data-toggle="pill">Upload excel file</a></li>
+					<li class="nav-item" style="display:none;"><a class="nav-link" data-toggle="pill">Upload excel file</a></li>
 				</ul>
 
   	</div>
 		<div class="col-10">
-  	<div class="tab-content vertical-center">
-  		<div id="add" class="card tab-pane fade show active">
+  	<div class="tab-content vertical-center" id="v-pills-tabContent">
+  		<div id="upload"  role="tabpanel"  class="card tab-pane fade show active">
   			<div class="card-header">
   				<ul class="nav nav-tabs" id="" role="tablist">
-  					<li class="nav-item">
-  						<a class="nav-link active" id="step-mahasiswa" data-toggle="tab" href="#data-mahasiswa"
+  					<li class="nav-item" id="0">
+  						<a class="nav-link active" style="pointer-events: none;" data-toggle="tab" href="#tabs-0"
   							role="tab" aria-controls="data-mahasiswa" aria-selected="true">Mahasiswa</a>
   					</li>
-  					<li class="nav-item">
-  						<a class="nav-link " id="step-program" data-toggle="tab" href="#data-program" role="tab"
+  					<li class="nav-item disabled" id="1">
+  						<a class="nav-link"  style="pointer-events: none;" data-toggle="tab" href="#tabs-1" role="tab"
   							aria-controls="data-program" aria-selected="false">Program</a>
   					</li>
-  					<li class="nav-item">
-  						<a class="nav-link " id="step-dokumen" data-toggle="tab" href="#data-dokumen" role="tab"
+  					<li class="nav-item disabled" id="2">
+  						<a class="nav-link" id="step-dokumen" style="pointer-events: none;" data-toggle="tab" href="#tabs-2" role="tab"
   							aria-controls="data-dokumen" aria-selected="false"></i>Dokumen</a>
   					</li>
 
@@ -33,7 +33,7 @@
   				<form id="form1" method="post" enctype="multipart/form-data"
   					action="<?php echo base_url('index.php/Short_term/input'); ?>">
   					<div class="tab-content" id="myTabContent">
-  						<div class="tab-pane fade show active" id="data-mahasiswa" role="tabpanel"
+  						<div class="tab-pane fade show active" id="tabs-0" role="tabpanel"
   							aria-labelledby="data-mahasiswa">
   							<div class="tab-content" id="v-pills-tabContent">
   								<div class="form-group">
@@ -625,7 +625,7 @@
   							</div>
   						</div>
 
-  						<div class="tab-pane fade" id="data-program" role="tabpanel" aria-labelledby="data-program">
+  						<div class="tab-pane fade" id="tabs-1" role="tabpanel" aria-labelledby="data-program">
 
   							<div class="form-group">
   								<label for="program">Program :</label>
@@ -681,7 +681,7 @@
   							<a onclick="prevTab('0')" href="#" class="btn btn-primary">prev</a>
   							<a onclick="nextTab('2')" href="#" class="btn btn-primary">next</a>
   						</div>
-  						<div class="tab-pane fade" id="data-dokumen" role="tabpanel" aria-labelledby="data-dokumen">
+  						<div class="tab-pane fade" id="tabs-2" role="tabpanel" aria-labelledby="data-dokumen">
   							<div class="form-group">
   								<label for="file">Masukkan file :</label>
   								<input type="file" name="userfile" class="form-control" required>
@@ -699,7 +699,7 @@
   				</form>
   			</div>
   		</div>
-  		<div id="excel" role="tabpanel" class="card tab-pane fade">
+  		<div id="excel" role="tabpanel" class="card tab-pane fade in active ">
   			<div class="card-body">
   				<a href="<?php echo base_url("excel/format.xlsx"); ?>">Download Format</a>
   				<form id="import_form" method="post"
@@ -756,3 +756,9 @@
   	</div>
 	</div>
 </div>
+<script type="text/javascript">
+<?php
+ include(APPPATH."/modules/Short_term/ajax/short_term.js");
+
+?>
+</script>
