@@ -8,9 +8,11 @@ $(document).ready(function ($) {
      * update content-page dan nav-text setiap class menu-app diklik
      * */
     $(".menu-app").click(function () {
+        $("#grupmenu a").removeClass('active');
+        $(this).addClass('active');
         nav = $(this).data("val");
         update(nav);
-	});
+    });
 });
 
 
@@ -24,21 +26,21 @@ $(document).ready(function ($) {
  *   val => nama kategori
  * */
 function update(z) {
-	nav = z;
-	console.log("update",BASE_URL+z);
+    nav = z;
+    console.log("update", BASE_URL + z);
 
     $.ajax({
         type: "POST",
         url: BASE_URL + z,
-        success: function (data) {
-			console.log("success",data);
-
-            $("#container-content").html(data);
-            //navText(data.nav);
-        },
+        success: process,
         error: function (data) {
-			console.log("error",data);
+            console.log("error", data);
 
         }
     });
+}
+
+function process(htmlfile){
+    console.log("success", htmlfile);
+    $("#container-content").html(htmlfile);
 }
