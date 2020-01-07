@@ -30,7 +30,7 @@
   <link href="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
   <link href="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
   <!-- CSS Files -->
-  
+
   <link href="<?php echo base_url()?>assets/css/style.css" rel="stylesheet" />
   <link href="<?php echo base_url()?>assets/themes/argon/assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
   <link href="<?php echo base_url()?>assets/css/app.css" rel="stylesheet" />
@@ -41,18 +41,20 @@
 
 	  <!--   Core   -->
 	<script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/jquery/dist/jquery.min.js"></script>
-  	<script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 	<script src="<?php echo base_url();?>assets/js/jquery.validate.min.js"></script>
 </head>
 
 <body class="">
-	<?php 
+	<?php
 		$this->load->view("_partials_dashboard/left_nav");
 		$this->load->view("_partials_dashboard/content");
 	?>
-  
+
   <!--   Optional JS   -->
   <script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/chart.js/dist/Chart.min.js"></script>
   <script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
