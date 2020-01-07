@@ -1,29 +1,29 @@
 <div class="col-12 align-items-center">
 		<div class="row">
 			<div class="col">
-				<ul class=" nav d-sm-flex flex-column nav-pills" id="v-pills-tab" role="tablist"
+				<ul class="nav d-sm-flex flex-column nav-pills" id="v-pills-tab" role="tablist"
 					aria-orientation="vertical">
-					<li class="nav-item"><a class="nav-link active" href="#add" data-toggle="pill" style="width:100%;" >Upload</a></li>
-					<li class="nav-item"><a class="nav-link" href="#excel" style="width:100p%;" data-toggle="pill">Upload excel file</a></li>
-					<li class="nav-item" style="display:none;"><a class="nav-link"  href="#excel"  data-toggle="pill">Upload excel file</a></li>
+					<li class="nav-item"><a class="nav-link active" href="#upload"  style="width:100%;" data-toggle="pill">Upload</a></li>
+					<li class="nav-item"><a class="nav-link" href="#excel" style="width:100%;" data-toggle="pill">Upload excel file</a></li>
+					<li class="nav-item" style="display:none;"><a class="nav-link" data-toggle="pill">Upload excel file</a></li>
 				</ul>
 
   	</div>
 		<div class="col-10">
-  	<div class="tab-content vertical-center">
-  		<div id="add" class="card tab-pane fade show active">
+  	<div class="tab-content vertical-center" id="v-pills-tabContent">
+  		<div id="upload"  role="tabpanel"  class="card tab-pane fade show active">
   			<div class="card-header">
   				<ul class="nav nav-tabs" id="" role="tablist">
-  					<li class="nav-item">
-  						<a class="nav-link active" id="step-mahasiswa" data-toggle="tab" href="#data-mahasiswa"
+  					<li class="nav-item" id="0">
+  						<a class="nav-link active" style="pointer-events: none;" data-toggle="tab" href="#tabs-0"
   							role="tab" aria-controls="data-mahasiswa" aria-selected="true">Mahasiswa</a>
   					</li>
-  					<li class="nav-item">
-  						<a class="nav-link " id="step-program" data-toggle="tab" href="#data-program" role="tab"
+  					<li class="nav-item disabled" id="1">
+  						<a class="nav-link"  style="pointer-events: none;" data-toggle="tab" href="#tabs-1" role="tab"
   							aria-controls="data-program" aria-selected="false">Program</a>
   					</li>
-  					<li class="nav-item">
-  						<a class="nav-link " id="step-dokumen" data-toggle="tab" href="#data-dokumen" role="tab"
+  					<li class="nav-item disabled" id="2">
+  						<a class="nav-link" id="step-dokumen" style="pointer-events: none;" data-toggle="tab" href="#tabs-2" role="tab"
   							aria-controls="data-dokumen" aria-selected="false"></i>Dokumen</a>
   					</li>
 
@@ -33,7 +33,8 @@
   				<form id="form1" method="post" enctype="multipart/form-data"
   					action="<?php echo base_url('index.php/Short_term/input'); ?>">
   					<div class="tab-content" id="myTabContent">
-  						<div class="tab-pane fade show active data-pane" id="data-mahasiswa" role="tabpanel" aria-labelledby="data-mahasiswa">
+  						<div class="tab-pane fade show active" id="tabs-0" role="tabpanel"
+  							aria-labelledby="data-mahasiswa">
   							<div class="tab-content" id="v-pills-tabContent">
   								<div class="form-group">
   									<label for="nama">Nama:</label>
@@ -625,6 +626,8 @@
   						</div>
   						<div class="tab-pane fade data-pane" id="data-program" role="tabpanel" aria-labelledby="data-program">
 
+  						<div class="tab-pane fade" id="tabs-1" role="tabpanel" aria-labelledby="data-program">
+
   							<div class="form-group">
   								<label for="program">Program :</label>
   								<select id="program" name="program" class="form-control"
@@ -679,32 +682,39 @@
   							<button onclick="prevTab('data-program')" class="btn btn-primary">prev</button>
   							<button onclick="nextTab('data-dokumen')" class="btn btn-primary">next</button>
   						</div>
-  						<div class="tab-pane fade data-pane" id="data-dokumen" role="tabpanel" aria-labelledby="data-dokumen">
+  						<div class="tab-pane fade" id="tabs-2" role="tabpanel" aria-labelledby="data-dokumen">
   							<div class="form-group">
-  								<label for="file">Masukkan file :</label>
-  								<input type="file" name="userfile" class="form-control" required>
+  								<label for="file">Masukkan Scan Passport :</label>
+  								<input type="file" name="dokumen0" class="form-control" required>
   							</div>
-  							<?php if ($this->session->flashdata('error') == TRUE) : ?>
-  							<div class="alert alert-danger fade in" style="margin-top:15px;">
-  								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  								<strong>Info! </strong><?php echo $this->session->flashdata('error')?>
+								<div class="form-group">
+  								<label for="file">Masukkan Scan Invitation Latter :</label>
+  								<input type="file" name="dokumen1" class="form-control" required>
   							</div>
-  							<?php endif; ?>
-  							<button onclick="prevTab('data-dokumen')" class="btn btn-primary">prev</button>
+								<div class="form-group">
+  								<label for="file">Masukkan Scan Application Form :</label>
+  								<input type="file" name="dokumen2" class="form-control" required>
+  							</div>
+  							<div class="alert alert-danger" role="alert" id="#alert" style="display:none; width:100%;">
+			  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  					<strong id="msg"> </strong>
+			  				</div>
+  							<?php endif; ?> -->
+  							<a onclick="prevTab('1')" href="#" class="btn btn-primary">prev</a>
   							<button type="submit" class="btn btn-primary">Submit</button>
   						</div>
   					</div>
   				</form>
   			</div>
   		</div>
-  		<div id="excel" role="tabpanel" class="card tab-pane fade">
+  		<div id="excel" role="tabpanel" class="card tab-pane fade in active ">
   			<div class="card-body">
   				<a href="<?php echo base_url("excel/format.xlsx"); ?>">Download Format</a>
   				<form id="import_form" method="post"
   					action="<?php echo base_url("index.php/Short_term/insert_excel"); ?>"
   					enctype="multipart/form-data">
   					<div class="form-group">
-  						<label for="nama">Masukkan daftar mahasiswa (.xls)</label>
+  						<label for="daftar">Masukkan daftar mahasiswa (.xls)</label>
   						<input type="file" id="file" class="form-control" name="file" required>
   					</div>
   					<div class="form-group">
@@ -713,10 +723,10 @@
   					</div>
   					<input id="ton" type="text" value="preview" style="display:none;">
   					<button name="preview" type="submit" class=" btn btn-primary">Preview</button>
-  					<button id="sub" type="submit" name="submit" class=" btn btn-primary">Submit</button>
+  					<button id="sub" type="submit" name="submit" class=" btn btn-primary" disabled>Submit</button>
   				</form>
   				<br />
-  				<div class="alert alert-danger fade in" id="alert" style="display:none">
+  				<div class="alert alert-danger" role="alert" id="#alert" style="display:none; width:100%;">
   					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   					<strong>Info! Terdapat cell kosong pada file yang Anda upload. Silahkan pilih file
   						lain!</strong>
@@ -756,7 +766,6 @@
 </div>
 <script type="text/javascript">
 <?php
- include(APPPATH."/modules/Short_term/ajax/short_term.js");
-
+ include(APPPATH."/modules/Short_term/ajax/short_term.js");s
 ?>
 </script>

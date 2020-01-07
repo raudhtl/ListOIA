@@ -1,27 +1,16 @@
 function nextTab(tab){
 	$( "#form1" ).validate();
-	if ($("#form1").valid()) {
-		alert("tes");
+	// if ($("#form1").valid()) {
 		$("#"+tab).removeClass("disabled");
 		$('#'+tab).css('pointer-events', '');
 		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
-	}
+	// }
 }
 
 $( "#form1" ).validate( {
 rules: {
 		nama : "required",
 		tgl_lahir: "required",
-		no_passport: {
-			remote: { url : "<?php echo base_url('index.php/Short_term/check_passport')?>",
-								type : "post"
-							}
-		},
-		email: {
-			remote: { url : "<?php echo base_url('index.php/Short_term/check_email')?>",
-								type : "post"
-							}
-		},
 		jurusan_asal: "required",
 		fakultas_asal: "required",
 		negara_asal: "required",
@@ -31,13 +20,6 @@ rules: {
 },
 messages: {
 	nama: "Please enter your firstname",
-	no_passport: {
-		remote: "Passport id must be a unique value"
-	},
-	email: {
-		email: "Please enter a valid email addres",
-		remote: "This email address is already registered"
-	}
 },
 errorElement: "em",
 errorPlacement: function ( error, element ) {
@@ -97,6 +79,32 @@ function CheckProgram(val) {
 	}
 }
 $(document).ready(function () {
+	$('#form1').on('submit', function (event) {
+		event.preventDefault();
+		$.ajax({
+			url: BASE_URL+"Short_term/input",
+			method: "POST",
+			data: new FormData(this),
+			contentType: false,
+			cache: false,
+			processData: false,
+			success: function(data) {
+				var str = data.replace(/\"/g,"");;
+				if (str == "Data berhasil dimasukkan"){
+					alert(str)
+					update("Short_term")
+				} else {
+					document.getElementById('#alert').style.display = 'block';
+					$('#body').append(str);
+				}
+    	},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+				alert("Status: " + textStatus);
+				alert("Error: " + errorThrown);
+			},
+		});
+	});
+
 	$(".nav-tabs a").click(function () {
 		$(this).tab('show');
 	});
@@ -105,12 +113,19 @@ $(document).ready(function () {
 		$('#ton').val("submit");
 	});
 
-
+	$('#file').on('input', function() {
+    $('#sub').prop('disabled', true);
+		// $("#body").empty();
+	});
+	$('#dokumen').on('input', function() {
+    $('#sub').prop('disabled', true);
+		// $("#body").empty();
+	});
 	$('#import_form').on('submit', function (event) {
+		document.getElementById('#alert').style.display = 'none';
 		event.preventDefault();
 		var empty = 1;
 		if ($('#ton').val() == "submit") {
-			alert("tes")
 			$.ajax({
 				url: BASE_URL+"Short_term/insert_excel",
 				method: "POST",
@@ -119,10 +134,13 @@ $(document).ready(function () {
 				cache: false,
 				processData: false,
 				success: function (data) {
-					alert(data);
-					document.getElementById('#myTable').style.display = "inline-block";
-					document.getElementById('#file').val("");
-					document.getElementById('#dokumen').val("");
+					alert("Berhasil")
+					document.getElementById('#myTable').style.display = "none";
+					$('#ton').val("preview");
+					$('#sub').prop('disabled', true);
+					$('#file').val("");
+					$('#dokumen').val("");
+
 				},
 				error: function (XMLHttpRequest, textStatus, errorThrown) {
 					alert("Status: " + textStatus);
@@ -131,7 +149,6 @@ $(document).ready(function () {
 
 			});
 		} else {
-			alert("tes")
 			$("#body").empty();
 			$.ajax({
 				url: BASE_URL+"Short_term/read",
@@ -141,7 +158,6 @@ $(document).ready(function () {
 				cache: false,
 				processData: false,
 				success: function (data) {
-					$('#file').val('');
 					var sTxt = '';
 					var i = 1;
 					$.each(JSON.parse(data), function (i, item) {
@@ -149,10 +165,8 @@ $(document).ready(function () {
 						sTxt += '<td>' + i + '</td>';
 						$.each(this, function (k, v) {
 							if (v == null || v == "WRONG FORMAT") {
-								sTxt +=
-									'<td class="table-danger"> </td>';
-								document.getElementById('alert').style
-									.display = 'block';
+								sTxt += '<td class="table-danger"> ' +v+' </td>';
+								document.getElementById('#alert').style.display = 'inline-block';
 								empty = 2;
 							} else {
 								sTxt += '<td>' + v + '</td>';
@@ -171,4 +185,5 @@ $(document).ready(function () {
 			});
 		}
 	});
+
 });
