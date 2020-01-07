@@ -1,5 +1,5 @@
-function nextTab(tab){
-	$( "#form1" ).validate();
+function nextTab(tab) {
+	$("#form1").validate();
 	// if ($("#form1").valid()) {
 		$("#"+tab).removeClass("disabled");
 		$('#'+tab).css('pointer-events', '');
@@ -7,10 +7,10 @@ function nextTab(tab){
 	// }
 }
 
-$( "#form1" ).validate( {
-rules: {
-		nama : "required",
-		tgl_lahir: "required",
+$("#form1").validate({
+	rules: {
+		nama: "required",
+		tgl_lahir: "required"
 		jurusan_asal: "required",
 		fakultas_asal: "required",
 		negara_asal: "required",
@@ -19,19 +19,19 @@ rules: {
 		negara_tujuan: "required"
 },
 messages: {
-	nama: "Please enter your firstname",
+	nama: "Please enter your firstname"
 },
 errorElement: "em",
 errorPlacement: function ( error, element ) {
 	// Add the `help-block` class to the error element
 	error.addClass( "help-block" );
 
-	if ( element.prop( "type" ) === "checkbox" ) {
-		error.insertAfter( element.parent( "label" ) );
-	} else {
-		error.insertAfter( element );
+		if (element.prop("type") === "checkbox") {
+			error.insertAfter(element.parent("label"));
+		} else {
+			error.insertAfter(element);
+		}
 	}
-}
 });
 
 function prevTab(tab) {
@@ -43,11 +43,12 @@ function CheckProgram(val) {
 	if (val == 'others') {
 		$('#edit_program').attr('name', 'program');
 		$('#program').attr('name', 'p');
+		$('#edit_program').prop('required', true);
 		element.style.display = 'block';
 		document.getElementById("program").style.display = 'none';
 		$('[name="tgl_mulai"]').val("");
 		$('[name="tgl_akhir"]').val("");
-		$('[name="tujuan"]').val("");
+		$('[name="tujuan_kunjungan"]').val("");
 		$('[name="jenis_program"]').val("");
 		$('[name="tahun"]').val("");
 	} else {
@@ -63,7 +64,7 @@ function CheckProgram(val) {
 				$.each(data, function (id, nama, tujuan, tgl_mulai, tgl_akhir) {
 					$('[name="tgl_mulai"]').val(data.tgl_mulai);
 					$('[name="tgl_akhir"]').val(data.tgl_akhir);
-					$('[name="tujuan"]').val(data.tujuan);
+					$('[name="tujuan_kunjungan"]').val(data.tujuan);
 					$('[name="jenis_program"]').val(data.jenis);
 					$('[name="tahun"]').val(data.tahun);
 				});
@@ -115,11 +116,9 @@ $(document).ready(function () {
 
 	$('#file').on('input', function() {
     $('#sub').prop('disabled', true);
-		// $("#body").empty();
 	});
 	$('#dokumen').on('input', function() {
     $('#sub').prop('disabled', true);
-		// $("#body").empty();
 	});
 	$('#import_form').on('submit', function (event) {
 		document.getElementById('#alert').style.display = 'none';
@@ -127,7 +126,7 @@ $(document).ready(function () {
 		var empty = 1;
 		if ($('#ton').val() == "submit") {
 			$.ajax({
-				url: BASE_URL+"Short_term/insert_excel",
+				url: BASE_URL + "Short_term/insert_excel",
 				method: "POST",
 				data: new FormData(this),
 				contentType: false,
@@ -151,7 +150,7 @@ $(document).ready(function () {
 		} else {
 			$("#body").empty();
 			$.ajax({
-				url: BASE_URL+"Short_term/read",
+				url: BASE_URL + "Short_term/read",
 				method: "POST",
 				data: new FormData(this),
 				contentType: false,
