@@ -24,6 +24,7 @@ class Short_term extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+
 	// TODO 1
 	public function index(){
     $this->load->model('M_Upload');
@@ -125,95 +126,99 @@ class Short_term extends CI_Controller {
 		$data=$this->M_Upload->get_program($id_short_term);
 		echo json_encode($data);
 	}
-	public function check_email()
+	public function check_db($table, $column, $value, $id_program)
 	{
 		$this->load->model('M_Upload');
-		$check_email = $this->M_Upload->check_db("mahasiswa", "email", $this->input->post('email'));
-
-		print json_encode($check_email);
-	}
-	public function check_passport()
-	{
-		$this->load->model('M_Upload');
-		$check_passport = $this->M_Upload->check_db("mahasiswa", "no_passport", $this->input->post('no_passport'));
-
-		print json_encode($check_passport);
+		$result = $this->M_Upload->check_db($table, $column, $value, $id_program);
+		return $result;
 	}
 	public function input()
 	{
-					$config['upload_path'] = './uploads/';
-					$config['allowed_types'] = 'zip|rar';
-					$config['encrypt_name'] = TRUE;
-					// $upload = "User_file";
-
-				  $this->load->library('upload', $config);
-					if ( !($this->upload->do_upload("userfile")))
-					{
-						$error = array('error' => $this->upload->display_errors());
-						echo "halo";
-						print_r($error);
-
-						// $this->session->set_flashdata('error',$error['error']);
-						// redirect('Login');
-
-					}
-					else
-					{
-						$upload_data = $this->upload->data();
-						$file_name = $upload_data['file_name'];
-						$nama=$this->input->post('nama');
-						$email=$this->input->post('email');
-						$univ_asal=$this->input->post('univ_asal');
-						$negara_asal=$this->input->post('negara_asal');
-						$tgl_lahir=$this->input->post('tgl_lahir');
-						$fakultas_asal = $this->input->post('fakultas_asal');
-						$jurusan_asal = $this->input->post('jurusan_asal');
-						$no_passport=$this->input->post('no_passport');
-						$univ_tujuan=$this->input->post('univ_tujuan');
-						$negara_tujuan=$this->input->post('negara_tujuan');
-						$nama_program=$this->input->post('program');
-						$id_fakultas = $this->session->userdata('ses_fakultas');
-
-						$this->load->Model('M_Upload');
-						if ($this->M_Upload->program_exists($nama_program, $id_fakultas) === FALSE){
-							$jenis_program = $this->input->post('jenis_program');
-							$tujuan_kunjungan = $this->input->post('tujuan_kunjungan');
-							$tgl_mulai = $this->input->post('tgl_mulai');
-							$tgl_akhir = $this->input->post('tgl_akhir');
-							$tahun_program = $this->input->post('tahun');
-							$data_program = array(
-								'jenis_program' => $jenis_program,
-								'tgl_mulai' => $tgl_mulai,
-								'tgl_akhir' => $tgl_akhir,
-								'id_fakultas' => $id_fakultas,
-								'class' => 'st'
-							);
-							$id_program = $this->M_Upload->insert_data_get_key('program', $data_program);
-							$data_short_term = array(
-								'nama_program' => $nama_program,
-								'tujuan' => $tujuan_kunjungan,
-								'id_program' => $id_program,
-								'tahun' => $tahun_program
-							);
-							$this->M_Upload->insert_data('short_term', $data_short_term);
-						}else{
-							$id_program = $this->M_Upload->get_id_program($this->input->post('program'), $this->session->userdata('ses_fakultas'));
-						}
-						$data_mhs = array(
-	        		'nama' => $nama,
-	        		'email' => $email,
-	        		'univ_asal' => $univ_asal,
-							'negara_asal' => $negara_asal,
-							'no_passport' => $no_passport,
-							'univ_tujuan' => $univ_tujuan,
-							'fakultas_asal' => $fakultas_asal,
-							'jurusan_asal' => $jurusan_asal,
-							'negara_tujuan' => $negara_tujuan,
-							'id_program' => $id_program,
-							'dokumen' => $file_name
+					$nama=$this->input->post('nama');
+					$email=$this->input->post('email');
+					$univ_asal=$this->input->post('univ_asal');
+					$negara_asal=$this->input->post('negara_asal');
+					$tgl_lahir=$this->input->post('tgl_lahir');
+					$fakultas_asal = $this->input->post('fakultas_asal');
+					$jurusan_asal = $this->input->post('jurusan_asal');
+					$no_passport=$this->input->post('no_passport');
+					$univ_tujuan=$this->input->post('univ_tujuan');
+					$negara_tujuan=$this->input->post('negara_tujuan');
+					$nama_program=$this->input->post('program');
+					$id_fakultas = $this->session->userdata('ses_fakultas');
+					$this->load->Model('M_Upload');
+					if ($this->M_Upload->program_exists($nama_program, $id_fakultas) === FALSE){
+						$jenis_program = $this->input->post('jenis_program');
+						$tujuan_kunjungan = $this->input->post('tujuan_kunjungan');
+						$tgl_mulai = $this->input->post('tgl_mulai');
+						$tgl_akhir = $this->input->post('tgl_akhir');
+						$tahun_program = $this->input->post('tahun');
+						$data_program = array(
+							'jenis_program' => $jenis_program,
+							'tgl_mulai' => $tgl_mulai,
+							'tgl_akhir' => $tgl_akhir,
+							'id_fakultas' => $id_fakultas,
+							'class' => 'st'
 						);
-						$this->M_Upload->insert_data('mahasiswa', $data_mhs);
-	        }
+						$id_program = $this->M_Upload->insert_data_get_key('program', $data_program);
+						$data_short_term = array(
+							'nama_program' => $nama_program,
+							'tujuan' => $tujuan_kunjungan,
+							'id_program' => $id_program,
+							'tahun' => $tahun_program
+						);
+						$this->M_Upload->insert_data('short_term', $data_short_term);
+					}else{
+						$id_program = $this->M_Upload->get_id_program($this->input->post('program'), $this->session->userdata('ses_fakultas'));
+						if ($this->check_db("mahasiswa", "email", $email, $id_program) == true){
+							$msg = "Duplikat email untuk program yang sama";
+						} elseif ($this->check_db("mahasiswa", "no_passport", $no_passport, $id_program) == true) {
+							$msg = "Duplikat no passport untuk program yang sama";
+						} else {
+							$config['upload_path'] = './uploads/temp';
+							$config['allowed_types'] = 'pdf|jpeg|jpg';
+							$config['encrypt_name'] = TRUE;
+							// $upload = "User_file";
+							for($i=0; $i<3; $i++){
+								$_FILES['doc']['name'] = $_FILES['dokumen'.$i]['name'];
+								$_FILES['doc']['type'] = $_FILES['dokumen'.$i]['type'];
+								$_FILES['doc']['tmp_name'] = $_FILES['dokumen'.$i]['tmp_name'];
+								$_FILES['doc']['error'] = $_FILES['dokumen'.$i]['error'];
+								$_FILES['doc']['size'] = $_FILES['dokumen'.$i]['size'];
+							  $this->load->library('upload', $config);
+								if ( !($this->upload->do_upload("doc")))
+								{
+									$error = array('error' => $this->upload->display_errors());
+									$msg = $error;
+								}
+							}
+								$this->load->library('zip');
+								$this->zip->read_dir('./uploads/temp/');
+								$this->zip->archive('./uploads/'.$nama.'_'.$nama_program.'.zip');
+								$filename = $nama.'_'.$nama_program.'.zip';
+								$this->load->helper("file");
+								delete_files('./uploads/temp/');
+								$data_mhs = array(
+				        	'nama' => $nama,
+				        	'email' => $email,
+				        	'univ_asal' => $univ_asal,
+									'negara_asal' => $negara_asal,
+									'no_passport' => $no_passport,
+									'univ_tujuan' => $univ_tujuan,
+									'fakultas_asal' => $fakultas_asal,
+									'jurusan_asal' => $jurusan_asal,
+									'negara_tujuan' => $negara_tujuan,
+									'id_program' => $id_program,
+									'dokumen' => $filename
+								);
+								$status = $this->M_Upload->insert_data('mahasiswa', $data_mhs);
+								if ($status !== "failed"){
+									$msg = "Data berhasil dimasukkan";
+								}
+
+						}
+					}
+					echo json_encode($msg);
 	}
 	function insert_excel(){
 		$this->load->model('M_Upload');
@@ -319,6 +324,7 @@ class Short_term extends CI_Controller {
 	}
 
 	function read(){
+		$this->load->model('M_Upload');
 		$file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 		if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mimes)) {
 			$arr_file = explode('.', $_FILES['file']['name']);
@@ -336,6 +342,9 @@ class Short_term extends CI_Controller {
 			$i = 0;
 			foreach($worksheet as $key => $value) {
 				$cells = array();
+				$program;
+				$no_passport;
+				$email;
 				$row = $key;
 				$C = 'A';
 				if($row>0){
@@ -359,12 +368,18 @@ class Short_term extends CI_Controller {
 						}
 						else if($index == 2){
 							if(filter_var($value, FILTER_VALIDATE_EMAIL)){
+								$email = $value;
 								$cells[$C] = $value;
 							}
 							else {
 								$cells[$C] = "WRONG FORMAT";
 							}
 						}
+						else if($index == 3){
+							$no_passport = $value;
+							$cells[$C] =  $value;
+						}
+
 						else if($index == 7 || $index == 9){
 							$query = $this->db->get_where('countries', array("country_name" => $value));
 							if ($query->num_rows() > 0){
@@ -374,7 +389,10 @@ class Short_term extends CI_Controller {
 					        $cells[$C] = "WRONG FORMAT";
 					    }
 						}
-
+						else if($index == 10){
+							$program = $value;
+							$cells[$C] =  $value;
+						}
 						else if($index == 11){
 							if("inbound" == strtolower($value) || "outbound" == strtolower($value)){
 								$cells[$C] = $value;
@@ -405,7 +423,15 @@ class Short_term extends CI_Controller {
 						}
 						$C++;
 	    		}
-
+					if($this->M_Upload->program_exists($program, $this->session->userdata('ses_fakultas'))){
+							$id_program =$this->M_Upload->get_id_program($program, $this->session->userdata('ses_fakultas'));
+							if ($this->check_db("mahasiswa", "email", $email, $id_program)){
+								$cells['C'] = "WRONG FORMAT";
+							}
+							if ($this->check_db("mahasiswa", "no_passport", $no_passport, $id_program)){
+								$cells['D'] = "WRONG FORMAT";
+							}
+					}
 					if(isset($_FILES['dokumen']['name'][$i])){
 							$cells[$C] = $_FILES['dokumen']['name'][$i];
 					}

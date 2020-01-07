@@ -16,7 +16,9 @@ class M_Upload extends CI_Model {
 
 	}
 	function insert_data($table, $data){
-		$this->db->insert($table, $data);
+		if(!$this->db->insert($table, $data)){
+			return "failed";
+		}
 	}
 	function get_id_program($nama_program, $id_fakultas){
 			$cmd=sprintf("select program.id_program as id from short_term, program where short_term.nama_program = '%s' and program.id_fakultas = '%s' and short_term.id_program = program.id_program",$nama_program,$id_fakultas);
@@ -47,13 +49,13 @@ class M_Upload extends CI_Model {
 		return $insert_id;
 	}
 
-	function check_db($table, $column, $value){
-		$query = $this->db->get_where($table, array($column => $value));
+	function check_db($table, $column, $value, $id_program){
+		$query = $this->db->get_where($table, array($column => $value, 'id_program' => $id_program));
 		if ($query->num_rows() > 0){
-        return false;
+        return true;
     }
     else{
-        return true;
+        return false;
     }
 	}
 
