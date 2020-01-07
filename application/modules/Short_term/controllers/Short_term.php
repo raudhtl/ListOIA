@@ -238,7 +238,6 @@ class Short_term extends CI_Controller
 								if ($status !== "failed"){
 									$msg = "Data berhasil dimasukkan";
 								}
-
 						}
 					}
 					echo json_encode($msg);
@@ -379,6 +378,7 @@ class Short_term extends CI_Controller
 			echo json_encode($index);
 		}
 	}
+
 
 	function read(){
 		$this->load->model('M_Upload');

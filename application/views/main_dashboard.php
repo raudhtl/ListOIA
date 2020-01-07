@@ -39,18 +39,19 @@
   <link href="<?php echo base_url() ?>assets/themes/argon/assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
   <link href="<?php echo base_url() ?>assets/css/app.css" rel="stylesheet" />
 
-  <script>
-    var BASE_URL = '<?php echo base_url(); ?>index.php/';
-  </script>
+	  <!--   Core   -->
+	<script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/jquery/dist/jquery.min.js"></script>
+  <script src="<?php echo base_url()?>assets/themes/argon/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 
-  <!--   Core   -->
-  <script src="<?php echo base_url() ?>assets/themes/argon/assets/js/plugins/jquery/dist/jquery.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/themes/argon/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<body class="">
+	<?php
+		$this->load->view("_partials_dashboard/left_nav");
+		$this->load->view("_partials_dashboard/content");
+	?>
 
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-  <script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js"></script>
-  
   <!--   Optional JS   -->
   <script src="<?php echo base_url() ?>assets/themes/argon/assets/js/plugins/chart.js/dist/Chart.min.js"></script>
   <script src="<?php echo base_url() ?>assets/themes/argon/assets/js/plugins/chart.js/dist/Chart.extension.js"></script>

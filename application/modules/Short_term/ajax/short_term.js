@@ -10,40 +10,21 @@ function nextTab(tab) {
 $("#form1").validate({
 	rules: {
 		nama: "required",
-		tgl_lahir: "required",
-		no_passport: {
-			remote: {
-				url: "<?php echo base_url('index.php/Short_term/check_passport')?>",
-				type: "post"
-			}
-		},
-		email: {
-			remote: {
-				url: "<?php echo base_url('index.php/Short_term/check_email')?>",
-				type: "post"
-			}
-		},
+		tgl_lahir: "required"
 		jurusan_asal: "required",
 		fakultas_asal: "required",
 		negara_asal: "required",
 		univ_asal: "required",
 		univ_tujuan: "required",
 		negara_tujuan: "required"
-	},
-	messages: {
-		nama: "Please enter your firstname",
-		no_passport: {
-			remote: "Passport id must be a unique value"
-		},
-		email: {
-			email: "Please enter a valid email addres",
-			remote: "This email address is already registered"
-		}
-	},
-	errorElement: "em",
-	errorPlacement: function (error, element) {
-		// Add the `help-block` class to the error element
-		error.addClass("help-block");
+},
+messages: {
+	nama: "Please enter your firstname"
+},
+errorElement: "em",
+errorPlacement: function ( error, element ) {
+	// Add the `help-block` class to the error element
+	error.addClass( "help-block" );
 
 		if (element.prop("type") === "checkbox") {
 			error.insertAfter(element.parent("label"));
@@ -133,31 +114,12 @@ $(document).ready(function () {
 		$('#ton').val("submit");
 	});
 
-	$(".menu-edit").click(function () {
-
-		nav = $(this).data("val");
-		id = $(this).data("id");
-		program = $(this).data("value");
-		console.log("update", BASE_URL + nav);
-
-		$.ajax({
-			type: "POST",
-			url: BASE_URL + nav,
-			data:{program:program},
-			success: function (result) {
-				console.log("success", result);
-
-				$("#container-content-2").html(result);
-				CheckProgram(program);
-				//navText(data.nav);
-			},
-			error: function (result) {
-				console.log("error", result);
-
-			}
-		});
+	$('#file').on('input', function() {
+    $('#sub').prop('disabled', true);
 	});
-
+	$('#dokumen').on('input', function() {
+    $('#sub').prop('disabled', true);
+	});
 	$('#import_form').on('submit', function (event) {
 		document.getElementById('#alert').style.display = 'none';
 		event.preventDefault();
