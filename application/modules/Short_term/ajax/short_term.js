@@ -113,6 +113,28 @@ $(document).ready(function () {
 		});
 	});
 
+	$('#form').on('submit', function (event) {
+		event.preventDefault();
+		$.ajax({
+			url: BASE_URL+"Short_term/update",
+			method: "POST",
+			data: new FormData(this),
+			contentType: false,
+			cache: false,
+			processData: false,
+			success: function(data) {
+				var str = data.replace(/\"/g,"");
+				alert(str);
+				update("Short_term");	
+    	},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+				alert("Status: " + textStatus);
+				alert("Error: " + errorThrown);
+			},
+		});
+	});
+
+
 	$(".nav-tabs a").click(function () {
 		$(this).tab('show');
 	});

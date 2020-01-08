@@ -274,9 +274,8 @@ class Short_term extends CI_Controller
 			'tahun' => $tahun_program
 		);
 		$this->M_Upload->update_data_program('short_term', $id_program, $data_short_term);
-
-
-		redirect('Dashboard');
+		$msg = "Data berhasil diubah";
+		echo json_encode($msg);
 	}
 
 	function insert_excel()
