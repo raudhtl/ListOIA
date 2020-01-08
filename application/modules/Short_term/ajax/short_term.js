@@ -1,11 +1,10 @@
 function nextTab(tab) {
 	$("#form1").validate();
-	// if ($("#form1").valid()) {
-	alert("tes");
-	$("#" + tab).removeClass("disabled");
-	$('#' + tab).css('pointer-events', '');
-	$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
-	// }
+	if ($("#form1").valid()) {
+		$("#"+tab).removeClass("disabled");
+		$('#'+tab).css('pointer-events', '');
+		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
+	}
 }
 
 $("#form1").validate({
@@ -13,16 +12,14 @@ $("#form1").validate({
 		nama: "required",
 		tgl_lahir: "required",
 		no_passport: {
-			remote: {
-				url: "<?php echo base_url('index.php/Short_term/check_passport')?>",
-				type: "post"
-			}
+			remote: { url : "<?php echo base_url('index.php/Short_term/check_passport')?>",
+								type : "post"
+							}
 		},
 		email: {
-			remote: {
-				url: "<?php echo base_url('index.php/Short_term/check_email')?>",
-				type: "post"
-			}
+			remote: { url : "<?php echo base_url('index.php/Short_term/check_email')?>",
+								type : "post"
+							}
 		},
 		jurusan_asal: "required",
 		fakultas_asal: "required",
@@ -30,21 +27,11 @@ $("#form1").validate({
 		univ_asal: "required",
 		univ_tujuan: "required",
 		negara_tujuan: "required"
-	},
-	messages: {
-		nama: "Please enter your firstname",
-		no_passport: {
-			remote: "Passport id must be a unique value"
-		},
-		email: {
-			email: "Please enter a valid email addres",
-			remote: "This email address is already registered"
-		}
-	},
-	errorElement: "em",
-	errorPlacement: function (error, element) {
-		// Add the `help-block` class to the error element
-		error.addClass("help-block");
+},
+errorElement: "em",
+errorPlacement: function ( error, element ) {
+	// Add the `help-block` class to the error element
+	error.addClass( "help-block" );
 
 		if (element.prop("type") === "checkbox") {
 			error.insertAfter(element.parent("label"));
@@ -100,6 +87,32 @@ function CheckProgram(val) {
 	}
 }
 $(document).ready(function () {
+	$('#form1').on('submit', function (event) {
+		event.preventDefault();
+		$.ajax({
+			url: BASE_URL+"Short_term/input",
+			method: "POST",
+			data: new FormData(this),
+			contentType: false,
+			cache: false,
+			processData: false,
+			success: function(data) {
+				var str = data.replace(/\"/g,"");;
+				if (str == "Data berhasil dimasukkan"){
+					alert(str)
+					update("Short_term")
+				} else {
+					document.getElementById('#alert').style.display = 'block';
+					$('#body').append(str);
+				}
+    	},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+				alert("Status: " + textStatus);
+				alert("Error: " + errorThrown);
+			},
+		});
+	});
+
 	$(".nav-tabs a").click(function () {
 		$(this).tab('show');
 	});
@@ -109,35 +122,35 @@ $(document).ready(function () {
 	});
 
 	$(".menu-edit").click(function () {
-
+	
 		nav = $(this).data("val");
 		id = $(this).data("id");
 		program = $(this).data("value");
 		console.log("update", BASE_URL + nav);
-
+	
 		$.ajax({
 			type: "POST",
 			url: BASE_URL + nav,
 			data:{program:program},
 			success: function (result) {
 				console.log("success", result);
-
+	
 				$("#container-content-2").html(result);
 				CheckProgram(program);
 				//navText(data.nav);
 			},
 			error: function (result) {
 				console.log("error", result);
-
+	
 			}
 		});
 	});
 
 	$('#import_form').on('submit', function (event) {
+		document.getElementById('#alert').style.display = 'none';
 		event.preventDefault();
 		var empty = 1;
 		if ($('#ton').val() == "submit") {
-			alert("tes")
 			$.ajax({
 				url: BASE_URL + "Short_term/insert_excel",
 				method: "POST",
@@ -146,10 +159,13 @@ $(document).ready(function () {
 				cache: false,
 				processData: false,
 				success: function (data) {
-					alert(data);
-					document.getElementById('#myTable').style.display = "inline-block";
-					document.getElementById('#file').val("");
-					document.getElementById('#dokumen').val("");
+					alert("Berhasil")
+					document.getElementById('#myTable').style.display = "none";
+					$('#ton').val("preview");
+					$('#sub').prop('disabled', true);
+					$('#file').val("");
+					$('#dokumen').val("");
+
 				},
 				error: function (XMLHttpRequest, textStatus, errorThrown) {
 					alert("Status: " + textStatus);
@@ -158,7 +174,6 @@ $(document).ready(function () {
 
 			});
 		} else {
-			alert("tes")
 			$("#body").empty();
 			$.ajax({
 				url: BASE_URL + "Short_term/read",
@@ -168,7 +183,6 @@ $(document).ready(function () {
 				cache: false,
 				processData: false,
 				success: function (data) {
-					$('#file').val('');
 					var sTxt = '';
 					var i = 1;
 					$.each(JSON.parse(data), function (i, item) {
@@ -176,10 +190,8 @@ $(document).ready(function () {
 						sTxt += '<td>' + i + '</td>';
 						$.each(this, function (k, v) {
 							if (v == null || v == "WRONG FORMAT") {
-								sTxt +=
-									'<td class="table-danger"> </td>';
-								document.getElementById('alert').style
-									.display = 'block';
+								sTxt += '<td class="table-danger"> ' +v+' </td>';
+								document.getElementById('#alert').style.display = 'inline-block';
 								empty = 2;
 							} else {
 								sTxt += '<td>' + v + '</td>';
@@ -198,4 +210,5 @@ $(document).ready(function () {
 			});
 		}
 	});
+
 });

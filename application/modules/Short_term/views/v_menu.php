@@ -16,7 +16,7 @@
       <a class="menu-app-2"   data-id = "edit" data-val="Short_term/edit">Edit Program</a>
       </div>
     </div>
-  </div class="row">
+  </div>
   </br>
   <div id="container-content-2" >
     <?php echo $content?>
@@ -28,6 +28,9 @@
 <script>
 
 $(document).ready(function ($) {
+  document.getElementById("list").style.background = "#426b9e";
+  document.getElementById("list").style.color = "#fff";
+  
   $(".menu-app-2").click(function () {
 
       nav = $(this).data("val");

@@ -683,15 +683,17 @@
   						</div>
   						<div class="tab-pane fade" id="tabs-2" role="tabpanel" aria-labelledby="data-dokumen">
   							<div class="form-group">
-  								<label for="file">Masukkan file :</label>
-  								<input type="file" name="userfile" class="form-control" required>
+  								<label for="file">Masukkan Scan Passport :</label>
+  								<input type="file" name="dokumen0" class="form-control" required>
   							</div>
-  							<?php if ($this->session->flashdata('error') == TRUE) : ?>
-  							<div class="alert alert-danger fade in" style="margin-top:15px;">
-  								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  								<strong>Info! </strong><?php echo $this->session->flashdata('error')?>
+								<div class="form-group">
+  								<label for="file">Masukkan Scan Invitation Latter :</label>
+  								<input type="file" name="dokumen1" class="form-control" required>
   							</div>
-  							<?php endif; ?>
+								<div class="form-group">
+  								<label for="file">Masukkan Scan Application Form :</label>
+  								<input type="file" name="dokumen2" class="form-control" required>
+  							</div>
   							<a onclick="prevTab('1')" href="#" class="btn btn-primary">prev</a>
   							<button type="submit" class="btn btn-primary">Submit</button>
   						</div>
@@ -706,7 +708,7 @@
   					action="<?php echo base_url("index.php/Short_term/insert_excel"); ?>"
   					enctype="multipart/form-data">
   					<div class="form-group">
-  						<label for="nama">Masukkan daftar mahasiswa (.xls)</label>
+  						<label for="daftar">Masukkan daftar mahasiswa (.xls)</label>
   						<input type="file" id="file" class="form-control" name="file" required>
   					</div>
   					<div class="form-group">
@@ -715,10 +717,10 @@
   					</div>
   					<input id="ton" type="text" value="preview" style="display:none;">
   					<button name="preview" type="submit" class=" btn btn-primary">Preview</button>
-  					<button id="sub" type="submit" name="submit" class=" btn btn-primary">Submit</button>
+  					<button id="sub" type="submit" name="submit" class=" btn btn-primary" disabled>Submit</button>
   				</form>
   				<br />
-  				<div class="alert alert-danger fade in" id="alert" style="display:none">
+  				<div class="alert alert-danger" role="alert" id="#alert" style="display:none; width:100%;">
   					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   					<strong>Info! Terdapat cell kosong pada file yang Anda upload. Silahkan pilih file
   						lain!</strong>
@@ -758,7 +760,6 @@
 </div>
 <script type="text/javascript">
 <?php
- include(APPPATH."/modules/Short_term/ajax/short_term.js");
-
+ include(APPPATH."/modules/Short_term/ajax/short_term.js");s
 ?>
 </script>

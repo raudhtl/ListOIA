@@ -30,6 +30,10 @@
   <link href="<?php echo base_url() ?>assets/themes/argon/assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
   <link href="<?php echo base_url() ?>assets/themes/argon/assets/js/plugins/fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
   <!-- CSS Files -->
+  
+  <link href="<?php echo base_url()?>assets/css/style.css" rel="stylesheet" />
+  <link href="<?php echo base_url()?>assets/themes/argon/assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+  <link href="<?php echo base_url()?>assets/css/app.css" rel="stylesheet" />
 
   <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet" />
   <link href="<?php echo base_url() ?>assets/themes/argon/assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
