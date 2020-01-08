@@ -1,10 +1,10 @@
 function nextTab(tab) {
 	$("#form1").validate();
-	// if ($("#form1").valid()) {
+	if ($("#form1").valid()) {
 		$("#"+tab).removeClass("disabled");
 		$('#'+tab).css('pointer-events', '');
 		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
-	// }
+	}
 }
 
 $("#form1").validate({
@@ -121,30 +121,31 @@ $(document).ready(function () {
 		$('#ton').val("submit");
 	});
 
-	$(".menu-edit").click(function () {
+	// $(".menu-edit").click(function () {
+	//
+	// 	nav = $(this).data("val");
+	// 	id = $(this).data("id");
+	// 	program = $(this).data("value");
+	// 	console.log("update", BASE_URL + nav);
+	//
+	// 	$.ajax({
+	// 		type: "POST",
+	// 		url: BASE_URL + nav,
+	// 		data:{program:program},
+	// 		success: function (result) {
+	// 			console.log("success", result);
+	//
+	// 			$("#container-content-2").html(result);
+	// 			CheckProgram(program);
+	// 			//navText(data.nav);
+	// 		},
+	// 		error: function (result) {
+	// 			console.log("error", result);
+	//
+	// 		}
+	// 	});
+	// });
 
-		nav = $(this).data("val");
-		id = $(this).data("id");
-		program = $(this).data("value");
-		console.log("update", BASE_URL + nav);
-
-		$.ajax({
-			type: "POST",
-			url: BASE_URL + nav,
-			data:{program:program},
-			success: function (result) {
-				console.log("success", result);
-
-				$("#container-content-2").html(result);
-				CheckProgram(program);
-				//navText(data.nav);
-			},
-			error: function (result) {
-				console.log("error", result);
-
-			}
-		});
-	});
 	$('#import_form').on('submit', function (event) {
 		document.getElementById('#alert').style.display = 'none';
 		event.preventDefault();
