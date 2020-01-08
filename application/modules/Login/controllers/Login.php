@@ -36,6 +36,7 @@ class Login extends CI_Controller {
 				$this->session->set_userdata('masuk', TRUE);
 				$this->session->set_userdata('ses_fakultas',$data['id_fakultas']);
 				$this->session->set_userdata('ses_nama_fakultas',$data['nama_fakultas']);
+				$this->session->set_userdata('ses_username_fakultas',$data['username']);
 				$this->session->set_userdata('ses_username',$data['email']);
 				//redirect('Pilih_meja');
 		}

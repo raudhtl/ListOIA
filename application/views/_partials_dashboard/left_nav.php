@@ -89,16 +89,16 @@
         <!-- Navigation -->
         <ul id = "grupmenu" class="navbar-nav">
           <li class="nav-item">
-          <a class="nav-link menu-app active" data-val="dashboard/beranda"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+          <a class="nav-link menu-app active" data-id="DASHBOARD" data-val="dashboard/beranda"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link menu-app" data-val="Short_term">
+            <a class="nav-link menu-app" data-id="SHORT TERM" data-val="Short_term">
               <i class="ni ni-planet text-blue"></i> Short Term
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link menu-app" data-val="Short_term/list">
+            <a class="nav-link menu-app" data-id="STUDENT EXCHANGE" data-val="Short_term/list">
               <i class="ni ni-pin-3 text-orange"></i> Student Exchange
             </a>
           </li>

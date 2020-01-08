@@ -6,7 +6,7 @@ class M_login extends CI_Model {
 
 	}
 	function login_admin ($username,$password) {
-		$query = $this -> db ->query("select * from admin where password = ''$password' and email_admin = '$email'");
+		$query = $this -> db ->query("select * from admin where password = ''$password' and email_admin = '$username'");
 		return $query;
 	}
 }
