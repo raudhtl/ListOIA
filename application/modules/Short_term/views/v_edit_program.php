@@ -45,7 +45,7 @@
                         <label for="tgl_akhir">Tanggal akhir program:</label>
                         <input type="date" name="tgl_akhir" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
@@ -53,3 +53,8 @@
     </div>
 </div>
 </div>
+<script type="text/javascript">
+<?php
+ include(APPPATH."/modules/Short_term/ajax/short_term.js");
+?>
+</script>
