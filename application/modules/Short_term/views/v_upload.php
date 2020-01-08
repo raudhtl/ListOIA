@@ -694,7 +694,7 @@
   								<label for="file">Masukkan Scan Application Form :</label>
   								<input type="file" name="dokumen2" class="form-control" required>
   							</div>
-								<div class="alert alert-danger" role="alert" id="#alert2" style="display:none; width:100%;">
+							<div class="alert alert-danger" role="alert" id="#alert2" style="display:none; width:100%;">
 			  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			  					<div id="#msg">
 									</div>
@@ -765,6 +765,6 @@
 </div>
 <script type="text/javascript">
 <?php
- include(APPPATH."/modules/Short_term/ajax/short_term.js");s
+ include(APPPATH."/modules/Short_term/ajax/short_term.js");
 ?>
 </script>

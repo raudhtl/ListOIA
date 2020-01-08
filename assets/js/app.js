@@ -7,11 +7,14 @@ $(document).ready(function ($) {
      * class menu-app memiliki attribute data-val untuk setiap controllers dan fungsididalamnya
      * update content-page dan nav-text setiap class menu-app diklik
      * */
+    $(".titlenav").html("DASHBOARD");
+
     $(".menu-app").click(function () {
         $("#grupmenu a").removeClass('active');
         $(this).addClass('active');
         nav = $(this).data("val");
-        update(nav);
+        id = $(this).data("id");
+        update(nav, id);
     });
 });
 
@@ -25,13 +28,15 @@ $(document).ready(function ($) {
  *   nav => nama controller dan function
  *   val => nama kategori
  * */
-function update(z) {
+function update(z, id) {
     nav = z;
+    id = id;
     console.log("update", BASE_URL + z);
 
     $.ajax({
         type: "POST",
         url: BASE_URL + z,
+        data:{lefttab:id},
         success: process,
         error: function (data) {
             console.log("error", data);
@@ -43,4 +48,5 @@ function update(z) {
 function process(htmlfile){
     console.log("success", htmlfile);
     $("#container-content").html(htmlfile);
+    $(".titlenav").html(id);
 }
