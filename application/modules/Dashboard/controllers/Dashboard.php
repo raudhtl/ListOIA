@@ -7,8 +7,19 @@ class Dashboard extends CI_Controller {
 		$this->load->model('Dashboard_Model');
 	}
 	public function index(){
-		$content=array('content'=>$this->load->view('dashboard','',true));
-		$this->load->view('main_dashboard',$content);
+		//cek session username
+		if($this->session->userdata('ses_username') == '') {
+
+			//set notifikasi
+			$this->session->set_flashdata('sukses','You have not login...');
+
+			//alihkan ke halaman login
+			redirect(site_url('login'));
+		}else{
+			$content=array('content'=>$this->load->view('dashboard','',true));
+			$this->load->view('main_dashboard',$content);
+		}
+	
 	}
 
 	public function beranda(){
@@ -20,4 +31,3 @@ class Dashboard extends CI_Controller {
 		$this->output->set_output($this->load->view('temp','',true)); 
 	}
 }
-?>
