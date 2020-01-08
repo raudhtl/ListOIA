@@ -18,6 +18,14 @@ class Login extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct(){
+		parent::__construct();
+		$this->load->library(array('form_validation'));
+		$this->load->helper(array('url','form'));
+		$this->load->model('m_login'); //call model
+	}
+
 	public function index()
 	{
 		$this->load->view('v_login');
@@ -27,27 +35,20 @@ class Login extends CI_Controller {
 	{
 		$username=$this->input->post('email');
 		$password=$this->input->post('password');
-		$this->load->model('M_Login');
-		$cek_user = $this->M_Login->login_user($username, $password);
+		$valid = $this->form_validation;
+		$valid->set_rules('email','Email','required|valid_email');
+		$valid->set_rules('password','Password','required');
 
-		$data = $cek_user->row_array();
-
-		if (isset($data) && count ($data) >0){
-				$this->session->set_userdata('masuk', TRUE);
-				$this->session->set_userdata('ses_fakultas',$data['id_fakultas']);
-				$this->session->set_userdata('ses_nama_fakultas',$data['nama_fakultas']);
-				$this->session->set_userdata('ses_username',$data['email']);
-				//redirect('Pilih_meja');
+		if($valid->run()) {
+			$this->m_login->login_user($username,$password);
 		}
-		else {
-				$url=base_url();
-				$this->session->set_flashdata('msg','Email Atau Password Salah');
-				redirect('Login');
-		}
-		redirect('Dashboard');
+		// End fungsi login
+		$this->load->view('v_login');
+		
 	}
-	function logout (){
-		$this->session->unset_userdata('masuk', 'ses_level', 'ses_username', 'id_pengunjung', 'no_meja');
-		$url=base_url('');
+
+
+	public function logout(){
+		$this->m_login->logout();
 	}
 }
