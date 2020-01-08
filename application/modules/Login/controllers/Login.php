@@ -44,7 +44,7 @@ class Login extends CI_Controller {
 				$this->session->set_flashdata('msg','Email Atau Password Salah');
 				redirect('Login');
 		}
-		redirect('Short_term');
+		redirect('Dashboard');
 	}
 	function logout (){
 		$this->session->unset_userdata('masuk', 'ses_level', 'ses_username', 'id_pengunjung', 'no_meja');

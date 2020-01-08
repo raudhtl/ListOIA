@@ -1,25 +1,32 @@
 function nextTab(tab) {
 	$("#form1").validate();
-	// if ($("#form1").valid()) {
+	if ($("#form1").valid()) {
 		$("#"+tab).removeClass("disabled");
 		$('#'+tab).css('pointer-events', '');
 		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
-	// }
+	}
 }
 
 $("#form1").validate({
 	rules: {
 		nama: "required",
-		tgl_lahir: "required"
+		tgl_lahir: "required",
+		no_passport: {
+			remote: { url : "<?php echo base_url('index.php/Short_term/check_passport')?>",
+								type : "post"
+							}
+		},
+		email: {
+			remote: { url : "<?php echo base_url('index.php/Short_term/check_email')?>",
+								type : "post"
+							}
+		},
 		jurusan_asal: "required",
 		fakultas_asal: "required",
 		negara_asal: "required",
 		univ_asal: "required",
 		univ_tujuan: "required",
 		negara_tujuan: "required"
-},
-messages: {
-	nama: "Please enter your firstname"
 },
 errorElement: "em",
 errorPlacement: function ( error, element ) {
@@ -114,12 +121,31 @@ $(document).ready(function () {
 		$('#ton').val("submit");
 	});
 
-	$('#file').on('input', function() {
-    $('#sub').prop('disabled', true);
-	});
-	$('#dokumen').on('input', function() {
-    $('#sub').prop('disabled', true);
-	});
+	// $(".menu-edit").click(function () {
+	//
+	// 	nav = $(this).data("val");
+	// 	id = $(this).data("id");
+	// 	program = $(this).data("value");
+	// 	console.log("update", BASE_URL + nav);
+	//
+	// 	$.ajax({
+	// 		type: "POST",
+	// 		url: BASE_URL + nav,
+	// 		data:{program:program},
+	// 		success: function (result) {
+	// 			console.log("success", result);
+	//
+	// 			$("#container-content-2").html(result);
+	// 			CheckProgram(program);
+	// 			//navText(data.nav);
+	// 		},
+	// 		error: function (result) {
+	// 			console.log("error", result);
+	//
+	// 		}
+	// 	});
+	// });
+
 	$('#import_form').on('submit', function (event) {
 		document.getElementById('#alert').style.display = 'none';
 		event.preventDefault();

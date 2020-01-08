@@ -16,7 +16,7 @@
       <a class="menu-app-2"   data-id = "edit" data-val="Short_term/edit">Edit Program</a>
       </div>
     </div>
-  </div class="row">
+  </div>
   </br>
   <div id="container-content-2" >
     <?php echo $content?>

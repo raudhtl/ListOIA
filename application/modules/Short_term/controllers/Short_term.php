@@ -45,30 +45,30 @@ class Short_term extends CI_Controller
 	}
 
 	// TODO 1
-	public function upload()
-	{
+	public function upload(){
 		$this->load->model('M_Upload');
 		$upload['program'] = $this->M_Upload->get_all_short_term($this->session->userdata('ses_fakultas'));
 		$content = $this->load->view('v_upload', $upload, true);
 		$this->output->set_output($content);
+
 	}
 
-	public function edit()
-	{
-		$this->load->model('M_Upload');
-		$edit['program'] = $this->M_Upload->get_all_program($this->session->userdata('ses_fakultas'));
-		$content = $this->load->view('v_edit', $edit, true);
-		$this->output->set_output($content);
-	}
-
-	public function edit_program()
-	{
-		$this->load->model('M_Upload');
-		$val = $this->input->post('program');
-		$edit['program'] = $val;
-		$content = $this->load->view('v_edit_program', $edit, true);
-		$this->output->set_output($content);
-	}
+	// public function edit()
+	// {
+	// 	$this->load->model('M_Upload');
+	// 	$edit['program'] = $this->M_Upload->get_all_program($this->session->userdata('ses_fakultas'));
+	// 	$content = $this->load->view('v_edit', $edit, true);
+	// 	$this->output->set_output($content);
+	// }
+	//
+	// public function edit_program()
+	// {
+	// 	$this->load->model('M_Upload');
+	// 	$val = $this->input->post('program');
+	// 	$edit['program'] = $val;
+	// 	$content = $this->load->view('v_edit_program', $edit, true);
+	// 	$this->output->set_output($content);
+	// }
 
 	public function download_doc()
 	{
@@ -238,6 +238,7 @@ class Short_term extends CI_Controller
 								if ($status !== "failed"){
 									$msg = "Data berhasil dimasukkan";
 								}
+
 						}
 					}
 					echo json_encode($msg);
@@ -378,7 +379,6 @@ class Short_term extends CI_Controller
 			echo json_encode($index);
 		}
 	}
-
 
 	function read(){
 		$this->load->model('M_Upload');
