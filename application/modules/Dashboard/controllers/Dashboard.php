@@ -11,6 +11,11 @@ class Dashboard extends CI_Controller {
 		$this->load->view('main_dashboard',$content);
 	}
 
+	public function beranda(){
+		$content = $this->load->view('dashboard', '', true);
+		$this->output->set_output($content);
+	}
+
 	public function addProgram(){
 		$this->output->set_output($this->load->view('temp','',true)); 
 	}
