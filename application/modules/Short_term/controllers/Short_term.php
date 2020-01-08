@@ -53,22 +53,22 @@ class Short_term extends CI_Controller
 
 	}
 
-	// public function edit()
-	// {
-	// 	$this->load->model('M_Upload');
-	// 	$edit['program'] = $this->M_Upload->get_all_program($this->session->userdata('ses_fakultas'));
-	// 	$content = $this->load->view('v_edit', $edit, true);
-	// 	$this->output->set_output($content);
-	// }
-	//
-	// public function edit_program()
-	// {
-	// 	$this->load->model('M_Upload');
-	// 	$val = $this->input->post('program');
-	// 	$edit['program'] = $val;
-	// 	$content = $this->load->view('v_edit_program', $edit, true);
-	// 	$this->output->set_output($content);
-	// }
+	public function edit()
+	{
+		$this->load->model('M_Upload');
+		$edit['program'] = $this->M_Upload->get_all_program($this->session->userdata('ses_fakultas'));
+		$content = $this->load->view('v_edit', $edit, true);
+		$this->output->set_output($content);
+	}
+	
+	public function edit_program()
+	{
+		$this->load->model('M_Upload');
+		$val = $this->input->post('program');
+		$edit['program'] = $val;
+		$content = $this->load->view('v_edit_program', $edit, true);
+		$this->output->set_output($content);
+	}
 
 	public function download_doc()
 	{

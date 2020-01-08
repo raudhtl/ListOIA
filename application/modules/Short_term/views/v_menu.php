@@ -28,6 +28,9 @@
 <script>
 
 $(document).ready(function ($) {
+  document.getElementById("list").style.background = "#426b9e";
+  document.getElementById("list").style.color = "#fff";
+  
   $(".menu-app-2").click(function () {
 
       nav = $(this).data("val");
