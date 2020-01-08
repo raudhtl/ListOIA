@@ -694,6 +694,11 @@
   								<label for="file">Masukkan Scan Application Form :</label>
   								<input type="file" name="dokumen2" class="form-control" required>
   							</div>
+								<div class="alert alert-danger" role="alert" id="#alert2" style="display:none; width:100%;">
+			  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  					<div id="#msg">
+									</div>
+			  				</div>
   							<a onclick="prevTab('1')" href="#" class="btn btn-primary">prev</a>
   							<button type="submit" class="btn btn-primary">Submit</button>
   						</div>

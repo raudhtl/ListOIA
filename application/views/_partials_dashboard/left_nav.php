@@ -89,7 +89,7 @@
         <!-- Navigation -->
         <ul id = "grupmenu" class="navbar-nav">
           <li class="nav-item">
-          <a class="nav-link menu-app active" data-val="dashboard/beranda"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+          <a class="nav-link menu-app active" data-val="dashboard/beranda"> <i class="ni ni-tv-2 text-primary"></i>Dashboard
             </a>
           </li>
           <li class="nav-item">
