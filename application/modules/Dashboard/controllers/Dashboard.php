@@ -21,8 +21,6 @@ class Dashboard extends CI_Controller {
 		    $content=array('content'=>$this->load->view('dashboard',$data,true));
 		    $this->load->view('main_dashboard',$content);
 		}
-	
-		
 	}
 
 	public function beranda(){

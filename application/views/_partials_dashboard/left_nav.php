@@ -89,7 +89,7 @@
         <!-- Navigation -->
         <ul id = "grupmenu" class="navbar-nav">
           <li class="nav-item">
-          <a class="nav-link menu-app active" data-id="DASHBOARD" data-val="dashboard/beranda"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+          <a class="nav-link menu-app active" data-id="DASHBOARD" data-val="dashboard"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
@@ -98,7 +98,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link menu-app" data-id="STUDENT EXCHANGE" data-val="Short_term/list">
+            <a class="nav-link menu-app" data-id="STUDENT EXCHANGE" data-val="Student_exchange">
               <i class="ni ni-pin-3 text-orange"></i> Student Exchange
             </a>
           </li>
