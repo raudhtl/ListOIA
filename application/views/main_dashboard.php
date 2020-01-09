@@ -20,7 +20,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
-    List OIA
+  SISTEM DATABASE MAHASISWA INTERNASIONAL UNIVERSITAS SYIAH KUALA
   </title>
   <!-- Favicon -->
   <link href="<?php echo base_url()?>assets/images/oia-logo.jpeg" rel="icon" type="image/png">
