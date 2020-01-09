@@ -1,4 +1,4 @@
-window.onload = function () {
+$(document).ready(function ($) {
   Chart.defaults.global.defaultFontColor = '#c8d9de';
   var ctx = document.getElementById("line-chart").getContext('2d');
   var myChart = new Chart(ctx, {
@@ -112,4 +112,4 @@ window.onload = function () {
 				},
 			}
 			});
-}
+});

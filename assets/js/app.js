@@ -36,7 +36,6 @@ function update(z, id) {
     $.ajax({
         type: "POST",
         url: BASE_URL + z,
-        data:{lefttab:id},
         success: process,
         error: function (data) {
             console.log("error", data);
