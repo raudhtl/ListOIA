@@ -4,7 +4,7 @@ class Dashboard extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->_public_view= $this->config->item('public_view');
-		$this->load->model('Dashboard_Model');
+		$this->load->model('M_Dashboard');
 	}
 	public function index(){
 		//cek session username
@@ -16,10 +16,13 @@ class Dashboard extends CI_Controller {
 			//alihkan ke halaman login
 			redirect(site_url('login'));
 		}else{
-			$content=array('content'=>$this->load->view('dashboard','',true));
-			$this->load->view('main_dashboard',$content);
+			$data['chart'] = $this->M_Dashboard->get_years();
+		    $data['bar'] = $this->M_Dashboard->get_program();
+		    $content=array('content'=>$this->load->view('dashboard',$data,true));
+		    $this->load->view('main_dashboard',$content);
 		}
 	
+		
 	}
 
 	public function beranda(){
@@ -28,6 +31,6 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function addProgram(){
-		$this->output->set_output($this->load->view('temp','',true)); 
+		$this->output->set_output($this->load->view('temp','',true));
 	}
 }

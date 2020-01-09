@@ -102,8 +102,8 @@ $(document).ready(function () {
 					alert(str)
 					update("Short_term")
 				} else {
-					document.getElementById('#alert').style.display = 'block';
-					$('#body').append(str);
+					document.getElementById('#alert2').style.display = 'block';
+					$('#msg').html('<strong>'+str+'</strong>');
 				}
     	},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
