@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>SISTEM DATABASE MAHASISWA INTERNASIONAL UNIVERSITAS SYIAH KUALA</title>
+	<title>SISTEM INFORMASI INTERNASIONALISASI UNIVERSITAS SYIAH KUALA</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -26,20 +26,27 @@
   .close{
     padding-left: 3.2em;
   }
+  .wider{
+	  width: 650px;
+  }
+  .alert{
+	 margin-right: auto;
+	 margin-left: auto;
+  }
 </style>
 </head>
 <body>
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/img-01.jpg');">
-			<div class="wrap-login100 p-b-30">
+			<div class="wrap-login100 p-b-30 wider">
 				<form class="login100-form validate-form" method="post" action="<?php echo base_url('index.php/Login/auth'); ?>">
 					<div class="login100-form-avatar">
 						<img src="<?php echo base_url()?>assets/images/oia-logo.jpeg" alt="AVATAR">
 					</div>
 
 					<span class="login100-form-title p-t-20 p-b-45">
-						SISTEM DATABASE MAHASISWA INTERNASIONAL UNIVERSITAS SYIAH KUALA
+						SISTEM INFORMASI INTERNASIONALISASI UNIVERSITAS SYIAH KUALA
           </span>
           
           <?php if ($this->session->flashdata('error') == TRUE) : ?>
