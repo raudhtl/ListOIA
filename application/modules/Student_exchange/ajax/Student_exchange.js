@@ -1,10 +1,10 @@
 function nextTab(tab) {
 	$("#form1").validate();
-	if ($("#form1").valid()) {
+	// if ($("#form1").valid()) {
 		$("#"+tab).removeClass("disabled");
 		$('#'+tab).css('pointer-events', '');
 		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
-	}
+	// }
 }
 
 $("#form1").validate({
@@ -17,11 +17,11 @@ $("#form1").validate({
 		univ_asal: "required",
 		univ_tujuan: "required",
 		negara_tujuan: "required"
-},
-errorElement: "em",
-errorPlacement: function ( error, element ) {
-	// Add the `help-block` class to the error element
-	error.addClass( "help-block" );
+	},
+	errorElement: "em",
+	errorPlacement: function ( error, element ) {
+		// Add the `help-block` class to the error element
+		error.addClass( "help-block" );
 
 		if (element.prop("type") === "checkbox") {
 			error.insertAfter(element.parent("label"));
@@ -35,79 +35,11 @@ function prevTab(tab) {
 	$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
 }
 
-function CheckProgram(val) {
-	var element = document.getElementById('edit_program');
-	if (val == 'others') {
-		$('#edit_program').attr('name', 'program');
-		$('#program').attr('name', 'p');
-		$('#edit_program').prop('required', true);
-		element.style.display = 'block';
-		document.getElementById("program").style.display = 'none';
-		$('[name="tgl_mulai"]').val("");
-		$('[name="tgl_akhir"]').val("");
-		$('[name="tujuan_kunjungan"]').val("");
-		$('[name="jenis_program"]').val("");
-		$('[name="tahun"]').val("");
-	} else {
-		$.ajax({
-			type: "POST",
-			url: "<?php echo base_url('index.php/Short_term/get_program')?>",
-			dataType: "JSON",
-			data: {
-				nama: val
-			},
-			cache: false,
-			success: function (data) {
-				$.each(data, function (id, nama, tujuan, tgl_mulai, tgl_akhir) {
-					$('[name="tgl_mulai"]').val(data.tgl_mulai);
-					$('[name="tgl_akhir"]').val(data.tgl_akhir);
-					$('[name="tujuan_kunjungan"]').val(data.tujuan);
-					$('[name="jenis_program"]').val(data.jenis);
-					$('[name="tahun"]').val(data.tahun);
-				});
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				alert("Status: " + textStatus);
-				alert("Error: " + errorThrown);
-			}
-		});
-		return false;
-		element.style.display = 'none';
-		document.getElementById("program").style.display = 'block';
-	}
-}
 $(document).ready(function () {
-	$('#form1').on('submit', function (event) {
+	$('#form_se').on('submit', function (event) {
 		event.preventDefault();
 		$.ajax({
-			url: BASE_URL+"Short_term/input",
-			method: "POST",
-			data: new FormData(this),
-			contentType: false,
-			cache: false,
-			processData: false,
-			success: function(data) {
-				var str = data.replace(/\"/g,"");;
-				if (str == "Data berhasil dimasukkan"){
-					alert(str)
-					update("Short_term")
-				} else {
-					document.getElementById('#alert2').style.display = 'block';
-					alert = document.getElementById('#msg');
-					alert.innerHTML = '<strong>'+str+'</strong>';
-				}
-    	},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				alert("Status: " + textStatus);
-				alert("Error: " + errorThrown);
-			},
-		});
-	});
-
-	$('#form').on('submit', function (event) {
-		event.preventDefault();
-		$.ajax({
-			url: BASE_URL+"Short_term/update",
+			url: BASE_URL+"Student_exchange/input",
 			method: "POST",
 			data: new FormData(this),
 			contentType: false,
@@ -116,8 +48,14 @@ $(document).ready(function () {
 			success: function(data) {
 				var str = data.replace(/\"/g,"");
 				alert(str);
-				update("Short_term");	
-    	},
+				if (str == "Data berhasil dimasukkan"){
+					update("Student_exchange")
+				} else {
+					document.getElementById('#alert2').style.display = 'block';
+					alert = document.getElementById('#msg');
+					alert.innerHTML = '<strong>'+str+'</strong>';
+				}
+			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				alert("Status: " + textStatus);
 				alert("Error: " + errorThrown);
@@ -132,31 +70,6 @@ $(document).ready(function () {
 
 	$('#sub').on('click', function (event) {
 		$('#ton').val("submit");
-	});
-
-	$(".menu-edit").click(function () {
-	
-		nav = $(this).data("val");
-		id = $(this).data("id");
-		program = $(this).data("value");
-		console.log("update", BASE_URL + nav);
-	
-		$.ajax({
-			type: "POST",
-			url: BASE_URL + nav,
-			data:{program:program},
-			success: function (result) {
-				console.log("success", result);
-	
-				$("#container-content-2").html(result);
-				CheckProgram(program);
-				//navText(data.nav);
-			},
-			error: function (result) {
-				console.log("error", result);
-	
-			}
-		});
 	});
 
 	$('#import_form').on('submit', function (event) {

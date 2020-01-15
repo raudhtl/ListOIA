@@ -26,7 +26,12 @@ class Short_term extends CI_Controller
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-
+	function __construct(){
+		parent::__construct();
+		$this->load->library(array('form_validation'));
+		$this->load->helper(array('url','form'));
+		$this->load->model('M_Upload'); //call model
+	}
 	// TODO 1
 	public function index()
 	{
