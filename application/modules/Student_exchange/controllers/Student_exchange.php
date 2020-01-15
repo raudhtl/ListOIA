@@ -3,9 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-//require FirePHPCore/fb.php;
-
-//require_once('FirePHPCore/fb.php');
 
 // TODO
 // 1 : ubah semua style menu ke ajax style
