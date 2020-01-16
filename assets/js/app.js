@@ -14,8 +14,8 @@ $(document).ready(function ($) {
         $(this).addClass('active');
         nav = $(this).data("val");
         id = $(this).data("id");
-        if(id != 'STUDENT EXCHANGE'){
-            $('.collap2').collapse("hide");
+        if(id != 'SHORT TERM'){
+            $('.collap').collapse("hide");
         }
         update(nav, id);
     });
