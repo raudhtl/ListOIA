@@ -99,7 +99,7 @@ $(document).ready(function () {
 			success: function(data) {
 				var str = data.replace(/\"/g,"");;
 				if (str == "Data berhasil dimasukkan"){
-					alert(str)
+					swal("Berhasil", str, "success");
 					update("Short_term")
 				} else {
 					document.getElementById('#alert2').style.display = 'block';
@@ -124,7 +124,8 @@ $(document).ready(function () {
 			processData: false,
 			success: function(data) {
 				var str = data.replace(/\"/g,"");
-				alert(str);
+				// alert(str);
+				swal("Berhasil", str, "success");
 				update("Short_term");	
     	},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -157,7 +158,7 @@ $(document).ready(function () {
 			success: function (result) {
 				console.log("success", result);
 	
-				$("#container-content-2").html(result);
+				$("#container-content").html(result);
 				CheckProgram(program);
 				//navText(data.nav);
 			},
