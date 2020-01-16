@@ -417,7 +417,7 @@ class Short_term extends CI_Controller
 						if ($index == 1 || $index == 14 || $index == 15) {
 							if (preg_match('#^(\d+)/(\d+)/(\d+)$#', $value)) {
 								$date = explode("/", $value);
-								if (checkdate($date[1], $date[0], $date[2])) {
+								if (checkdate( $date[0], $date[1], $date[2])) {
 									$cells[$C] = $value;
 								} else {
 									$cells[$C] = "WRONG FORMAT";
@@ -483,7 +483,7 @@ class Short_term extends CI_Controller
 							$cells[$C] =  $value;
 						}
 						$C++;
-	    		}
+	    			}
 					if($this->M_Upload->program_exists($program, $this->session->userdata('ses_fakultas'))){
 							$id_program =$this->M_Upload->get_id_program($program, $this->session->userdata('ses_fakultas'));
 							if ($this->check_db("mahasiswa", "email", $email, $id_program)){
@@ -494,7 +494,7 @@ class Short_term extends CI_Controller
 							}
 					}
 					if(isset($_FILES['dokumen']['name'][$i])){
-							$cells[$C] = $_FILES['dokumen']['name'][$i];
+						$cells[$C] = $_FILES['dokumen']['name'][$i];
 					}
 					else{
 						$cells[$C] = NULL;

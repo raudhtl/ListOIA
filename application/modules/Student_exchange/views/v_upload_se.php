@@ -703,7 +703,7 @@
   		</div>
   		<div id="excel" role="tabpanel" class="card tab-pane fade in active ">
   			<div class="card-body">
-  				<a href="<?php echo base_url("excel/format.xlsx"); ?>">Download Format</a>
+  				<a href="<?php echo base_url("excel/format_se.xlsx"); ?>">Download Format</a>
   				<form id="import_form" method="post"
   					action="<?php echo base_url("index.php/Short_term/insert_excel"); ?>"
   					enctype="multipart/form-data">
@@ -725,6 +725,11 @@
   					<strong>Info! Terdapat cell kosong pada file yang Anda upload. Silahkan pilih file
   						lain!</strong>
   				</div>
+				<div class="alert alert-danger" role="alert" id="#alert_excel" style="display:none; width:100%;">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<div id="#msg_excel">
+					</div>
+				</div>
   				<table class="table" id="#myTable" style="max-height: 500px; overflow: auto; display:none;">
   					<thead>
   						<tr>
@@ -733,16 +738,16 @@
   							<th scope="col">Tanggal Lahir</th>
   							<th scope="col">Email</th>
   							<th scope="col">No passport</th>
+							<th scope="col">Negara Asal</th>
   							<th scope="col">Juruan Asal</th>
   							<th scope="col">Fakultas asal</th>
   							<th scope="col">Universitas Asal</th>
   							<th scope="col">Negara tujuan</th>
+							<th scope="col">Juruan Tujuan</th>
+							<th scope="col">Fakultas Tujuan</th>
   							<th scope="col">Universitas tujuan</th>
-  							<th scope="col">Negara asal</th>
-  							<th scope="col">Nama program</th>
   							<th scope="col">Jenis program</th>
   							<th scope="col">tahun</th>
-  							<th scope="col">Tujuan Kunjungan</th>
   							<th scope="col">Tanggal mulai program</th>
   							<th scope="col">Tanggal akhir program</th>
   							<th scope="col">Dokumen</th>

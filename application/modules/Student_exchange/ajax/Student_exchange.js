@@ -78,19 +78,23 @@ $(document).ready(function () {
 		var empty = 1;
 		if ($('#ton').val() == "submit") {
 			$.ajax({
-				url: BASE_URL + "Short_term/insert_excel",
+				url: BASE_URL + "Student_Exchange/insert_excel",
 				method: "POST",
 				data: new FormData(this),
 				contentType: false,
 				cache: false,
 				processData: false,
 				success: function (data) {
-					alert("Berhasil")
-					document.getElementById('#myTable').style.display = "none";
-					$('#ton').val("preview");
-					$('#sub').prop('disabled', true);
-					$('#file').val("");
-					$('#dokumen').val("");
+					var str = data.replace(/\"/g,"");
+					if (str == "Data berhasil dimasukkan"){
+						alert(str);
+						update("Student_exchange")
+					} else {
+						document.getElementById('#alert_excel').style.display = 'block';
+						alert = document.getElementById('#msg_excel');
+						alert.innerHTML = '<strong>'+str+'</strong>';
+					}
+
 
 				},
 				error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -102,7 +106,7 @@ $(document).ready(function () {
 		} else {
 			$("#body").empty();
 			$.ajax({
-				url: BASE_URL + "Short_term/read",
+				url: BASE_URL + "Student_Exchange/read",
 				method: "POST",
 				data: new FormData(this),
 				contentType: false,
