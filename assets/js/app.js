@@ -17,6 +17,9 @@ $(document).ready(function ($) {
         if(id != 'SHORT TERM'){
             $('.collap').collapse("hide");
         }
+        if(id != 'STUDENT EXCHANGE'){
+            $('.collap2').collapse("hide");
+        }
         update(nav, id);
     });
 });
