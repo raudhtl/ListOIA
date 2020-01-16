@@ -26,14 +26,18 @@ class Short_term extends CI_Controller
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-
+	function __construct(){
+		parent::__construct();
+		$this->load->library(array('form_validation'));
+		$this->load->helper(array('url','form'));
+		$this->load->model('M_Upload'); //call model
+	}
 	// TODO 1
 	public function index()
 	{
 		$this->load->model('M_Upload');
 		$data['mhs'] = $this->M_Upload->get_all_mhs("short_term", $this->session->userdata('ses_fakultas'))->result();
 		$content = array('content' => $this->load->view('v_list', $data, true));
-		$this->load->view('v_menu', $content);
 	}
 
 	public function list()
@@ -412,7 +416,7 @@ class Short_term extends CI_Controller
 						if ($index == 1 || $index == 14 || $index == 15) {
 							if (preg_match('#^(\d+)/(\d+)/(\d+)$#', $value)) {
 								$date = explode("/", $value);
-								if (checkdate($date[1], $date[0], $date[2])) {
+								if (checkdate( $date[0], $date[1], $date[2])) {
 									$cells[$C] = $value;
 								} else {
 									$cells[$C] = "WRONG FORMAT";
@@ -478,7 +482,7 @@ class Short_term extends CI_Controller
 							$cells[$C] =  $value;
 						}
 						$C++;
-	    		}
+	    			}
 					if($this->M_Upload->program_exists($program, $this->session->userdata('ses_fakultas'))){
 							$id_program =$this->M_Upload->get_id_program($program, $this->session->userdata('ses_fakultas'));
 							if ($this->check_db("mahasiswa", "email", $email, $id_program)){
@@ -489,7 +493,7 @@ class Short_term extends CI_Controller
 							}
 					}
 					if(isset($_FILES['dokumen']['name'][$i])){
-							$cells[$C] = $_FILES['dokumen']['name'][$i];
+						$cells[$C] = $_FILES['dokumen']['name'][$i];
 					}
 					else{
 						$cells[$C] = NULL;

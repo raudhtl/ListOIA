@@ -11,16 +11,6 @@ $("#form1").validate({
 	rules: {
 		nama: "required",
 		tgl_lahir: "required",
-		no_passport: {
-			remote: { url : "<?php echo base_url('index.php/Short_term/check_passport')?>",
-								type : "post"
-							}
-		},
-		email: {
-			remote: { url : "<?php echo base_url('index.php/Short_term/check_email')?>",
-								type : "post"
-							}
-		},
 		jurusan_asal: "required",
 		fakultas_asal: "required",
 		negara_asal: "required",
@@ -103,12 +93,13 @@ $(document).ready(function () {
 					update("Short_term")
 				} else {
 					document.getElementById('#alert2').style.display = 'block';
-					$('#msg').html('<strong>'+str+'</strong>');
+					alert = document.getElementById('#msg');
+					alert.innerHTML = '<strong>'+str+'</strong>';
 				}
     	},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				alert("Status: " + textStatus);
-				alert("Error: " + errorThrown);
+				swal("Status: " + textStatus, "erro");
+				swal("Error: " + errorThrown, "error");
 			},
 		});
 	});
@@ -129,8 +120,8 @@ $(document).ready(function () {
 				update("Short_term");	
     	},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				alert("Status: " + textStatus);
-				alert("Error: " + errorThrown);
+				alert("Status: " + textStatus, "error");
+				alert("Error: " + errorThrown), "error";
 			},
 		});
 	});
@@ -182,7 +173,7 @@ $(document).ready(function () {
 				cache: false,
 				processData: false,
 				success: function (data) {
-					alert("Berhasil")
+					swal("Berhasil", "succes")
 					document.getElementById('#myTable').style.display = "none";
 					$('#ton').val("preview");
 					$('#sub').prop('disabled', true);
@@ -191,8 +182,8 @@ $(document).ready(function () {
 
 				},
 				error: function (XMLHttpRequest, textStatus, errorThrown) {
-					alert("Status: " + textStatus);
-					alert("Error: " + errorThrown);
+					alert("Status: " + textStatus, "error");
+					alert("Error: " + errorThrown, "error");
 				}
 
 			});
