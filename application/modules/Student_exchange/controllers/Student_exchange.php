@@ -43,7 +43,12 @@ class Student_exchange extends CI_Controller
 		$content = array('content' => $this->load->view('v_list', $data, true));
 		$this->load->view('v_menu', $content);
 	}
-
+	public function list()
+	{
+		$data['mhs'] = $this->M_Student_Exchange->get_all_mhs("student_exchange", $this->session->userdata('ses_fakultas'))->result();
+		$content = $this->load->view('v_list', $data, true);
+		$this->output->set_output($content);
+	}
 	public function daftar()
 	{
 		$data['mhs'] = $this->M_Student_Exchange->get_all_mhs("student_exchange", $this->session->userdata('ses_fakultas'))->result();

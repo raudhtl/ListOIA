@@ -98,8 +98,8 @@ $(document).ready(function () {
 				}
     	},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				alert("Status: " + textStatus);
-				alert("Error: " + errorThrown);
+				swal("Status: " + textStatus, "erro");
+				swal("Error: " + errorThrown, "error");
 			},
 		});
 	});
@@ -120,8 +120,8 @@ $(document).ready(function () {
 				update("Short_term");	
     	},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				alert("Status: " + textStatus);
-				alert("Error: " + errorThrown);
+				alert("Status: " + textStatus, "error");
+				alert("Error: " + errorThrown), "error";
 			},
 		});
 	});
@@ -173,7 +173,7 @@ $(document).ready(function () {
 				cache: false,
 				processData: false,
 				success: function (data) {
-					alert("Berhasil")
+					swal("Berhasil", "succes")
 					document.getElementById('#myTable').style.display = "none";
 					$('#ton').val("preview");
 					$('#sub').prop('disabled', true);
@@ -182,8 +182,8 @@ $(document).ready(function () {
 
 				},
 				error: function (XMLHttpRequest, textStatus, errorThrown) {
-					alert("Status: " + textStatus);
-					alert("Error: " + errorThrown);
+					alert("Status: " + textStatus, "error");
+					alert("Error: " + errorThrown, "error");
 				}
 
 			});

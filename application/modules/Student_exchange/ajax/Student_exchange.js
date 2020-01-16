@@ -47,7 +47,7 @@ $(document).ready(function () {
 			processData: false,
 			success: function(data) {
 				var str = data.replace(/\"/g,"");
-				alert(str);
+				swal(str, "success");
 				if (str == "Data berhasil dimasukkan"){
 					update("Student_exchange")
 				} else {
@@ -57,8 +57,8 @@ $(document).ready(function () {
 				}
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				alert("Status: " + textStatus);
-				alert("Error: " + errorThrown);
+				alert("Status: " + textStatus, "error");
+				alert("Error: " + errorThrown, "error");
 			},
 		});
 	});
@@ -87,7 +87,7 @@ $(document).ready(function () {
 				success: function (data) {
 					var str = data.replace(/\"/g,"");
 					if (str == "Data berhasil dimasukkan"){
-						alert(str);
+						swal(str, "success");
 						update("Student_exchange")
 					} else {
 						document.getElementById('#alert_excel').style.display = 'block';
@@ -98,8 +98,8 @@ $(document).ready(function () {
 
 				},
 				error: function (XMLHttpRequest, textStatus, errorThrown) {
-					alert("Status: " + textStatus);
-					alert("Error: " + errorThrown);
+					alert("Status: " + textStatus, "error");
+					alert("Error: " + errorThrown, "error");
 				}
 
 			});
