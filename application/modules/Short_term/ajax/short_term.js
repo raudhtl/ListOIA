@@ -158,7 +158,7 @@ $(document).ready(function () {
 			success: function (result) {
 				console.log("success", result);
 	
-				$("#container-content-2").html(result);
+				$("#container-content").html(result);
 				CheckProgram(program);
 				//navText(data.nav);
 			},
