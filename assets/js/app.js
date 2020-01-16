@@ -14,6 +14,9 @@ $(document).ready(function ($) {
         $(this).addClass('active');
         nav = $(this).data("val");
         id = $(this).data("id");
+        if(id != 'SHORT TERM'){
+            $('.collapse').collapse("hide");
+        }
         update(nav, id);
     });
 });
@@ -36,7 +39,6 @@ function update(z, id) {
     $.ajax({
         type: "POST",
         url: BASE_URL + z,
-        data:{lefttab:id},
         success: process,
         error: function (data) {
             console.log("error", data);
