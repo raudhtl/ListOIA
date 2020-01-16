@@ -15,7 +15,7 @@ $(document).ready(function ($) {
         nav = $(this).data("val");
         id = $(this).data("id");
         if(id != 'SHORT TERM'){
-            $('.collapse').collapse("hide");
+            $('.collap').collapse("hide");
         }
         update(nav, id);
     });
