@@ -98,6 +98,13 @@
 				  </a>
 			  </li>
 		  </ul>
+		  <?php
+		  if($this->session->userdata('ses_rule') == 1){
+		  	?>
+		  	
+		  <?php
+		  }
+		  ?>
       </ul>
     </div>
   </div>

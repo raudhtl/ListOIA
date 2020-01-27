@@ -35,7 +35,6 @@ class Short_term extends CI_Controller
 	// TODO 1
 	public function index()
 	{
-		$this->load->model('M_Upload');
 		$data['mhs'] = $this->M_Upload->get_all_mhs("short_term", $this->session->userdata('ses_fakultas'))->result();
 		$content = array('content' => $this->load->view('v_list', $data, true));
 	}
@@ -68,7 +67,6 @@ class Short_term extends CI_Controller
 
 	 public function edit_program()
 	 {
-	 	$this->load->model('M_Upload');
 	 	$val = $this->input->post('program');
 	 	$edit['program'] = $val;
 	 	$content = $this->load->view('v_edit_program', $edit, true);
@@ -77,18 +75,17 @@ class Short_term extends CI_Controller
 
 	public function download_doc()
 	{
-		$nama = $this->input->post('name');
-		$doc = $this->input->post('doc_name');
-		force_download($nama . ".zip", file_get_contents('/uploads/' . $doc));
+		$doc = $this->uri->segment(3);
+		force_download($doc . ".zip", file_get_contents('/uploads/' . $doc));
+		echo json_encode($doc);
 	}
 
 	public function download_doc_all()
 	{
-		$this->load->model('M_Upload');
 		$mhs = $this->M_Upload->get_all_mhs("short_term", $this->session->userdata('ses_fakultas'));
 		if ($mhs->num_rows() > 0) {
 			foreach ($mhs->result() as $data) {
-				$this->zip->read_file(FCPATH . '/uploads/' . $data->dokumen, $data->nama . $data->id . ".zip");
+				$this->zip->read_file(FCPATH . '/uploads/' .$data->dokumen);
 			}
 		}
 		$this->zip->download("short_term.zip");
@@ -174,6 +171,7 @@ class Short_term extends CI_Controller
 					$negara_tujuan=$this->input->post('negara_tujuan');
 					$nama_program=$this->input->post('program');
 					$id_fakultas = $this->session->userdata('ses_fakultas');
+					$error = false;
 					$this->load->Model('M_Upload');
 					if ($this->M_Upload->program_exists($nama_program, $id_fakultas) === FALSE){
 						$jenis_program = $this->input->post('jenis_program');
@@ -196,54 +194,56 @@ class Short_term extends CI_Controller
 							'tahun' => $tahun_program
 						);
 						$this->M_Upload->insert_data('short_term', $data_short_term);
-					}else{
+					} else{
 						$id_program = $this->M_Upload->get_id_program($this->input->post('program'), $this->session->userdata('ses_fakultas'));
 						if ($this->check_db("mahasiswa", "email", $email, $id_program) == true){
 							$msg = "Duplikat email untuk program yang sama";
+							$error = true;
 						} elseif ($this->check_db("mahasiswa", "no_passport", $no_passport, $id_program) == true) {
 							$msg = "Duplikat no passport untuk program yang sama";
-						} else {
-							$config['upload_path'] = './uploads/temp';
-							$config['allowed_types'] = 'pdf|jpeg|jpg';
-							$config['encrypt_name'] = TRUE;
-							// $upload = "User_file";
-							for($i=0; $i<3; $i++){
-								$_FILES['doc']['name'] = $_FILES['dokumen'.$i]['name'];
-								$_FILES['doc']['type'] = $_FILES['dokumen'.$i]['type'];
-								$_FILES['doc']['tmp_name'] = $_FILES['dokumen'.$i]['tmp_name'];
-								$_FILES['doc']['error'] = $_FILES['dokumen'.$i]['error'];
-								$_FILES['doc']['size'] = $_FILES['dokumen'.$i]['size'];
-							  $this->load->library('upload', $config);
-								if ( !($this->upload->do_upload("doc")))
-								{
-									$error = array('error' => $this->upload->display_errors());
-									$msg = $error;
-								}
+							$error = true;
+						}
+					}
+					if($error !== true){
+						$config['upload_path'] = './uploads/temp';
+						$config['allowed_types'] = 'pdf|jpeg|jpg';
+						$config['encrypt_name'] = TRUE;
+						// $upload = "User_file";
+						for($i=0; $i<3; $i++){
+							$_FILES['doc']['name'] = $_FILES['dokumen'.$i]['name'];
+							$_FILES['doc']['type'] = $_FILES['dokumen'.$i]['type'];
+							$_FILES['doc']['tmp_name'] = $_FILES['dokumen'.$i]['tmp_name'];
+							$_FILES['doc']['error'] = $_FILES['dokumen'.$i]['error'];
+							$_FILES['doc']['size'] = $_FILES['dokumen'.$i]['size'];
+							$this->load->library('upload', $config);
+							if ( !($this->upload->do_upload("doc")))
+							{
+								$error = array('error' => $this->upload->display_errors());
+								$msg = $error;
 							}
-								$this->load->library('zip');
-								$this->zip->read_dir('./uploads/temp/');
-								$this->zip->archive('./uploads/'.$nama.'_'.$nama_program.'.zip');
-								$filename = $nama.'_'.$nama_program.'.zip';
-								$this->load->helper("file");
-								delete_files('./uploads/temp/');
-								$data_mhs = array(
-				        	'nama' => $nama,
-				        	'email' => $email,
-				        	'univ_asal' => $univ_asal,
-									'negara_asal' => $negara_asal,
-									'no_passport' => $no_passport,
-									'univ_tujuan' => $univ_tujuan,
-									'fakultas_asal' => $fakultas_asal,
-									'jurusan_asal' => $jurusan_asal,
-									'negara_tujuan' => $negara_tujuan,
-									'id_program' => $id_program,
-									'dokumen' => $filename
-								);
-								$status = $this->M_Upload->insert_data('mahasiswa', $data_mhs);
-								if ($status !== "failed"){
-									$msg = "Data berhasil dimasukkan";
-								}
-
+						}
+						$this->load->library('zip');
+						$this->zip->read_dir('./uploads/temp/');
+						$this->zip->archive('./uploads/'.$nama.'_'.$nama_program.'.zip');
+						$filename = $nama.'_'.$nama_program.'.zip';
+						$this->load->helper("file");
+						delete_files('./uploads/temp/');
+						$data_mhs = array(
+							'nama' => $nama,
+							'email' => $email,
+							'univ_asal' => $univ_asal,
+							'negara_asal' => $negara_asal,
+							'no_passport' => $no_passport,
+							'univ_tujuan' => $univ_tujuan,
+							'fakultas_asal' => $fakultas_asal,
+							'jurusan_asal' => $jurusan_asal,
+							'negara_tujuan' => $negara_tujuan,
+							'id_program' => $id_program,
+							'dokumen' => $filename
+						);
+						$status = $this->M_Upload->insert_data('mahasiswa', $data_mhs);
+						if ($status !== "failed"){
+							$msg = "Data berhasil dimasukkan";
 						}
 					}
 					echo json_encode($msg);

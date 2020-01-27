@@ -69,8 +69,8 @@
 
 <body class="">
   <?php
-  $this->load->view("_partials_dashboard/left_nav");
-  $this->load->view("_partials_dashboard/content");
+	 $this->load->view("_partials_dashboard/left_nav");
+	 $this->load->view("_partials_dashboard/content");
   ?>
 
 </body>

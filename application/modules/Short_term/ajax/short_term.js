@@ -6,7 +6,24 @@ function nextTab(tab) {
 		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
 	}
 }
+function download_doc(doc){
+	alert(doc)
+	$.ajax({
+		url: BASE_URL+"Short_term/download_doc",
+		method: "POST",
+		data: {doc : doc},
+		contentType: false,
+		cache: false,
+		processData: false,
+		success: function(data) {
 
+		},
+		error: function (XMLHttpRequest, textStatus, errorThrown) {
+			swal("Terjadi kesalahan", "Status: " + textStatus, "error");
+			swal("Terjadi kesalahan", "Error: " + errorThrown), "error";
+		},
+	});
+}
 $("#form1").validate({
 	rules: {
 		nama: "required",
@@ -90,10 +107,11 @@ $(document).ready(function () {
 				var str = data.replace(/\"/g,"");;
 				if (str == "Data berhasil dimasukkan"){
 					swal("Berhasil", str, "success");
-					update("Short_term")
+					update("Short_term/list")
 				} else {
-					document.getElementById('#alert2').style.display = 'block';
-					alert = document.getElementById('#msg');
+					swal("Terjadi Kesalahan", str, "error");
+					$('#ton').val("preview");
+					$('#sub').prop('disabled', true);
 					alert.innerHTML = '<strong>'+str+'</strong>';
 				}
     	},
@@ -159,7 +177,14 @@ $(document).ready(function () {
 			}
 		});
 	});
-
+	$( "#file" ).change(function() {
+		$('#sub').prop('disabled', true);
+		$('#ton').val("preview");
+	});
+	$( "#dokumen" ).change(function() {
+		$('#sub').prop('disabled', true);
+		$('#ton').val("preview");
+	});
 	$('#import_form').on('submit', function (event) {
 		document.getElementById('#alert').style.display = 'none';
 		event.preventDefault();

@@ -17,6 +17,7 @@ class M_login extends CI_Model
 			$this->session->set_userdata('ses_nama_fakultas', $data['nama_fakultas']);
 			$this->session->set_userdata('ses_username_fakultas', $data['username']);
 			$this->session->set_userdata('ses_username', $data['email']);
+			$this->session->set_userdata('ses_rule', $data['id_rule']);
 
 			//redirect ke halaman dashboard
 			redirect(site_url('dashboard'));

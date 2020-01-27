@@ -12,7 +12,7 @@
 							<a href="<?php echo base_url("index.php/Short_term/download"); ?>"> Download daftar Mahasiswa</a>
 						</div>
 						<div class="col-auto">
-							<a href="<?php echo base_url("index.php/Short_term/download_doc"); ?>"> Download dokumen</a>
+							<a href="<?php echo base_url("index.php/Short_term/download_doc_all"); ?>"> Download dokumen</a>
 						</div>
 					</div>
 				</div>
@@ -62,8 +62,7 @@
 								<td class="mb-0 text-sm"><?php echo $m->tujuan ?></td>
 								<td class="mb-0 text-sm"><?php echo $m->tgl_mulai ?></td>
 								<td class="mb-0 text-sm"><?php echo $m->tgl_akhir ?></td>
-								<td class="mb-0 text-sm"><a href="#" onclick="download("
-										1dc21581101ab1f2b06a936b02bc3b81.zip", "tes" )"><?php echo $m->dokumen ?></a></td>
+								<td class="mb-0 text-sm"><a href="<?php echo base_url("index.php/Short_term/download_doc/$m->dokumen"); ?>">tes</a></td>
 							</tr>
 
 							<?php  } ?>
