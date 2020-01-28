@@ -90,7 +90,7 @@ $(document).ready(function () {
 				var str = data.replace(/\"/g,"");;
 				if (str == "Data berhasil dimasukkan"){
 					swal("Berhasil", str, "success");
-					update("Short_term")
+					update("Short_term/upload")
 				} else {
 					document.getElementById('#alert2').style.display = 'block';
 					alert = document.getElementById('#msg');
@@ -117,7 +117,7 @@ $(document).ready(function () {
 				var str = data.replace(/\"/g,"");
 				// alert(str);
 				swal("Berhasil", str, "success");
-				update("Short_term");	
+				update("Short_term/edit");	
     	},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				alert("Status: " + textStatus, "error");
