@@ -19,7 +19,7 @@
           </div>
         </a>
         <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-            <a href="<?php echo site_url() ?>/login/logout" class="dropdown-item">
+            <a href="<?php echo site_url() ?>/logout" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>
@@ -58,7 +58,7 @@
       <!-- Navigation -->
       <ul id="grupmenu" class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link menu-app active" data-id="DASHBOARD" data-val="dashboard/beranda"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+          <a class="nav-link menu-app active" data-id="DASHBOARD" data-val="Dashboard/beranda"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
           </a>
         </li>
 

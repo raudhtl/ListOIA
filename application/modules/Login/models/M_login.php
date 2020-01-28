@@ -8,7 +8,7 @@ class M_login extends CI_Model
 
 		//cek username dan password
 		$pass =  hash('SHA256', $password);
-		$query = $this -> db ->query ("select * from operator, fakultas where password = '$password' and email = '$username' and fakultas.id = operator.id_fakultas");
+		$query = $this -> db ->query ("select * from operator, fakultas where password = '$pass' and email = '$username' and fakultas.id = operator.id_fakultas");
 
 		if ($query->num_rows() == 1) {
 			$data = $query->row_array();

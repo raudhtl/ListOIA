@@ -40,7 +40,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/img-01.jpg');">
 			<div class="wrap-login100 p-b-30 wider">
-				<form class="login100-form validate-form" method="post" action="<?php echo base_url('index.php/Login/auth'); ?>">
+				<form class="login100-form validate-form" method="post" action="<?php echo base_url('index.php/login/auth'); ?>">
 					<div class="login100-form-avatar">
 						<img src="<?php echo base_url()?>assets/images/oia-logo.jpeg" alt="AVATAR">
 					</div>
