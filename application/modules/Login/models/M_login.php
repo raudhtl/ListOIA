@@ -8,7 +8,7 @@ class M_login extends CI_Model
 
 		//cek username dan password
 		$pass =  hash('SHA256', $password);
-		$query = $this -> db ->query ("select * from operator, fakultas where password = '$password' and email = '$username' and fakultas.id = operator.id_fakultas");
+		$query = $this -> db ->query ("select * from operator, fakultas where password = '$pass' and email = '$username' and fakultas.id = operator.id_fakultas");
 
 		if ($query->num_rows() == 1) {
 			$data = $query->row_array();
@@ -17,6 +17,7 @@ class M_login extends CI_Model
 			$this->session->set_userdata('ses_nama_fakultas', $data['nama_fakultas']);
 			$this->session->set_userdata('ses_username_fakultas', $data['username']);
 			$this->session->set_userdata('ses_username', $data['email']);
+			$this->session->set_userdata('ses_rule', $data['id_rule']);
 
 			//redirect ke halaman dashboard
 			redirect(site_url('dashboard'));

@@ -29,6 +29,7 @@
   <!-- Icons -->
   <link href="<?php echo base_url() ?>assets/themes/argon/assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
   <link href="<?php echo base_url() ?>assets/themes/argon/assets/js/plugins/fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- CSS Files -->
 
   <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet" />
@@ -64,13 +65,24 @@
     .submenuapp{
       margin-left: 2.5rem;
     }
+  	.btn-add{
+		background-color: DodgerBlue;
+		border: none;
+		color: white;
+		padding: 12px 16px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+  .btn-add:hover {
+	  background-color: RoyalBlue;
+  }
   </style>
 </head>
 
 <body class="">
   <?php
-  $this->load->view("_partials_dashboard/left_nav");
-  $this->load->view("_partials_dashboard/content");
+	 $this->load->view("_partials_dashboard/left_nav");
+	 $this->load->view("_partials_dashboard/content");
   ?>
 
 </body>

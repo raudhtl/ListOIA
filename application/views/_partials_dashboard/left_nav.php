@@ -98,6 +98,15 @@
 				  </a>
 			  </li>
 		  </ul>
+		  <?php
+		  if($this->session->userdata('ses_rule') == 1){
+		  	?>
+			  <li data-toggle="collapse"  class="collapsed">
+				  <a class="nav-link menu-app" data-id="Kelola Akun" data-val="Manage_account" ><i class="ni ni-planet text-blue"></i> Kelola Akun</a>
+			  </li>
+		  <?php
+		  }
+		  ?>
       </ul>
     </div>
   </div>
