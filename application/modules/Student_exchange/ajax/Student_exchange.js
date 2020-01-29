@@ -1,10 +1,10 @@
 function nextTab(tab) {
 	$("#form1").validate();
-	// if ($("#form1").valid()) {
+	if ($("#form1").valid()) {
 		$("#"+tab).removeClass("disabled");
 		$('#'+tab).css('pointer-events', '');
 		$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
-	// }
+	}
 }
 
 $("#form1").validate({
@@ -34,7 +34,14 @@ $("#form1").validate({
 function prevTab(tab) {
 	$('.nav-tabs a[href="#tabs-' + tab + '"]').tab('show');
 }
-
+$( "#file" ).change(function() {
+	$('#sub').prop('disabled', true);
+	$('#ton').val("preview");
+});
+$( "#dokumen" ).change(function() {
+	$('#sub').prop('disabled', true);
+	$('#ton').val("preview");
+});
 $(document).ready(function () {
 	$('#form_se').on('submit', function (event) {
 		event.preventDefault();
@@ -47,8 +54,8 @@ $(document).ready(function () {
 			processData: false,
 			success: function(data) {
 				var str = data.replace(/\"/g,"");
-				swal(str, "success");
 				if (str == "Data berhasil dimasukkan"){
+					swal(str, "success");
 					update("Student_exchange")
 				} else {
 					document.getElementById('#alert2').style.display = 'block';
@@ -77,8 +84,9 @@ $(document).ready(function () {
 		event.preventDefault();
 		var empty = 1;
 		if ($('#ton').val() == "submit") {
+			document.getElementById('#alert_excel').style.display = 'none';
 			$.ajax({
-				url: BASE_URL + "Student_Exchange/insert_excel",
+				url: BASE_URL + "Student_exchange/insert_excel",
 				method: "POST",
 				data: new FormData(this),
 				contentType: false,
@@ -90,8 +98,9 @@ $(document).ready(function () {
 						swal(str, "success");
 						update("Student_exchange")
 					} else {
-						document.getElementById('#alert_excel').style.display = 'block';
-						alert = document.getElementById('#msg_excel');
+						swal("Terjadi Kesalahan", str, "error");
+						$('#ton').val("preview");
+						$('#sub').prop('disabled', true);
 						alert.innerHTML = '<strong>'+str+'</strong>';
 					}
 

@@ -12,15 +12,13 @@ class Dashboard extends CI_Controller
 	{
 		//cek session username
 		if ($this->session->userdata('ses_username') == '') {
-
 			//set notifikasi
 			$this->session->set_flashdata('sukses', 'You have not login...');
-
 			//alihkan ke halaman login
 			redirect(site_url('login'));
 		} else {
-			$data['chart'] = $this->M_Dashboard->get_years();
-			$data['bar'] = $this->M_Dashboard->get_program();
+			$data['chart'] = $this->M_Dashboard->get_years_fakultas($this->session->userdata('ses_fakultas'));
+			$data['bar'] = $this->M_Dashboard->get_program_fakultas($this->session->userdata('ses_fakultas'));
 			$content = array('content' => $this->load->view('dashboard', $data, true));
 			$this->load->view('main_dashboard', $content);
 		}

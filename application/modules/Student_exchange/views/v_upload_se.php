@@ -713,7 +713,7 @@
   					</div>
   					<div class="form-group">
   						<label for="nama">Masukkan Dokumen (.zip/.rar)</label>
-  						<input type='file' id="dokumen" class="form-control" name='dokumen[]' multiple> <br />
+  						<input  type='file' id="dokumen" class="form-control" name='dokumen[]' multiple> <br />
   					</div>
   					<input id="ton" type="text" value="preview" style="display:none;">
   					<button name="preview" type="submit" class=" btn btn-primary">Preview</button>
