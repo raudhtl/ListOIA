@@ -1,12 +1,8 @@
 <div class="col-12 align-items-center">
     <div class="row">
-
         <div class="col-10">
-
-
             <div class="card-body">
                 <form id="form" method="post" enctype="multipart/form-data" action="<?php echo base_url('index.php/Short_term/update'); ?>">
-
                     <div class="form-group">
                         <label for="program">Program :</label>
                         <input type="text" name="program" placeholder="<?php echo $program; ?>" class="form-control" readonly="readonly" value="<?php echo $program; ?>">
@@ -23,6 +19,14 @@
                         <label for="tahun">Tahun :</label>
                         <input type="year" name="tahun" placeholder="Masukkan tahun program :" class="form-control" required>
                     </div>
+                    <div class="form-group">
+					 	<label for="semester">Semester :</label>
+						<select id="semester" name="semester" class="form-control" required>
+							<option value="" disabled selected>Pilih Semetser</option>
+							<option value="genap">Genap</option>
+							<option value="ganjil">Ganjil</option>
+						</select>
+					</div>
                     <div class="form-group">
                         <label for="tujuan">Tujuan kunjungan :</label>
                         <select id="tujuan" name="tujuan_kunjungan" class="form-control" required>

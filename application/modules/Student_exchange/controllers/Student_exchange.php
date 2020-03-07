@@ -34,20 +34,12 @@ class Student_exchange extends CI_Controller
 		$this->load->helper(array('url','form'));
 		$this->load->model('M_Student_Exchange'); //call model
 	}
-
-
 	// TODO 1
 	public function index()
 	{
 		$data['mhs'] = $this->M_Student_Exchange->get_all_mhs("student_exchange", $this->session->userdata('ses_fakultas'))->result();
-		$content = array('content' => $this->load->view('v_list', $data, true));
-		$this->load->view('v_menu', $content);
-	}
-	public function list()
-	{
-		$data['mhs'] = $this->M_Student_Exchange->get_all_mhs("student_exchange", $this->session->userdata('ses_fakultas'))->result();
 		$content = $this->load->view('v_list', $data, true);
-		$this->output->set_output($content);
+        $this->output->set_output($content);
 	}
 	public function daftar()
 	{
@@ -59,7 +51,7 @@ class Student_exchange extends CI_Controller
 	// TODO 1
 	public function upload()
 	{
-		$content = $this->load->view('v_upload_se',"", true);
+		$content = $this->load->view('v_upload_se_2',"", true);
 		$this->output->set_output($content);
 
 	}
@@ -82,8 +74,91 @@ class Student_exchange extends CI_Controller
 		}
 		$this->zip->download("short_term.zip");
 	}
-
-	public function download()
+    public function edit_mahasiswa()
+    {
+        $val = $this->input->post('mhs');
+        $edit['mhs'] = $val;
+        $content = $this->load->view('v_edit_mhs_se', $edit, true);
+        $this->output->set_output($content);
+    }
+    public function delete_mahasiswa(){
+	    $id_mhs = $this->input->post('id_mhs');
+        $id_program = $this->input->post('id_program');
+        $doc = $this->input->post('document');
+        $this->M_Student_Exchange->delete_mhs($id_program, "program", "id_program");
+        $this->M_Student_Exchange->delete_mhs($id_program, "student_exchange", "id_program");
+        $this->M_Student_Exchange->delete_mhs($id_mhs, "mahasiswa", "id_mhs");
+        $this->load->helper("file");
+        unlink("./uploads/"+$doc);
+    }
+    public function update_mhs(){
+	    $id = $this->input->post('id');
+        $nama=$this->input->post('nama');
+        $email=$this->input->post('email');
+        $tgl_lahir=$this->input->post('tgl_lahir');
+        $fakultas_asal = $this->input->post('fakultas_asal');
+        $jurusan_asal = $this->input->post('jurusan_asal');
+        $univ_asal=$this->input->post('univ_asal');
+        $negara_asal=$this->input->post('negara_asal');
+        $no_passport=$this->input->post('no_passport');
+        $fakultas_tujuan = $this->input->post('fakultas_tujuan');
+        $jurusan_tujuan=$this->input->post('jurusan_tujuan');
+        $univ_tujuan=$this->input->post('univ_tujuan');
+        $negara_tujuan=$this->input->post('negara_tujuan');
+        $id_fakultas = $this->session->userdata('ses_fakultas');
+        $jenis_program = $this->input->post('jenis_program');
+        $tgl_mulai = $this->input->post('tgl_mulai');
+        $tgl_akhir = $this->input->post('tgl_akhir');
+        $tahun_program = $this->input->post('tahun');
+        $semester = $this->input->post('semester');
+        $id_program = $this->input->post('id_program');
+        //if($this->M_Student_Exchange->mahasiswa_exists($no_passport, $univ_tujuan, $jurusan_tujuan, $univ_asal,  $jurusan_asal, $tahun_program, $semester) == true){
+        //	$msg = "Duplikat entry";
+        //	} else {
+        $data_program = array(
+            'jenis_program' => $jenis_program,
+            'tgl_mulai' => $tgl_mulai,
+            'tgl_akhir' => $tgl_akhir,
+            'id_fakultas' => $id_fakultas,
+            'class' => 'se'
+        );
+        $this->M_Student_Exchange->update_data_mhs('id_program', 'program', $id_program, $data_program);
+        $data_student_exchange = array(
+            'id_program' => $id_program,
+            'tahun' => $tahun_program,
+            'semester' => $semester
+        );
+        $this->M_Student_Exchange->update_data_mhs('id_program', 'student_exchange', $id_program, $data_student_exchange);
+        //$this->load->library('zip');
+        //$this->zip->read_dir('./uploads/temp/');
+        //$this->zip->archive('./uploads/'.$email.'_se.zip');
+        //$filename = $nama.'_'.$id_fakultas.'_se.zip';
+        //$this->load->helper("file");
+        //delete_files('./uploads/temp/');
+        $data_mhs = array(
+            'nama' => $nama,
+            'email' => $email,
+            'univ_asal' => $univ_asal,
+            'negara_asal' => $negara_asal,
+            'fakultas_asal' => $fakultas_asal,
+            'jurusan_asal' => $jurusan_asal,
+            'no_passport' => $no_passport,
+            'univ_tujuan' => $univ_tujuan,
+            'fakultas_tujuan' => $fakultas_tujuan,
+            'jurusan_tujuan' => $jurusan_tujuan,
+            'negara_tujuan' => $negara_tujuan,
+            'id_program' => $id_program
+        );
+        $status = $this->M_Student_Exchange->update_data_mhs('id_mhs', 'mahasiswa', $id,  $data_mhs);
+        if ($status !== "failed"){
+            $msg = "Data berhasil diperbaharui";
+        } else {
+            $msg = $status;
+        }
+        //}
+        echo json_encode($msg);
+    }
+    public function download()
 	{
 		$spreadsheet = new Spreadsheet();
 		$sheet = $spreadsheet->getActiveSheet();
@@ -101,9 +176,10 @@ class Student_exchange extends CI_Controller
 		$sheet->setCellValue('J1', 'Nama Program');
 		$sheet->setCellValue('K1', 'Jenis Program');
 		$sheet->setCellValue('L1', 'Tahun');
-		$sheet->setCellValue('M1', 'Tujuan Kunjungan');
-		$sheet->setCellValue('N1', 'Tanggal Awal Program');
-		$sheet->setCellValue('O1', 'Tanggal Akhir Program');
+      	$sheet->setCellValue('M1', 'Semester');
+		$sheet->setCellValue('N1', 'Tujuan Kunjungan');
+		$sheet->setCellValue('O1', 'Tanggal Awal Program');
+		$sheet->setCellValue('P1', 'Tanggal Akhir Program');
 		if ($mhs->num_rows() > 0) {
 			$i = 2;
 			foreach ($mhs->result() as $data) {
@@ -118,17 +194,15 @@ class Student_exchange extends CI_Controller
 				$sheet->setCellValue('I' . $i, $data->univ_tujuan);
 				$sheet->setCellValue('J' . $i, $data->nama_program);
 				$sheet->setCellValue('K' . $i, $data->jenis_program);
-				$sheet->setCellValue('L' . $i, $data->tahun);
-				$sheet->setCellValue('M' . $i, $data->tujuan);
-				$sheet->setCellValue('N' . $i, $data->tgl_mulai);
-				$sheet->setCellValue('O' . $i++, $data->tgl_akhir);
+				$sheet->setCellValue('M' . $i, $data->tahun);
+                $sheet->setCellValue('N' . $i, $data->semester);
+				$sheet->setCellValue('O' . $i, $data->tujuan);
+				$sheet->setCellValue('P' . $i, $data->tgl_mulai);
+				$sheet->setCellValue('Q' . $i++, $data->tgl_akhir);
 			}
 		}
 		$writer = new Xlsx($spreadsheet);
-
-
 		$filename = "ShortTerm";
-
 		header('Content-Type: application/vnd.ms-excel');
 		header('Content-Disposition: attachment;filename="' . $filename . '.xlsx"');
 		header('Cache-Control: max-age=0');
@@ -136,11 +210,9 @@ class Student_exchange extends CI_Controller
 
 		$writer->save('php://output');
 	}
-	public function get_program()
+	public function get_mhs()
 	{
-		$this->load->model('M_Upload');
-		$id_short_term = $this->M_Upload->get_id_program($this->input->post('nama'), $this->session->userdata('ses_fakultas'));
-		$data = $this->M_Upload->get_program($id_short_term);
+		$data = $this->M_Student_Exchange->get_mhs($this->input->post('id'), $this->session->userdata('ses_fakultas'));
 		echo json_encode($data);
 	}
 	public function check_db($table, $column, $value, $id_program)
@@ -168,9 +240,9 @@ class Student_exchange extends CI_Controller
 		$tgl_mulai = $this->input->post('tgl_mulai');
 		$tgl_akhir = $this->input->post('tgl_akhir');
 		$tahun_program = $this->input->post('tahun');
-		$var = $this->M_Student_Exchange->mahasiswa_exists($no_passport, $univ_tujuan, $jurusan_tujuan, $univ_asal,  $jurusan_asal, $tahun_program);
+      	$semester = $this->input->post('semester');
 //		$this->firephp->log($var);
-		if($this->M_Student_Exchange->mahasiswa_exists($no_passport, $univ_tujuan, $jurusan_tujuan, $univ_asal,  $jurusan_asal, $tahun_program) == true){
+		if($this->M_Student_Exchange->mahasiswa_exists($no_passport, $univ_tujuan, $jurusan_tujuan, $univ_asal,  $jurusan_asal, $tahun_program, $semester) == true){
 			$msg = "Duplikat entry";
 		} else {
 			$data_program = array(
@@ -183,7 +255,8 @@ class Student_exchange extends CI_Controller
 			$id_program = $this->M_Student_Exchange->insert_data_get_key('program', $data_program);
 			$data_student_exchange = array(
 				'id_program' => $id_program,
-				'tahun' => $tahun_program
+				'tahun' => $tahun_program,
+              	'semester' => $semester
 			);
 			$this->M_Student_Exchange->insert_data('student_exchange', $data_student_exchange);
 			$config['upload_path'] = './uploads/temp';
@@ -231,6 +304,91 @@ class Student_exchange extends CI_Controller
 				$msg = $status;
 			}
 		}
+		echo json_encode($msg);
+	}
+  	public function input2()
+	{
+		$nama=$this->input->post('nama');
+		$email=$this->input->post('email');
+		$tgl_lahir=$this->input->post('tgl_lahir');
+		$fakultas_asal = $this->input->post('fakultas_asal');
+		$jurusan_asal = $this->input->post('jurusan_asal');
+		$univ_asal=$this->input->post('univ_asal');
+		$negara_asal=$this->input->post('negara_asal');
+		$no_passport=$this->input->post('no_passport');
+		$fakultas_tujuan = $this->input->post('fakultas_tujuan');
+		$jurusan_tujuan=$this->input->post('jurusan_tujuan');
+		$univ_tujuan=$this->input->post('univ_tujuan');
+		$negara_tujuan=$this->input->post('negara_tujuan');
+		$id_fakultas = $this->session->userdata('ses_fakultas');
+		$jenis_program = $this->input->post('jenis_program');
+		$tgl_mulai = $this->input->post('tgl_mulai');
+		$tgl_akhir = $this->input->post('tgl_akhir');
+		$tahun_program = $this->input->post('tahun');
+      	$semester = $this->input->post('semester');
+//		$this->firephp->log($var);
+		//if($this->M_Student_Exchange->mahasiswa_exists($no_passport, $univ_tujuan, $jurusan_tujuan, $univ_asal,  $jurusan_asal, $tahun_program, $semester) == true){
+		//	$msg = "Duplikat entry";
+	//	} else {
+			$data_program = array(
+				'jenis_program' => $jenis_program,
+				'tgl_mulai' => $tgl_mulai,
+				'tgl_akhir' => $tgl_akhir,
+				'id_fakultas' => $id_fakultas,
+				'class' => 'se'
+			);
+			$id_program = $this->M_Student_Exchange->insert_data_get_key('program', $data_program);
+			$data_student_exchange = array(
+				'id_program' => $id_program,
+				'tahun' => $tahun_program,
+              	'semester' => $semester
+			);
+			$this->M_Student_Exchange->insert_data('student_exchange', $data_student_exchange);
+            $config['upload_path'] = './uploads/temp';
+            $config['allowed_types'] = 'pdf|jpeg|jpg';
+            $config['encrypt_name'] = TRUE;
+            // $upload = "User_file";
+            for($i=0; $i<1; $i++){
+                $_FILES['doc']['name'] = $_FILES['dokumen'.$i]['name'];
+                $_FILES['doc']['type'] = $_FILES['dokumen'.$i]['type'];
+                $_FILES['doc']['tmp_name'] = $_FILES['dokumen'.$i]['tmp_name'];
+                $_FILES['doc']['error'] = $_FILES['dokumen'.$i]['error'];
+                $_FILES['doc']['size'] = $_FILES['dokumen'.$i]['size'];
+                $this->load->library('upload', $config);
+                if ( !($this->upload->do_upload("doc")))
+                {
+                    $error = array('error' => $this->upload->display_errors());
+                    $msg = $error;
+                }
+            }
+			$this->load->library('zip');
+			$this->zip->read_dir('./uploads/temp/');
+			$this->zip->archive('./uploads/'.$nama.'_'.$id_program.'_se.zip');
+			$filename = $nama.'_'.$id_program.'_se.zip';
+			$this->load->helper("file");
+			delete_files('./uploads/temp/');
+			$data_mhs = array(
+				'nama' => $nama,
+				'email' => $email,
+				'univ_asal' => $univ_asal,
+				'negara_asal' => $negara_asal,
+				'fakultas_asal' => $fakultas_asal,
+				'jurusan_asal' => $jurusan_asal,
+				'no_passport' => $no_passport,
+				'univ_tujuan' => $univ_tujuan,
+				'fakultas_tujuan' => $fakultas_tujuan,
+				'jurusan_tujuan' => $jurusan_tujuan,
+				'negara_tujuan' => $negara_tujuan,
+				'id_program' => $id_program,
+				'dokumen' => $filename
+			);
+			$status = $this->M_Student_Exchange->insert_data('mahasiswa', $data_mhs);
+			if ($status !== "failed"){
+				$msg = "Data berhasil dimasukkan";
+			} else {
+				$msg = $status;
+			}
+		//}
 		echo json_encode($msg);
 	}
 
@@ -317,12 +475,13 @@ class Student_exchange extends CI_Controller
 						$univ_tujuan = $value[11];
 						$jenis_program = $value[12];
 						$tahun_program = $value[13];
+                      	$semester = $value[14];
 						$id_fakultas = $this->session->userdata('ses_fakultas');
 						$start = array();
 						$end = array();
-						$start = explode("/", $value[14]);
+						$start = explode("/", $value[15]);
 						$tgl_mulai =  $start[2] . "-" . $start[1] . "-" . $start[0];
-						$end = explode("/", $value[15]);
+						$end = explode("/", $value[16]);
 						$tgl_akhir = $end[2] . "-" . $end[1] . "-" . $end[0];
 						if($this->M_Student_Exchange->mahasiswa_exists($no_passport, $univ_tujuan, $jurusan_tujuan, $univ_asal,  $jurusan_asal, $tahun_program) == true){
 							$msg = "Duplikat entry";
@@ -337,7 +496,8 @@ class Student_exchange extends CI_Controller
 							$id_program = $this->M_Student_Exchange->insert_data_get_key('program', $data_program);
 							$data_student_exchange = array(
 								'id_program' => $id_program,
-								'tahun' => $tahun_program
+								'tahun' => $tahun_program,
+                              	'semester' => $semester
 							);
 							$this->M_Student_Exchange->insert_data('student_exchange', $data_student_exchange);
 
@@ -401,7 +561,7 @@ class Student_exchange extends CI_Controller
 						$index = $iter;
 						$value = $column_value;
 						$date = array();
-						if ($index == 1 || $index == 14 || $index == 15) {
+						if ($index == 1 || $index == 15 || $index == 16) {
 							if (preg_match('#^(\d+)/(\d+)/(\d+)$#', $value)) {
 								$date = explode("/", $value);
 								if (checkdate( $date[0], $date[1], $date[2])) {
@@ -457,10 +617,9 @@ class Student_exchange extends CI_Controller
 							} else {
 								$cells[$C] = "WRONG FORMAT";
 							}
-						}  else if ($index == 13) {
-							if (preg_match('#^(\d{4})$#', $value)) {
+						}  else if ($index == 14) {
+							if ("genap" == strtolower($value) || "ganjil" == strtolower($value)) {
 								$cells[$C] = $value;
-								$tahun = $value;
 							} else {
 								$cells[$C] = "WRONG FORMAT";
 							}

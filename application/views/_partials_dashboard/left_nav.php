@@ -19,7 +19,7 @@
           </div>
         </a>
         <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-            <a href="<?php echo site_url() ?>/logout" class="dropdown-item">
+            <a href="<?php echo site_url() ?>/login/logout" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>
@@ -84,11 +84,11 @@
         </ul>
 
 		  <li data-toggle="collapse" data-target="#studentexchange" class="collapsed">
-			  <a class="nav-link menu-app" href="#"><i class="ni ni-pin-3 text-blue"></i> Student Exchange</a>
+			  <a class="nav-link menu-app" href="#"><i class="ni ni-planet text-blue"></i> Student Exchange</a>
 		  </li>
 		  <ul class="collapse navbar-nav collap2" id="studentexchange">
 			  <li class="nav-item">
-				  <a class="nav-link menu-app submenuapp" data-id="STUDENT EXCHANGE" data-val="Student_exchange/list">
+				  <a class="nav-link menu-app submenuapp" data-id="STUDENT EXCHANGE" data-val="Student_exchange/daftar">
 					  <i class="ni ni-bold-right text-blue"></i> Daftar Mahasiswa
 				  </a>
 			  </li>
@@ -98,6 +98,15 @@
 				  </a>
 			  </li>
 		  </ul>
+		  <?php
+		  if($this->session->userdata('ses_rule') == 1){
+		  	?>
+			  <li data-toggle="collapse"  class="collapsed">
+				  <a class="nav-link menu-app" data-id="Kelola Akun" data-val="Manage_account" ><i class="ni ni-planet text-blue"></i> Kelola Akun</a>
+			  </li>
+		  <?php
+		  }
+		  ?>
       </ul>
     </div>
   </div>

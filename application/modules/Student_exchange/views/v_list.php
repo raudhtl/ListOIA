@@ -1,5 +1,3 @@
-
-
 	<div class="row">
 		<div class="col">
 			<div class="card shadow">
@@ -17,7 +15,7 @@
 					</div>
 				</div>
 
-				<div class="table-responsive">
+				<div style="display:block; height:810px; width:730; overflow:auto;">
 					<table class="table align-items-center table-flush">
 						<thead class="thead-light">
 							<tr>
@@ -35,9 +33,11 @@
 								<th scope="col">Universitas tujuan
 								<th scope="col">Jenis Program</th>
 								<th scope="col">Tahun</th>
+                                <th scope="col">Semeser</th>
 								<th scope="col">Tanggal mulai program</th>
 								<th scope="col">Tanggal akhir program</th>
 								<th scope="col">Dokumen</th>
+                                <th scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -60,10 +60,12 @@
 								<td class="mb-0 text-sm"><?php echo $m->univ_tujuan ?></td>
 								<td class="mb-0 text-sm"><?php echo $m->jenis_program ?></td>
 								<td class="mb-0 text-sm"><?php echo $m->tahun ?></td>
+                                <td class="mb-0 text-sm"><?php echo $m->semester ?></td>
 								<td class="mb-0 text-sm"><?php echo $m->tgl_mulai ?></td>
 								<td class="mb-0 text-sm"><?php echo $m->tgl_akhir ?></td>
-								<td class="mb-0 text-sm"><a href="#" onclick="download("
-										1dc21581101ab1f2b06a936b02bc3b81.zip", "tes" )"><?php echo $m->dokumen ?></a></td>
+								<td class="mb-0 text-sm"><a href="<?php echo base_url("uploads/$m->dokumen"); ?>"><?php echo $m->dokumen ?></a></td>
+                                <td class="mb-0 text-sm"><a href="#" id="mhsedit" class="mhs-edit" data-val="Student_exchange/edit_mahasiswa" data-value="<?php echo $m->id_mhs ?>">Edit</a>
+                                   | <a href="#" class="mhs-delete" data-val="Student_exchange/delete_mahasiswa" data-value="<?php echo $m->id_mhs ?>" data-program="<?php echo $m->id_program ?>" data-doc="<?php echo $m->document ?>">Delete</a></td>
 							</tr>
 
 							<?php  } ?>
@@ -102,7 +104,7 @@
 
 	<script type="text/javascript">
 	<?php
-	 include(APPPATH."/modules/Short_term/ajax/short_term.js");
+	 include(APPPATH."/modules/Student_exchange/ajax/Student_exchange.js");
 
 	?>
 	</script>

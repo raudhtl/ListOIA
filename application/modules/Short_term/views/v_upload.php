@@ -41,10 +41,6 @@
   									<input type="text" name="nama" class="form-control" id="nama" required>
   								</div>
   								<div class="form-group">
-  									<label for="Tgl_lahir">Tanggal lahir:</label>
-  									<input type="date" name="tgl_lahir" class="form-control" id="tgl_lahir" required>
-  								</div>
-  								<div class="form-group">
   									<label for="email">Email:</label>
   									<input type="email" name="email" class="form-control" id="email" required>
   								</div>
@@ -642,7 +638,7 @@
   									<option value="others">Program lain</option>
   								</select>
   								<input type="text" name="p" placeholder="Masukkan nama program :" class="form-control"
-  									id="edit_program" required style="display:none">
+  									id="edit_program" style="display:none">
   							</div>
   							<div class="form-group">
   								<label for="jenis_program"> Jenis program : </label>
@@ -657,6 +653,14 @@
   								<input type="year" name="tahun" placeholder="Masukkan tahun program :"
   									class="form-control" required>
   							</div>
+							<div class="form-group">
+								<label for="semester">Semester :</label>
+								<select id="semester" name="semester" class="form-control" required>
+									<option value="" disabled selected>Pilih Semetser</option>
+									<option value="genap">Genap</option>
+									<option value="ganjil">Ganjil</option>
+								</select>
+							</div>
   							<div class="form-group">
   								<label for="tujuan">Tujuan kunjungan :</label>
   								<select id="tujuan" name="tujuan_kunjungan" , class="form-control" required>
@@ -746,7 +750,8 @@
   							<th scope="col">Negara asal</th>
   							<th scope="col">Nama program</th>
   							<th scope="col">Jenis program</th>
-  							<th scope="col">tahun</th>
+  							<th scope="col">Tahun</th>
+                            <th scope="col">Semester</th>
   							<th scope="col">Tujuan Kunjungan</th>
   							<th scope="col">Tanggal mulai program</th>
   							<th scope="col">Tanggal akhir program</th>

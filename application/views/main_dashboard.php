@@ -38,6 +38,7 @@
   <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet" />
   <link href="<?php echo base_url() ?>assets/themes/argon/assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
   <link href="<?php echo base_url() ?>assets/css/app.css" rel="stylesheet" />
+  <link href="<?php echo base_url() ?>assets/css/app.css" rel="stylesheet" />
 
   <script>
     var BASE_URL = '<?php echo base_url(); ?>index.php/';
@@ -64,15 +65,61 @@
     .submenuapp{
       margin-left: 2.5rem;
     }
+    .btn-add{
+		background-color: DodgerBlue;
+		border: none;
+		color: white;
+		padding: 12px 16px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+  .btn-add:hover {
+	  background-color: RoyalBlue;
+  }
+    #loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        display: none;
+        z-index: 2;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        filter: blur(0px);
+        -webkit-filter: blur(0px);
+
+        /*border: 16px solid #f3f3f3;*/
+        /*border-radius: 50%;*/
+        /*border-top: 16px solid #3498db;*/
+        width: 120px;
+        height: 120px;
+        /*-webkit-animation: spin 2s linear infinite;*/
+        /*animation: spin 2s linear infinite;*/
+    }
+
+    /*@-webkit-keyframes spin {*/
+    /*    0% { -webkit-transform: rotate(0deg); }*/
+    /*    100% { -webkit-transform: rotate(360deg); }*/
+    /*}*/
+
+    /*@keyframes spin {*/
+    /*    0% { transform: rotate(0deg); }*/
+    /*    100% { transform: rotate(360deg); }*/
+    /*}*/
+
   </style>
 </head>
 
 <body class="">
-  <?php
-  $this->load->view("_partials_dashboard/left_nav");
-  $this->load->view("_partials_dashboard/content");
-  ?>
-
+    <div id="loader">
+        <img src="<?php echo base_url() ?>assets/images/Ellipsis.gif"/>
+    </div>
+    <div id="coba">
+        <?php
+            $this->load->view("_partials_dashboard/left_nav");
+            $this->load->view("_partials_dashboard/content");
+        ?>
+    </div>
 </body>
 
 </html>
