@@ -30,7 +30,7 @@
   				</ul>
   			</div>
   			<div class="card-body">
-  				<form id="form1" method="post" enctype="multipart/form-data"
+  				<form id="form2" method="post" enctype="multipart/form-data"
   					action="<?php echo base_url('index.php/Short_term/input'); ?>">
   					<div class="tab-content" id="myTabContent">
   						<div class="tab-pane fade show active" id="tabs-0" role="tabpanel"
@@ -38,34 +38,35 @@
   							<div class="tab-content" id="v-pills-tabContent">
   								<div class="form-group">
   									<label for="nama">Nama:</label>
-  									<input type="text" name="nama" class="form-control" id="nama" required>
+  									<input type="text" name="nama" class="form-control" id="nama">
+  								</div>
+  								<div class="form-group">
+  									<label for="Tgl_lahir">Tanggal lahir:</label>
+  									<input type="date" name="tgl_lahir" class="form-control" id="tgl_lahir">
   								</div>
   								<div class="form-group">
   									<label for="email">Email:</label>
-  									<input type="email" name="email" class="form-control" id="email" required>
+  									<input type="email" name="email" class="form-control" id="email">
   								</div>
   								<div class="form-group">
   									<label for="no_passport">No Passport:</label>
-  									<input type="text" name="no_passport" class="form-control" id="no_passport"
-  										required>
+  									<input type="text" name="no_passport" class="form-control" id="no_passport">
   								</div>
   								<div class="form-group">
   									<label for="jurusan_asal">Jurusan Asal:</label>
-  									<input type="text" name="jurusan_asal" class="form-control" id="juruan_asal"
-  										required>
+  									<input type="text" name="jurusan_asal" class="form-control" id="juruan_asal">
   								</div>
   								<div class="form-group">
   									<label for="fakultas_asal">Fakultas Asal:</label>
-  									<input type="text" name="fakultas_asal" class="form-control" id="fakultas_asal"
-  										required>
+  									<input type="text" name="fakultas_asal" class="form-control" id="fakultas_asal">
   								</div>
   								<div class="form-group">
   									<label for="univ_asal">Universitas Asal:</label>
-  									<input type="text" name="univ_asal" class="form-control" id="univ_asal" required>
+  									<input type="text" name="univ_asal" class="form-control" id="univ_asal">
   								</div>
   								<div class="form-group">
   									<label for="univ_asal">Negara Tujuan:</label>
-  									<select id="negara_tujuan" name="negara_tujuan" class="form-control" required>
+  									<select id="negara_tujuan" name="negara_tujuan" class="form-control">
   										<option value="Afghanistan">Afghanistan</option>
   										<option value="Åland Islands">Åland Islands</option>
   										<option value="Albania">Albania</option>
@@ -341,11 +342,11 @@
   								<div class="form-group">
   									<label for="univ_asal">Universitas Tujuan:</label>
   									<input type="text" name="univ_tujuan" class="form-control" id="univ_tujuan"
-  										required>
+  										>
   								</div>
   								<div class="form-group">
   									<label for="negara_asal">Negara Asal</label>
-  									<select id="negara_asal" name="negara_asal" class="form-control" required>
+  									<select id="negara_asal" name="negara_asal" class="form-control">
   										<option value="Afghanistan">Afghanistan</option>
   										<option value="Åland Islands">Åland Islands</option>
   										<option value="Albania">Albania</option>
@@ -626,7 +627,7 @@
   							<div class="form-group">
   								<label for="program">Program :</label>
   								<select id="program" name="program" class="form-control"
-  									onchange="CheckProgram(this.value);" required>
+  									onchange="CheckProgram(this.value);">
   									<option value="" disabled selected>Pilih program</option>
   									<?php
 								foreach($program as $p){
@@ -640,63 +641,65 @@
   								<input type="text" name="p" placeholder="Masukkan nama program :" class="form-control"
   									id="edit_program" style="display:none">
   							</div>
-  							<div class="form-group">
-  								<label for="jenis_program"> Jenis program : </label>
-  								<select id="jenis_program" name="jenis_program" class="form-control" required>
-  									<option value="" disabled selected>Pilih jenis program</option>
-  									<option value="outbound">Outbound</option>
-  									<option value="inbound">Inbound</option>
-  								</select>
-  							</div>
-  							<div class="form-group">
-  								<label for="tahun">Tahun :</label>
-  								<input type="year" name="tahun" placeholder="Masukkan tahun program :"
-  									class="form-control" required>
-  							</div>
-							<div class="form-group">
-								<label for="semester">Semester :</label>
-								<select id="semester" name="semester" class="form-control" required>
-									<option value="" disabled selected>Pilih Semetser</option>
-									<option value="genap">Genap</option>
-									<option value="ganjil">Ganjil</option>
-								</select>
-							</div>
-  							<div class="form-group">
-  								<label for="tujuan">Tujuan kunjungan :</label>
-  								<select id="tujuan" name="tujuan_kunjungan" , class="form-control" required>
-  									<option value="Conference">Conference</option>
-  									<option value="Seminar">Seminar</option>
-  									<option value="Workshop">Workshop</option>
-  									<option value="Magang">Magang</option>
-  									<option value="Visit">Visit</option>
-  									<option value="Summercamp">Summercamp</option>
-  									<option value="Short-course">Short-course</option>
-  									<option value="Darmasiswa">Darmasiswa</option>
-  								</select>
-  							</div>
-  							<div class="form-group" id="tgl_mulai">
-  								<label for="tgl_mulai">Tanggal mulai program :</label>
-  								<input type="date" name="tgl_mulai" class="form-control" required>
-  							</div>
-  							<div class="form-group" id="tgl_akhir">
-  								<label for="tgl_akhir">Tanggal akhir program:</label>
-  								<input type="date" name="tgl_akhir" class="form-control" required>
-  							</div>
+                            <div class="form-group">
+                                <label for="jenis_program"> Jenis program : </label>
+                                <select id="jenis_program" name="jenis_program" class="form-control">
+                                    <option value="" disabled selected>Pilih jenis program</option>
+                                    <option value="outbound">Outbound</option>
+                                    <option value="inbound">Inbound</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tujuan_kunjungan">Tujuan kunjungan :</label>
+                                <select id="tujuan_kunjungan" name="tujuan_kunjungan" class="form-control" required>
+                                    <option value="Conference">Conference</option>
+                                    <option value="Seminar">Seminar</option>
+                                    <option value="Workshop">Workshop</option>
+                                    <option value="Magang">Magang</option>
+                                    <option value="Visit">Visit</option>
+                                    <option value="Summercamp">Summercamp</option>
+                                    <option value="Short-course">Short-course</option>
+                                    <option value="Darmasiswa">Darmasiswa</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tahun">Tahun :</label>
+                                <input type="text" name="tahun" id="tahun" placeholder="Masukkan tahun program :"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="semester">Semester :</label>
+                                <select id="semester" name="semester" class="form-control">
+                                    <option value="" disabled selected>Pilih semester</option>
+                                    <option value="genap">Genap</option>
+                                    <option value="ganjil">Ganjil</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tgl_mulai">Tanggal Mulai :</label>
+                                <input type="date" name="tgl_mulai" id="tgl_mulai"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="tgl_akhir">Tanggal Akhir :</label>
+                                <input type="date" name="tgl_akhir" id="tgl_akhir"
+                                       class="form-control">
+                            </div>
   							<a onclick="prevTab('0')" href="#" class="btn btn-primary">prev</a>
   							<a onclick="nextTab('2')" href="#" class="btn btn-primary">next</a>
   						</div>
   						<div class="tab-pane fade" id="tabs-2" role="tabpanel" aria-labelledby="data-dokumen">
   							<div class="form-group">
   								<label for="file">Masukkan Scan Passport :</label>
-  								<input type="file" name="dokumen0" class="form-control" required>
+  								<input type="file" name="dokumen0" class="form-control">
   							</div>
 								<div class="form-group">
   								<label for="file">Masukkan Scan Invitation Latter :</label>
-  								<input type="file" name="dokumen1" class="form-control" required>
+  								<input type="file" name="dokumen1" class="form-control">
   							</div>
 								<div class="form-group">
   								<label for="file">Masukkan Scan Application Form :</label>
-  								<input type="file" name="dokumen2" class="form-control" required>
+  								<input type="file" name="dokumen2" class="form-control">
   							</div>
 							<div class="alert alert-danger" role="alert" id="#alert2" style="display:none; width:100%;">
 			  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -718,7 +721,7 @@
   					enctype="multipart/form-data">
   					<div class="form-group">
   						<label for="daftar">Masukkan daftar mahasiswa (.xls)</label>
-  						<input type="file" id="file" class="form-control" name="file" required>
+  						<input type="file" id="file" class="form-control" name="file">
   					</div>
   					<div class="form-group">
   						<label for="nama">Masukkan Dokumen (.zip/.rar)</label>

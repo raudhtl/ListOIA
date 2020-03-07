@@ -38,17 +38,13 @@ class Login extends CI_Controller {
 		$valid = $this->form_validation;
 		$valid->set_rules('email','Email','required|valid_email');
 		$valid->set_rules('password','Password','required');
-
 		if($valid->run()) {
 			$this->m_login->login_user($username,$password);
 		}
-		// End fungsi login
-		$this->load->view('v_login');
-		
 	}
-
 
 	public function logout(){
 		$this->m_login->logout();
+        redirect(site_url('login'));
 	}
 }

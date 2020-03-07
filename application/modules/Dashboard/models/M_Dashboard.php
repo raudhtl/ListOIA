@@ -23,5 +23,20 @@ class M_Dashboard extends CI_Model{
 		$query = $this ->db->query($cmd);
 		return $query->result();
 	}
+	function get_students_se_fakultas($fakultas){
+		$cmd=sprintf("SELECT count(*) as jumlah, tahun from (select nama, no_passport, tahun, program.id_fakultas from mahasiswa, student_exchange, program where mahasiswa.id_program = student_exchange.id_program and mahasiswa.id_program = program.id_program and program.id_fakultas = $fakultas) AS tes group by tahun");
+		$query = $this ->db->query($cmd);
+		return $query->result();
+	}
+	function get_total($fakultas){
+		$cmd=sprintf("SELECT * from mahasiswa, program where program.id_program = mahasiswa.id_program and id_fakultas = $fakultas");
+		$query = $this ->db->query($cmd);
+		return $query->num_rows();
+	}
+	function  get_total_based_program($fakultas, $table){
+		$cmd=sprintf("SELECT * from mahasiswa, program where id_fakultas = $fakultas and mahasiswa.id_program=program.id_program and program.class = '$table'");
+		$query = $this ->db->query($cmd);
+		return $query->num_rows();
+	}
 }
 ?>

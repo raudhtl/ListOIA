@@ -1,3 +1,15 @@
+	$(document).ajaxStart(function() {
+	document.getElementById("loader").style.display = "block";
+	// $('#coba').css({"-webkit-filter": "blur(2px)",
+	// "-moz-filter": "blur(2px)",
+	// "-o-filter": "blur(2px)",
+	// "-ms-filter": "blur(2px)",
+	// "filter": "blur(2px)"});
+}).ajaxStop(function() {
+	document.getElementById("loader").style.display = "none";
+	// $('#coba').css({"-webkit-filter": "", "filter" : ""});
+});
+
 $(document).ready(function ($) {
   Chart.defaults.global.defaultFontColor = '#c8d9de';
   var ctx = document.getElementById("line-chart").getContext('2d');
@@ -66,7 +78,7 @@ $(document).ready(function ($) {
 			],
 			datasets: [{
 				label: 'Jumlah Entitas Terlibat',
-				borderColor: '#5e72e4',
+				borderColor: '#d35400',
 				data: [
 					<?php
 						if (count($bar)>0) {
@@ -111,5 +123,55 @@ $(document).ready(function ($) {
 
 				},
 			}
-			});
+	});
+	var ctx_se = document.getElementById("line-chart-se").getContext('2d');
+	var myChart = new Chart(ctx_se, {
+		type: 'line',
+		data: {
+			labels: [
+			<?php
+				if (count($line_se)>0) {
+					foreach ($line_se as $data) {
+						echo "'" .$data->tahun ."',";
+					}
+				}
+				?>
+			],
+			datasets: [{
+				label: 'Jumlah Entitas Terlibat',
+				borderColor: '#172b4d',
+				borderDash: [2, 2],
+				pointRadius: 5,
+				pointHoverRadius: 15,
+				data: [
+				<?php
+					if (count($line_se)>0) {
+						foreach ($line_se as $data) {
+							echo $data->jumlah . ", ";
+						}
+					}
+				?>
+				]
+			}]
+		},
+		options: {
+			scales: {
+				xAxes: [{
+					gridLines: {
+						display: true,
+						color:"black"
+					}
+				}],
+				yAxes: [{
+					gridLines: {
+						display: true,
+						color:"black"
+					}
+				}],
+			},
+			hover: {
+				mode: 'index'
+			},
+		}
+	});
 });

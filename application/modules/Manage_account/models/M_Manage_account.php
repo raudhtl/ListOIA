@@ -6,7 +6,7 @@ class M_Manage_account extends CI_Model
 		parent::__construct();
 	}
 	function get_account(){
-		$cmd=sprintf("select * from operator, fakultas where operator.id_fakultas = fakultas.id and fakultas.id  <> 3");
+		$cmd=sprintf("select * from operator, fakultas where operator.id_fakultas = fakultas.id and fakultas.id  <> 13");
 		$query = $this ->db->query ($cmd);
 		return $query->result();
 	}
@@ -16,7 +16,7 @@ class M_Manage_account extends CI_Model
 		return $query;
 	}
 	function get_faculty(){
-		$cmd=sprintf("select * from fakultas where fakultas.id  <> 3");
+		$cmd=sprintf("select * from fakultas where fakultas.id  <> 13");
 		$query = $this ->db->query ($cmd);
 		return $query->result();
 	}

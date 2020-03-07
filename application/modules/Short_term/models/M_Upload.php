@@ -16,6 +16,50 @@ class M_Upload extends CI_Model {
 		return $query;
 
 	}
+	function update_data_mhs($column, $table, $id_program, $data)
+	{
+		$this->db->where($column, $id_program);
+		if(!$this->db->update($table, $data)){
+			return "failed";
+		}
+	}
+
+	function delete_mhs($id, $table, $colomn){
+		$cmd=sprintf("DELETE FROM $table WHERE $colomn = $id ");
+		$query = $this ->db->query ($cmd);
+		return $query;
+	}
+	function get_mhs($id, $fakultas){
+		$cmd=sprintf("select * from mahasiswa, program, short_term where mahasiswa.id_mhs = %d and mahasiswa.id_program = program.id_program and short_term.id_program = program.id_program", $id);
+		$query = $this ->db->query($cmd);
+		if($query->num_rows()>0){
+			foreach ($query->result() as $data) {
+				$hasil=array(
+					'id' => $data->id_mhs,
+					'nama' => $data->nama,
+					'email' => $data->email,
+					'no_passport' => $data->no_passport,
+					'fakultas_asal' => $data->fakultas_asal,
+					'jurusan_asal' => $data->jurusan_asal,
+					'universitas_asal' => $data->univ_asal,
+					'negara_tujuan' => $data->negara_tujuan,
+					'universitas_tujuan' => $data->univ_tujuan,
+					'negara_asal' => $data->negara_asal,
+					'nama_program' => $data->nama_program,
+					'jenis_program' => $data->jenis_program,
+					'tgl_mulai' => $data->tgl_mulai,
+					'tgl_akhir' => $data->tgl_akhir,
+					'jenis' => $data->jenis_program,
+					'tahun' => $data->tahun,
+					'tujuan_kunjungan' => $data->tujuan_kunjungan,
+					'semester' => $data->semester,
+					'id_program' => $data->id_program
+				);
+			}
+		}
+		return $hasil;
+
+	}
 	function insert_data($table, $data){
 		if(!$this->db->insert($table, $data)){
 			return "failed";
@@ -43,7 +87,8 @@ class M_Upload extends CI_Model {
 										'tgl_mulai' => $data->tgl_mulai,
 										'tgl_akhir' => $data->tgl_akhir,
 										'jenis' => $data->jenis_program,
-										'tahun' => $data->tahun
+										'tahun' => $data->tahun,
+										'semester' => $data->semester
                     );
             }
         }
@@ -64,13 +109,21 @@ class M_Upload extends CI_Model {
 	function check_db($table, $column, $value, $id_program){
 		$query = $this->db->get_where($table, array($column => $value, 'id_program' => $id_program));
 		if ($query->num_rows() > 0){
-        return true;
-    }
-    else{
-        return false;
-    }
+        	return true;
+    	}
+    	else{
+        	return false;
+    	}
 	}
-
+	function cek_update($table, $colomn, $val, $id_program, $id_mhs){
+		$query = $this->db->query("Select * from $table where $colomn = '$val' and id_program = $id_program and id_mhs <> $id_mhs");
+		if ($query->num_rows() > 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	function program_exists($nama_program, $id_fakultas){
   	$query = $this ->db->query ("select * from short_term, program where short_term.nama_program = '$nama_program' and id_fakultas = $id_fakultas and short_term.id_program = program.id_program");
     if ($query->num_rows() > 0){
