@@ -16,50 +16,10 @@ class M_Student_Exchange extends CI_Model {
 			return "failed";
 		}
 	}
-	function get_mhs($id, $fakultas){
-		$cmd=sprintf("select * from mahasiswa, program, student_exchange where mahasiswa.id_mhs = %d and mahasiswa.id_program = program.id_program and student_exchange.id_program = program.id_program", $id);
-		$query = $this ->db->query($cmd);
-		if($query->num_rows()>0){
-			foreach ($query->result() as $data) {
-				$hasil=array(
-					'id' => $data->id_mhs,
-					'nama' => $data->nama,
-					'email' => $data->email,
-					'no_passport' => $data->no_passport,
-					'fakultas_asal' => $data->fakultas_asal,
-					'jurusan_asal' => $data->jurusan_asal,
-					'universitas_asal' => $data->univ_asal,
-					'negara_tujuan' => $data->negara_tujuan,
-					'fakultas_tujuan' => $data->fakultas_tujuan,
-					'jurusan_tujuan' => $data-> jurusan_tujuan,
-					'universitas_tujuan' => $data->univ_tujuan,
-					'negara_asal' => $data->negara_asal,
-					'nama_program' => $data->nama_program,
-					'jenis_program' => $data->jenis_program,
-					'tgl_mulai' => $data->tgl_mulai,
-					'tgl_akhir' => $data->tgl_akhir,
-					'jenis' => $data->jenis_program,
-					'tahun' => $data->tahun,
-					'semester' => $data->semester,
-					'id_program' => $data->id_program
-				);
-			}
-		}
-		return $hasil;
-
-	}
-	function update_data_mhs($column, $table, $id_program, $data)
+	function update_data_program($table, $id_program, $data)
 	{	
-		$this->db->where($column, $id_program);
-		if(!$this->db->update($table, $data)){
-			return "failed";
-		}
-	}
-
-	function delete_mhs($id, $table, $colomn){
-		$cmd=sprintf("DELETE FROM $table WHERE $colomn = $id ");
-		$query = $this ->db->query ($cmd);
-		return $query;
+		$this->db->where('id_program', $id_program);
+		$this->db->update($table, $data);
 	}
 
 	function get_id_program($nama_program, $id_fakultas){
@@ -77,8 +37,7 @@ class M_Student_Exchange extends CI_Model {
 										'tgl_mulai' => $data->tgl_mulai,
 										'tgl_akhir' => $data->tgl_akhir,
 										'jenis' => $data->jenis_program,
-										'tahun' => $data->tahun,
-                  						'semester' => $data->semester
+										'tahun' => $data->tahun
                     );
             }
         }
@@ -106,8 +65,8 @@ class M_Student_Exchange extends CI_Model {
     	}
 	}
 
-	function mahasiswa_exists($no_passport, $univ_tujuan, $jurusan_tujuan, $univ_asal,  $jurusan_asal, $tahun, $semester){
-		$query = $this->db-> query("select * from mahasiswa, program, student_exchange where jurusan_tujuan = '$jurusan_tujuan' and univ_tujuan = '$univ_tujuan' and no_passport = '$no_passport' and univ_asal = '$univ_asal' and jurusan_asal = '$jurusan_asal' and tahun = '$tahun' and semester = '$semester' and mahasiswa.id_program = program.id_program and student_exchange.id_program = program.id_program");
+	function mahasiswa_exists($no_passport, $univ_tujuan, $jurusan_tujuan, $univ_asal,  $jurusan_asal, $tahun){
+		$query = $this->db-> query("select * from mahasiswa, program, student_exchange where jurusan_tujuan = '$jurusan_tujuan' and univ_tujuan = '$univ_tujuan' and no_passport = '$no_passport' and univ_asal = '$univ_asal' and jurusan_asal = '$jurusan_asal' and tahun = '$tahun' and mahasiswa.id_program = program.id_program and student_exchange.id_program = program.id_program");
 		if ($query->num_rows() > 0){
 			return true;
 		}

@@ -29,7 +29,7 @@
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-            <a href="<?php echo site_url() ?>/login/logout" class="dropdown-item">
+            <a href="<?php echo site_url() ?>/logout" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>

@@ -58,7 +58,7 @@
       <!-- Navigation -->
       <ul id="grupmenu" class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link menu-app active" data-id="DASHBOARD" data-val="dashboard/beranda"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+          <a class="nav-link menu-app active" data-id="DASHBOARD" data-val="Dashboard/beranda"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
           </a>
         </li>
 
@@ -88,7 +88,7 @@
 		  </li>
 		  <ul class="collapse navbar-nav collap2" id="studentexchange">
 			  <li class="nav-item">
-				  <a class="nav-link menu-app submenuapp" data-id="STUDENT EXHCHANGE" data-val="Student_exchange/list">
+				  <a class="nav-link menu-app submenuapp" data-id="STUDENT EXCHANGE" data-val="Student_exchange/daftar">
 					  <i class="ni ni-bold-right text-blue"></i> Daftar Mahasiswa
 				  </a>
 			  </li>

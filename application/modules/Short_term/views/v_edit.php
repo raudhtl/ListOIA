@@ -16,7 +16,8 @@
                             <th scope="col">No</th>
                             <th scope="col">Nama program</th>
                             <th scope="col">Jenis program</th>
-                            <th scope="col">tahun</th>
+                            <th scope="col">Tahun</th>
+                            <th scope="col">Semester</th>
                             <th scope="col">Tujuan Kunjungan</th>
                             <th scope="col">Tanggal mulai program</th>
                             <th scope="col">Tanggal akhir program</th>
@@ -33,10 +34,11 @@
                                 <td class="mb-0 text-sm"><?php echo $m->nama_program ?></td>
                                 <td class="mb-0 text-sm"><?php echo $m->jenis_program ?></td>
                                 <td class="mb-0 text-sm"><?php echo $m->tahun ?></td>
+                                <td class="mb-0 text-sm"><?php echo $m->semester ?></td>
                                 <td class="mb-0 text-sm"><?php echo $m->tujuan ?></td>
                                 <td class="mb-0 text-sm"><?php echo $m->tgl_mulai ?></td>
                                 <td class="mb-0 text-sm"><?php echo $m->tgl_akhir ?></td>
-                                <td class="mb-0 text-sm"> <a href="#" id="menuedit" class="menu-edit" data-id="edit" data-val="Short_term/edit_program" data-value="<?php echo $m->nama_program; ?>">Edit Program</a></td>
+                                <td class="mb-0 text-sm"> <a href="#" id="menuedit" class="menu-edit" data-id="SHORT TERM" data-val="Short_term/edit_program" data-value="<?php echo $m->nama_program; ?>">Edit Program</a></td>
                             </tr>
 
                         <?php  } ?>
